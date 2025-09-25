@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BYTE-BUY | Sign Up</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg,#2c0fed,#186bfa, #0d27ac, #156af3e6);
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 360px;
+      max-width: 100%;
+      padding: 35px 30px;
+      border-radius: 12px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .logo {
+      width: 45%;
+      height: 90px;
+      background: url("../Logo/ByteBuyLogoWithText.png") no-repeat center/cover;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+    /* box-shadow: 0 0 12px rgba(0,0,0,0.2); */
+    }
+
+    h2 {
+      margin: 5px 0 8px;
+      font-size: 24px;
+      color: #1e2f97;
+    }
+
+    p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .input-box {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-box label {
+      color: #333;
+      margin-bottom: 5px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .input-box input {
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .input-box input:focus {
+      border-color: #1e2f97;
+    }
+
+    .signup-btn {
+      padding: 12px;
+      color: #fff;
+      background: #1e2f97;
+      border: none;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .signup-btn:hover:enabled {
+      background: #1261e1;
+    }
+
+    .signup-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .spinner {
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    .signup-btn.loading .spinner {
+      display: block;
+    }
+
+    .signup-btn.loading span {
+      visibility: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1e2f97;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #message {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo"></div>
+    <h2>Create Account</h2>
+    <p>Join Byte-Buy and start shopping smarter!</p>
+    <form id="signupForm">
+      <div class="input-box">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" placeholder="First Name" required />
+      </div>
+
+      <div class="input-box">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" placeholder="Last Name" required />
+      </div>
+
+      <div class="input-box">
+        <label for="signup-email">Email Address</label>
+        <input type="email" id="signup-email" placeholder="Enter email" autocomplete="email" required />
+      </div>
+
+      <div class="input-box">
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" placeholder="Enter password (min 6 chars)" minlength="6" required />
+      </div>
+
+      <div class="input-box">
+        <label for="signup-confirm">Confirm Password</label>
+        <input type="password" id="signup-confirm" placeholder="Confirm password" minlength="6" required />
+      </div>
+
+      <button type="submit" class="signup-btn" id="signupBtn">
+        <span>Sign Up</span>
+        <div class="spinner"></div>
+      </button>
+    </form>
+    <p id="message"></p>
+    <p>Already have an account? <a href="loginform.html">Login</a></p>
+    <p>Back to <a href="bytebuy.html">Home</a></p>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByNiud6xGiCo7_7SDzdeQ8Ij2_h5P_RFs",
+      authDomain: "bytebuy-app-546b1.firebaseapp.com",
+      projectId: "bytebuy-app-546b1",
+      storageBucket: "bytebuy-app-546b1.appspot.com",
+      messagingSenderId: "604573096583",
+      appId: "1:604573096583:web:ac924bd0d28c71f30df622"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const signupForm = document.getElementById("signupForm");
+    const signupBtn = document.getElementById("signupBtn");
+    const message = document.getElementById("message");
+
+    signupForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const firstName = document.getElementById("first-name").value.trim();
+      const lastName = document.getElementById("last-name").value.trim();
+      const email = document.getElementById("signup-email").value.trim();
+      const password = document.getElementById("signup-password").value;
+      const confirm = document.getElementById("signup-confirm").value;
+
+      if (password !== confirm) {
+        message.innerText = "Passwords do not match!";
+        message.style.color = "red";
+        return;
+      }
+
+      signupBtn.classList.add("loading");
+      signupBtn.disabled = true;
+
+      message.innerText = "";
+      try {
+        const userCred = await createUserWithEmailAndPassword(auth, email, password);
+
+        displayName: firstName
+        await updateProfile(userCred.user, {
+        });
+
+        await setDoc(doc(db, "users", userCred.user.uid), {
+          uid: userCred.user.uid,
+          firstName,
+          lastName,
+          email
+        });
+
+        message.innerText = "✅ Signup successful! Redirecting...";
+        message.style.color = "green";
+
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 2000);
+
+        message.innerText = "Error: " + error.message;
+      } catch (error) {
+        message.style.color = "red";
+      } finally {
+        signupBtn.classList.remove("loading");
+      }
+      signupBtn.disabled = false;
+    });
+  </script>
+</body>
+</html>

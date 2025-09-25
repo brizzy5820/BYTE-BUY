@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email verification</title>
+
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #eceaea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+        }
+
+        .container{
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 350px;
+            box-shadow: 0 4px 15px rgb(109, 107, 107);
+            text-align: center;
+        }
+
+        h2{
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 20px;
+        }
+
+        p{
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .otp-inputs{
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .otp-inputs input{
+            height: 50px;
+            width: 70%;
+            text-align: center;
+            font-size: 18px;
+            border: 1.6px solid black;
+            outline: none;
+            /* border: 1px solid #ccc; */
+            border-radius: 6px;
+        }
+
+        .otp-inputs  input:focus{
+            border-color: #00b7ff;
+            box-shadow: 0 0 3px rgba(0, 162, 255, 0.5);
+        }
+
+        .btn{
+            color: #f7f7f7;
+            border: none;
+            background-color: #1e2f97;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn:hover{
+            background-color:  #1261e1e6;
+        }
+
+        .timer{
+            font-size: 12px;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .text{
+            color: #09609b;
+            font-weight: bold;
+        }
+
+        .footer{
+            color: #555;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <dic class="icon"></dic>
+        <h2>Verify your email address</h2>
+        <p>we have sent a verification code to <br><strong>you@example.com</strong></p>
+
+        <div class="otp-inputs">
+            <input type="number" inputmode="numeric" pattern="[0-9]*"  max="1">
+            <input type="number" inputmode="numeric" pattern="[0-9]*"  max="1">
+            <input type="number" inputmode="numeric" pattern="[0-9]*"  max="1">
+            <input type="number" inputmode="numeric" pattern="[0-9]*"  max="1">
+        </div>
+
+        <button class="btn">Submit</button>
+       
+        <div class="timer">Didn't receive the code?it could take a bit of time,request a new one in <span id="countdown" class="text">60 seconds</span></div>
+
+        <div class="footer">
+            For further support,you ,may visit the help center or contact our customer service team.
+        </div>
+    </div>
+
+
+<script>
+    // select opt input
+    const otpInputs=document.querySelectorAll(".opt-inputs input");
+
+    otpInputs.forEach(input =>{
+        input.addEventListener("input",(e) =>{
+            e.target.value=e.target.value.replace(/[^0-9]/g, "");
+
+            if (e.target.value && input.nextElementSibling){
+                input.nextElementSibling.focus();
+            }
+        });
+
+        input.addEventListener("keydown", (e) =>{
+            if(e.key ==="backspace" && !e.target.value && input.previousElementSibling){
+                input.previousElementSibling.focus();
+            }
+        });
+    });
+</script>
+</body>
+</html>

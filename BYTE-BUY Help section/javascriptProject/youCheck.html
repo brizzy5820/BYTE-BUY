@@ -1,0 +1,1235 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    .faq-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      margin-bottom: 15px;
+    }
+
+    .faq-item input[type="checkbox"] {
+      display: none;
+    }
+
+    .faq-item label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .faq-item label::after {
+      content: '+';
+      font-size: 20px;
+    }
+
+    .faq-item input:checked + label::after {
+      content: '-';
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-top: none;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-item input:checked ~ .faq-content {
+      max-height: 1000px;
+    }
+
+    .faq-content p {
+      margin: 0;
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .support-section {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-top: 30px;
+      display: flex;
+      gap: 40px;
+    }
+
+    .support-box {
+      flex: 1;
+      border-right: 1px solid #ccc;
+      padding-right: 20px;
+    }
+
+    .support-box:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="faq-container">
+    <!-- FAQ 1 -->
+    <div class="faq-item">
+      <input type="checkbox" id="faq1">
+      <label for="faq1">How do I pay with bank transfer?</label>
+      <div class="faq-content">
+        <p>You can pay by bank transfer by selecting it during checkout...</p>
+      </div>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="faq-item">
+      <input type="checkbox" id="faq2">
+      <label for="faq2">How do I pay with card?</label>
+      <div class="faq-content">
+        <p>Card payments are processed securely using our payment gateway...</p>
+      </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="faq-item">
+      <input type="checkbox" id="faq3">
+      <label for="faq3">How long does payment take?</label>
+      <div class="faq-content">
+        <p>Payments are processed immediately, but some banks may delay confirmation...</p>
+      </div>
+    </div>
+
+    <!-- Support Section -->
+    <div class="support-section">
+      <div class="support-box">
+        <strong>💬 Live Chat</strong>
+        <p>Available Mon–Fri (8am–6pm), Weekends (8am–5pm), Public holidays (9am–5pm)</p>
+      </div>
+      <div class="support-box">
+        <strong>📞 Call</strong>
+        <p>Available Mon–Fri (8am–5pm), Public holidays (9am–5pm)</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="faq-container">
+    <!-- dropdowns -->
+    drop
+  </div>
+  
+  <div id="support-container">
+    <!-- live chat / call -->
+  </div>
+  
+  <script>
+    const checkboxes = document.querySelectorAll('.faq-item input[type="checkbox"]');
+    const supportContainer = document.getElementById('support-container');
+    
+    checkboxes.forEach(box => {
+    box.addEventListener('change', () => {
+      // Calculate total height of expanded items
+      let extraHeight = 0;
+      document.querySelectorAll('.faq-item input:checked').forEach(checkedBox => {
+        const content = checkedBox.parentElement.querySelector('.faq-content');
+        if (content) {
+          extraHeight += content.scrollHeight;
+        }
+      });
+      
+      // Push support section down manually
+      supportContainer.style.marginTop = (extraHeight + 50) + 'px';
+    });
+  });
+</script>
+</body>
+</html>
+<!-- css -->
+ #div-of-list{
+        border: 1px solid black;
+        width: 55.6%;
+        height: 142vh;
+        background-color:white;
+        border: none;
+        padding: 30px;
+          /* min-height: 100vh; */
+}
+#div-of-1 {
+    padding: 5px;
+    /* border: 2px solid black; */
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: 7vh;
+}
+#p1{
+    cursor: pointer;
+    text-decoration: underline;
+        padding-left: 10px;
+
+}
+.dropdown-container{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+
+}
+.toggle{
+    display: none;
+}
+.dropdown-label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+
+.dropdown-label::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+
+.toggle:checked+ .dropdown-label::after{
+    content: "-";
+}
+
+.dropdown-content{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #fff;
+    padding: 0 10px;
+}
+
+.toggle:checked + .dropdown-label + .dropdown-content{
+    max-height: 500px;
+    padding: 10px;
+}
+#p2{
+    text-decoration: underline;
+        padding-left: 10px;
+}
+
+
+.dropdown-container2{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+
+}
+.toggle2{
+    display: none;
+}
+
+.dropdown-label2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+
+.dropdown-label2::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle2:checked + .dropdown-label2::after{
+    content: "-";
+}
+.dropdown-content2{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle2:checked + .dropdown-label2 + .dropdown-content2{
+    max-height: 500px;
+    padding: 10px;
+}
+#p3{
+    text-decoration: underline;
+        padding-left: 10px;
+}
+
+.dropdown-container3{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+
+}
+.toggle3{
+    display: none;
+}
+.dropdown-label3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+
+.dropdown-label3::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle3:checked + .dropdown-label3::after{
+    content: "-";
+}
+.dropdown-content3{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle3:checked + .dropdown-label3 + .dropdown-content3{
+    max-height: 500px;
+    padding: 10px;
+}
+
+#p4{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container4{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+
+}
+.toggle4{
+    display: none;
+}
+
+.dropdown-label4{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label4::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle4:checked + .dropdown-label4::after{
+    content: "-";
+}
+.dropdown-content4{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle4:checked + .dropdown-label4 + .dropdown-content4{
+    max-height: 500px;
+    padding: 10px;
+}
+
+#p5{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container5{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle5{
+    display: none;
+}
+.dropdown-label5{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label5::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle5:checked + .dropdown-label5::after{
+    content: "-";
+}
+.dropdown-content5{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle5:checked + .dropdown-label5 + .dropdown-content5{
+    max-height: 500px;
+    padding: 10px;
+}
+#p6{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container6{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle6{
+    display: none;
+}
+
+.dropdown-label6{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label6::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle6:checked + .dropdown-label6::after{
+    content: "-";
+}
+.dropdown-content6{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle6:checked + .dropdown-label6 + .dropdown-content6{
+    max-height: 500px;
+    padding: 10px;
+}
+.dropdown-content6 span a{
+    color: #1e2f97;
+}
+#p7{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container7{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle7{
+    display: none;
+}
+
+.dropdown-label7{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label7::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle7:checked + .dropdown-label7::after{
+    content: "-";
+}
+.dropdown-content7{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle7:checked + .dropdown-label7 + .dropdown-content7{
+    max-height: 500px;
+    padding: 10px;
+}
+.dropdown-content7  a{
+    color: #1e2f97;
+}
+
+#p8{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container8{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle8{
+    display: none;
+}
+
+.dropdown-label8{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label8::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle8:checked + .dropdown-label8::after{
+    content: "-";
+}
+.dropdown-content8{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle8:checked + .dropdown-label8 + .dropdown-content8{
+    max-height: 500px;
+    padding: 10px;
+}
+#p9{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container9{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle9{
+    display: none;
+}
+
+.dropdown-label9{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label9::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle9:checked + .dropdown-label9::after{
+    content: "-";
+}
+.dropdown-content9{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle9:checked + .dropdown-label9 + .dropdown-content9{
+    max-height: 500px;
+    padding: 10px;
+}
+#p10{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container10{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle10{
+    display: none;
+}
+
+.dropdown-label10{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label10::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle10:checked + .dropdown-label10::after{
+    content: "-";
+}
+.dropdown-content10{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle10:checked + .dropdown-label10 + .dropdown-content10{
+    max-height: 500px;
+    padding: 10px;
+}
+#p11{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container11{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle11{
+    display: none;
+}
+
+.dropdown-label11{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label11::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle11:checked + .dropdown-label11::after{
+    content: "-";
+}
+.dropdown-content11{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle11:checked + .dropdown-label11 + .dropdown-content11{
+    max-height: 500px;
+    padding: 10px;
+}
+#p12{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container12{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle12{
+    display: none;
+}
+
+.dropdown-label12{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label12::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle12:checked + .dropdown-label12::after{
+    content: "-";
+}
+.dropdown-content12{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle12:checked + .dropdown-label12 + .dropdown-content12{
+    max-height: 500px;
+    padding: 10px;
+}
+#p13{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container13{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle13{
+    display: none;
+}
+
+.dropdown-label13{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+}
+.dropdown-label13::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle13:checked + .dropdown-label13::after{
+    content: "-";
+}
+.dropdown-content13{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle13:checked + .dropdown-label13 + .dropdown-content13{
+    max-height: 500px;
+    padding: 10px;
+}
+.dropdown-content13 a{
+    color: #1e2f97;
+    font-size: 18px;
+}
+#p14{
+    text-decoration: underline;
+    padding-left: 10px;
+}
+.dropdown-container14{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+.toggle14{
+    display: none;
+}
+
+.dropdown-label14{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    height: 5vh;
+      background-color: inherit;
+}
+.dropdown-label14::after{
+    content: "+";
+    font-size: 18px;
+    transition: transform 0.3s;
+
+}
+.toggle14:checked + .dropdown-label14::after{
+    content: "-";
+}
+.dropdown-content14{
+    max-height: 0;
+    overflow: hidden;
+    /* transition: max-height 0.5s ease; */
+    background: #ffff;
+    padding: 0 10px;
+}
+.toggle14:checked + .dropdown-label14 + .dropdown-content14{
+    max-height: 500px;
+    padding: 10px;
+}
+.you-all{
+        margin-right: 105em;
+        border:1px solid black;
+}
+#pp{
+    margin-right: 30em;
+    width: 14%;
+    height: 3vh;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.you-us{
+    display: flex;
+    justify-content: center;
+}
+.div-flex1{
+    margin-top: 20px;
+    width: 60vw;
+    margin-left:17em ;
+}
+
+.div-chat{
+    background-color: white;
+    width: 100%;
+    border: 2px solid #c2c4d3;
+    height: 15vh;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.div-chat2{
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+#div-chat3{
+    height: 6vh;
+    width: 6vw;
+}
+#h3o{
+    font-size: x-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+<html>
+              <div id="div-of-list">
+                <div id="div-of-1">
+                    <div class="dropdown-container">
+                        <p id="p1">Payment</p>
+                        <input type="checkbox" class="toggle" id="dropdown-toggle">
+                        <label for="dropdown-toggle" class="dropdown-label">
+                            What payment methods are accepted on Byte-Buy?
+                        </label>
+                            
+
+    
+                        <div class="dropdown-content">
+                            <p >We accept a variety of payment methods including:</p>
+                            <ul>
+                                <li>• <b>Pay on Delivery</b> allows for payment in cash, or with a credit/debit card, bank transfer, or Mastercard upon delivery.</li><br>
+    
+                                <li>• <b>Byte-Buy Pay</b> accepts payment through Mastercard, Visa cards, and bank transfers.</li><br>
+    
+                                <li>• <b>Buy Now Pay Later(BNPL)</b> allows you to buy now and pay later with convenient options such as; Easy Buy and Credpal at checkout.
+                                </li><br>
+    
+                                <li>• <b>Mobile Money</b> enjoy the convenience of paying with or without your wallet using options like Opay and PalmPay at checkout.</li><br>
+    
+                                <li>• <b>Vouchers</b> allow you to pay using a voucher code.</li><br>
+                            </ul>
+                        </div>
+    
+                        
+                    </div>
+                    <div class="dropdown-container2">
+                        <p id="p2">payment</p>
+                        <input type="checkbox" class="toggle2" id="dropdown-toggle2">
+                        <label for="dropdown-toggle2" class="dropdown-label2">
+                            How secure is my payment information on Byte-buy?
+                        </label>
+
+                        <div class="dropdown-content2">
+                            <p>byte-buy prioritizes customer payment security with encryption, and secure servers. Regular monitoring and auditing are also performed to maintain a secure environment for transactions.</p>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container3">
+                        <p id="p3">payment </p>
+                        <input type="checkbox" class="toggle3" id="dropdown-toggle3">
+                        <label for="dropdown-toggle3" class="dropdown-label3">
+                            What do i do if my payment is declined?
+                        </label>
+                        <div class="dropdown-content3">
+                            <p>If your payment is declined,you can check the following to resolve the issue:
+                            </p><br>
+                            <ul>
+                                <li>• Check the <b>Spelling and billing information</b> you entered for accuracy.</li><br>
+                                <li>
+                                    • Ensure that your credit card has <b>sufficient funds</b> or that your bank account has enough balance.
+                                </li><br>
+                                <li>
+                                    • Check if there are any <b>restrictions on your card </b> such as a daily spending limit.
+                                </li><br>
+                                <li>
+                                    • Make sure your card has <b>not expired.</b>
+                                </li><br>
+                            </ul>
+
+                            <p>
+                                if you've checked the above and your payment is still declined,you can contact byte-buy customer service for assitance via our livechat.
+                            </p><br>
+
+                            <p>
+                                <b>Note:</b> it is recommended to keep the details of thr error message that appears during the declined transaction to provide to byte-buy customer service for a faster resolution.
+                            </p><br>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container4">
+                        <p id="p4">payment</p>
+                        <input type="checkbox" class="toggle4" id="dropdown-toggle4">
+                        <label for="dropdown-toggle4" class="dropdown-label4">
+                            Can i pay cash on delivery for my orders?
+                        </label>
+
+                        <div class="dropdown-content4">
+                            <p>
+                                Yes, you can pay for your orders in cash upon delivery on Byte-buy. You can choose to pay in cash or opt for other payment options such as a credit/debit card, bank transfer, or Mastercard payment - all without the need to enter payment information beforehand.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container5">
+                        <p id="p5">payment</p>
+                        <input type="checkbox" class="toggle5" id="dropdown-toggle5">
+                        <label for="dropdown-toggle5" class="dropdown-label5">
+                            What should i do if have been charged twice for the same order?
+                        </label>
+
+                        <div class="dropdown-content5">
+                            <p>If you have been charged twice for the same order, you can contact Jumia customer service for assistance in resolving the issue. They can be reached through the Live Chat.</p><br>
+
+                            <p>Please provide the following information to Jumia customer service when reporting a double charge:</p><br>
+                            <ul>
+                                <li>• Your name and email address used to place the order.                     </li><br>
+                                <li>• Order number and date of purchase.</li><br>
+                                <li>• Details of the double charge (amount, date, and transaction number).</li><br>
+                            </ul>
+                            <p>Byte-buy customer service will assist you in resolving the issue and arranging for a refund if applicable.</p>
+
+
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container6">
+                        <p id="p6">payment</p>
+                        <input type="checkbox" class="toggle6" id="dropdown-toggle6">
+                        <label for="dropdown-toggle6" class="dropdown-label6">
+                            How do i know if my payment has been processed sucessfully?
+                        </label>
+
+                        <div class="dropdown-content6">
+                            <p>You can check the status of your payment by following these steps:</p><br>
+
+                            <p><b>Step 1:</b> Go to the <span class="dropdown-inside"><a href="">"Order"</a></span> section in your account dashboard.</p><br>
+
+                            <p><b>Step 2:</b> Find the order in question and check its status. If the payment has been processed successfully, the order status should be <b>"Confirmed."</b> </p><br>
+
+                    <p>
+                        You will also receive a confirmation email from Byte-buy after a successful payment. If you do not receive a confirmation email, or if you have any concerns about your payment, you can contact Byte-buy customer service via our livechat.
+                    </p>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container7">
+                        <p id="p7">payment</p>
+                        <input type="checkbox" class="toggle7" id="dropdown-toggle7">
+                        <label for="dropdown-toggle7" class="dropdown-label7">
+                            What is byte-buy store credit? And How can i use it?
+                        </label>
+
+                        <div class="dropdown-content7">
+                            <p>You can get Jumia Store Credit as a refund if your refund to the original payment method used for the purchase fails. You can use this store credit to pay for your orders on Jumia, and JumiaPay, subject to certain conditions. To see your available store credit, go to your Jumia account and click on the <a href="">"ACCOUNT"</a>  tab, or log in to JumiaPay to check your balance</p>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container8">
+                        <p id="p8">payment</p>
+                        <input type="checkbox" class="toggle8" id="dropdown-toggle8">
+                        <label for="dropdown-toggle8" class="dropdown-label8">
+                            What is byte-buy pay on delivery?
+                        </label>
+
+                        <div class="dropdown-content8">
+                            <p>
+                                byte-buy pay on delivery is a cashless payment option that allows you to pay for your byte-buy orders upon delivery. You can pay with your credit/debit card, bank transfer, or Mastercard.
+                            </p><br>
+
+                            <p>
+                                To pay with byte-buy pay on delivery, simply ask our delivery associate to use byte-buy pay as a payment method. Then, you can select your preferred payment method within byte-buy pay.
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container9">
+                        <p id="p8">payment</p>
+                        <input type="checkbox" class="toggle9"
+                        id="dropdown-toggle9">
+                        <label for="dropdown-toggle9" class="dropdown-label9">
+                            Can i cancel my order and get a refund after payment has been made?
+                        </label>
+
+                        <div class="dropdown-content9">
+                            <p>
+                                If the order hasn't been shipped yet,<b>you can cancel your order and get a refund.</b> 
+
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container10">
+                        <p id="p10">payment</p>
+                        <input type="checkbox" class="toggle10" id="dropdown-toggle10">
+                        <label for="dropdown-toggle10" class="dropdown-label10">
+                            How long does it take for my payment to be processed?
+                        </label>
+                        <div class="dropdown-content10">
+                            <p>
+                                Most payments on Jumia are processed immediately when completed. However, specific processing times may vary depending on the payment method.
+                            </p><br>
+                            <p>
+                                To ensure that your payment is processed quickly, we recommend that you double-check all the information before completing the checkout. If you are experiencing an issue with your payment, please contact our customer service team for further assistance.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container11">
+                        <p id="p11">
+                            payment
+                        </p>
+                        <input type="checkbox" class="toggle11" id="dropdown-toggle11">
+                        <label for="dropdown-toggle11" class="dropdown-label11">
+                            How do i pay via bank transfer on delivery via byte-buy on delivery?
+                        </label>
+
+                        <div class="dropdown-content11">
+                            <p>
+                                If you prefer to pay using a bank transfer, follow the steps below:
+                            </p><br>
+                            <ul>
+                                <li>
+                                    • Upon delivery, kindly request from our delivery associate that you would like to pay with a bank transfer via ''Byte-buy pay."
+                                </li><br>
+                                <li>
+                                    • The Delivery associate will generate a link that will be sent to you via SMS on your registered phone number.
+                                </li><br>
+                                <li>
+                                    • Click on the link, and it will redirect you to the byte-buy pay app page with the bank account details.
+                                </li><br>
+                                <li>
+                                    • Kindly ensure you transfer the <b>EXACT AMOUNT</b> to the Byte-buy Pay account provided.
+                                </li><br>
+                                <li>
+                                    • Confirm that your payment was successful.
+                                </li><br>
+                            </ul>
+                            <p>
+                                A unique or different bank account is provided for each transaction; do not keep the account information for future usage.
+                            </p><br>
+
+                            <p>
+                                <b>Please note:</b> Do not share your card details or CVV with the delivery associate.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="dropdown-container12">
+                        <p id="p12">payment</p>
+                        <input type="checkbox" class="toggle12" id="dropdown-toggle12">
+                        <label for="dropdown-toggle12" class="dropdown-label12">
+                            How do i pay with my card on delivery  via byte-buy pay on delivery?
+                        </label>
+                        <div class="dropdown-content12">
+                            <p>If you prefer to pay using card, follow the steps below:</p><br>
+                            <ul>
+                                <li>
+                                    • The Delivery associate will send a Byte-buy Pay payment link to your registered phone number on the order, or better still, you can scan the QR code to get the payment link. 
+                                </li><br>
+                                <li>
+                                    • Click on the link, provide your card details to pay or simply log into your account to pay with your card stored on Byte-buy Pay.
+                                </li><br>
+                                <li>
+                                    • Confirm that your payment was successful.
+                                </li><br>
+                            </ul>
+                            <p>That is it! You’re done.</p><br>
+                            <p>
+                               <b> Please note:</b>Do not share your card details or CVV with the delivery associate.
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="dropdown-container13">
+                        <p id="p13">payment</p>
+                        <input type="checkbox" class="toggle13" id="dropdown-toggle13">
+                        <label for="dropdown-toggle13" class="dropdown-label13">
+                            How do i pay via USSD on delivery via Byte-buy pay on delivery?
+                        </label>
+                        <div class="dropdown-content13">
+                            <p>
+                                If you prefer to pay via USSD, kindly follow the steps below:
+                            </p><br>
+                            <ul>
+                                <li>
+                                    • Upon delivery, kindly request from our delivery associate that you would like to pay via ''Byte-buy Pay."
+                                </li><br>
+                                <li>
+                                    • The Delivery associate will generate a link that will be sent to you via SMS on your registered phone number.
+                                </li><br>
+                                <li>
+                                    • Click on the link, and it will redirect you to the JumiaPay app page with the bank account details.
+                                </li><br>
+                                <li>
+                                    • Kindly ensure you pay the EXACT AMOUNT to the Byte-buy Pay account provided using your bank's USSD code.
+                                </li><br>
+                                <li>
+                                    • Confirm that your payment was successful.
+                                </li><br>
+
+                            </ul>
+
+                            <p>For further inquiry/feedback write to us at <a href="">Byte-buy pay.feedback.ng@byte-buy.com</a> </p>
+                        </div>
+                    </div>
+                    <div class="dropdown-container14">
+                        <p id="p14">payment</p>
+                        <input type="checkbox" class="toggle14"  id="dropdown-toggle14">
+                        <label for="dropdown-toggle14" class="dropdown-label14">
+                            How long does it take for my payment to be processed?
+                        </label>
+                        <div class="dropdown-content14" id="dropdown-content14">
+                            <p>
+                                Most payments on Byte-buy are processed immediately when completed. However, specific processing times may vary depending on the payment method.
+                            </p><br>
+                            <p>
+                                To ensure that your payment is processed quickly, we recommend that you double-check all the information before completing the checkout. If you are experiencing an issue with your payment, please contact Byte-buy's customer service team for assistance.
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="div-flex1" id="div-flex1">
+            <p id="pp">Talk to an agent</p>
+            <div class="you-us">
+
+                <div class="div-chat">
+                    <h3 id="h3o">Live Chat</h3>
+                    <div class="div-chat2">
+                        <svg id="div-chat3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.5 10.5h5M12 8v5m-8.536 3.828C2 15.657 2 14.771 2 11s0-5.657 1.464-6.828C4.93 3 7.286 3 12 3s7.071 0 8.535 1.172S22 7.229 22 11s0 4.657-1.465 5.828C19.072 18 16.714 18 12 18c-2.51 0-3.8 1.738-6 3v-3.212c-1.094-.163-1.899-.45-2.536-.96"/></svg>
+                        <p>
+                            We are available monday to friday(8am to 6pm) and weekends(8am to 5pm). On public holidays,we are available between 9am and 5pm.
+                        </p>
+                    </div>
+                </div>
+                <div class="div-chat">
+                    <h3 id="h3o">call</h3>
+                    <div class="div-chat2">
+                        <svg id="div-chat3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path fill="none" stroke="#6653d5" stroke-miterlimit="10" stroke-width="32" d="M451 374c-15.88-16-54.34-39.35-73-48.76c-24.3-12.24-26.3-13.24-45.4.95c-12.74 9.47-21.21 17.93-36.12 14.75s-47.31-21.11-75.68-49.39s-47.34-61.62-50.53-76.48s5.41-23.23 14.79-36c13.22-18 12.22-21 .92-45.3c-8.81-18.9-32.84-57-48.9-72.8C119.9 44 119.9 47 108.83 51.6A160 160 0 0 0 83 65.37C67 76 58.12 84.83 51.91 98.1s-9 44.38 23.07 102.64s54.57 88.05 101.14 134.49S258.5 406.64 310.85 436c64.76 36.27 89.6 29.2 102.91 23s22.18-15 32.83-31a159 159 0 0 0 13.8-25.8C465 391.17 468 391.17 451 374Z"/></svg>
+                
+                        <p>We are available from monday to friday ,between 8am and 5pm .Public holidays 9am and 5pm.</p>
+                    </div>
+            </div>
+
+</html>
+
+
+<!-- <div class="box">
+  <span class="icon">&gt;</span>
+</div>
+<style>
+
+    .box {
+      display: flex;
+      justify-content: flex-start; /* Aligns child to the left */
+      align-items: center;
+      width: 200px;
+      height: 50px;
+      border: 1px solid black;
+    }
+    
+    .icon {
+      font-size: 24px;
+    }
+</style> -->
+
+<div class="box">
+  <span class="icon">&gt;</span>
+</div>
+<style>
+.box {
+  width: 200px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.icon {
+  float: left;
+  font-size: 24px;
+}
+
+</style>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BYTE-BUY | Checkout</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scrollbar-width: none;
+    }
+
+    body {
+      min-height: 100vh;
+      /* background: linear-gradient(135deg, #1e2f97, #1261e1e6); */
+            background: linear-gradient(135deg,#2c0fed,#186bfa, #0d27ac, #156af3e6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    main {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2em;
+      border-radius: 1em;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 2em;
+      margin-bottom: 1em;
+      animation: slideDown 1s ease;
+    }
+
+    /* Success Circle + Checkmark */
+    .circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #4caf50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      position: relative;
+      animation: popIn 0.6s ease;
+    }
+
+    .checkmark {
+      width: 40px;
+      height: 20px;
+      border-left: 5px solid #fff;
+      border-bottom: 5px solid #fff;
+      transform: rotate(-45deg);
+      opacity: 0;
+      animation: draw 0.6s ease forwards 0.5s;
+    }
+
+    /* Button */
+    button {
+      padding: 0.8em 1.5em;
+      background-color: #4a7eb3;
+      border-radius: 0.3em;
+      cursor: pointer;
+      border: none;
+      font-size: 14px;
+      color: white;
+      font-weight: 600;
+      transition: 0.3s ease;
+      margin-top: 1em;
+    }
+
+    button:hover {
+      background-color: #35618a;
+      transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes draw {
+      from { width: 0; height: 0; opacity: 0; }
+      to { width: 40px; height: 20px; opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="circle">
+      <div class="checkmark"></div>
+    </div>
+    <h1>Thank you very much for shopping with us 🎉</h1>
+    <button onclick="goHome()">Continue Shopping</button>
+  </main>
+  <script>
+    function goHome() {
+      // redirect user back to homepage or shop page
+      window.location.href = "./bytebuy.html"; 
+    }
+  </script>
+</body>
+</html>

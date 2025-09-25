@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details - ByteBuy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 95%;
+      margin: auto;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 12px;
+      color: #555;
+      margin: 12px 0;
+    }
+    .breadcrumb a {
+      text-decoration: none;
+      color: #000;
+      margin-right: 5px;
+    }
+    .breadcrumb span {
+      margin: 0 5px;
+    }
+
+    /* Layout */
+    .product-layout {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    /* Left Section (Product details) */
+    .product-main {
+      background: #fff;
+      padding: 16px;
+      border-radius: 6px;
+    }
+    .product-top {
+      display: flex;
+      gap: 16px;
+    }
+    .product-gallery {
+      width: 40%;
+    }
+    .product-gallery img {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .share-buttons {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+    }
+    .share-buttons button {
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      padding: 6px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .product-info {
+      flex: 1;
+    }
+    .product-info h1 {
+      font-size: 20px;
+      font-weight: 500;
+      margin: 0 0 8px;
+    }
+    .brand {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .price-row .price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .discount-badge {
+      background: #3a4fee;
+      color: white;
+      font-size: 12px;
+      padding: 3px 6px;
+      border-radius: 3px;
+    }
+
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .progress-bar {
+      width: 150px;
+      height: 6px;
+      background: #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      background: red;
+      width: 40%;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 10px 0;
+    }
+
+    .add-to-cart {
+      margin: 16px 0;
+    }
+    .add-to-cart button {
+      width: 100%;
+      padding: 14px;
+      background: #264996;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .offers {
+      font-size: 14px;
+      margin: 10px 0;
+      padding: 10px 0;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Right Sidebar */
+    aside {
+      background: #fff;
+      padding: 16px;
+      border-radius: 6px;
+    }
+    aside h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+    aside select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    aside .info-block {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+
+    /* Tabs Section */
+    .tabs {
+      background: #fff;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+    .tab-buttons {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+    }
+    .tab-buttons button {
+      flex: 1;
+      padding: 14px;
+      background: #f9f9f9;
+      border: none;
+      border-right: 1px solid #ddd;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .tab-buttons button.active {
+      background: #fff;
+      font-weight: bold;
+      border-bottom: 2px solid #264996;
+    }
+    .tab-content {
+      padding: 16px;
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    table.specs {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.specs td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      font-size: 14px;
+    }
+    table.specs tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="#">Home</a> <span>></span>
+      <a href="#">Health & Beauty</a> <span>></span>
+      <a href="#">Skin Care</a> <span>></span>
+      <a href="#">Facial Sunscreens</a> <span>></span>
+      <span>Sun UV Sunscreen Face Shine Control Cream SPF 50</span>
+    </div>
+
+    <div class="product-layout">
+      <!-- LEFT: Product Section -->
+      <div class="product-main">
+        <div class="product-top">
+          <!-- Product Gallery -->
+          <div class="product-gallery">
+            <img id="modal_image" src="./image/radiant.jpg" alt="Product">
+            <div class="share-buttons">
+              <button>F</button>
+              <button>X</button>
+              <button>WA</button>
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info">
+            <h1 id="modal_desc">SILVER CREST 2L Industrial 8500W Food Crusher Blender With 2 Jar</h1>
+            <div class="brand">Brand: <b>SILVER CREST</b></div>
+            <div class="price-row">
+              <span id="modal_price" class="price">₦ 328,095</span>
+              <span id="modal_oldPrice" class="old-price">₦ 499,745</span>
+              <span id="modal_discount" class="discount-badge">-17%</span>
+            </div>
+
+            <div class="progress-container">
+              <p>10 items left</p>
+              <div class="progress-bar">
+                <div class="progress"></div>
+              </div>
+            </div>
+
+            <div class="rating">
+              ⭐⭐⭐⭐☆ <span>(11759 verified ratings)</span>
+            </div>
+
+            <div class="add-to-cart">
+              <button>Add to Cart</button>
+            </div>
+
+            <div class="offers">
+              <span>2 offers starting from <b>₦22,000</b></span>
+              <a href="#">See More Offers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Sidebar -->
+      <aside>
+        <div class="info-block">
+          <h3>DELIVERY & RETURNS</h3>
+          <p>Express delivery available. Pay on delivery, cash or transfer.</p>
+        </div>
+
+        <div class="info-block">
+          <h3>Choose your Location</h3>
+          <select id="stateSelect">
+            <option value="">-- Select State --</option>
+          </select>
+          <select id="lgaSelect" disabled>
+            <option value="">-- Select LGA --</option>
+          </select>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Tabs Section -->
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="desc">Product Description</button>
+        <button class="tab-btn" data-tab="specs">Specifications</button>
+      </div>
+      <div id="desc" class="tab-content active">
+        <h3>Product Description</h3>
+        <p>
+          The Silver Crest Industrial Food Crusher Blender is built for heavy-duty blending and grinding.
+          With an 8500W motor and 2L capacity, it’s ideal for crushing ice, grains, nuts, fruits, and more.
+          It comes with 2 durable jars and safety lock features.
+        </p>
+      </div>
+      <div id="specs" class="tab-content">
+        <h3>Specifications</h3>
+        <table class="specs">
+          <tr>
+            <td>Brand</td>
+            <td>SILVER CREST</td>
+          </tr>
+          <tr>
+            <td>Power</td>
+            <td>8500W</td>
+          </tr>
+          <tr>
+            <td>Capacity</td>
+            <td>2 Litres</td>
+          </tr>
+          <tr>
+            <td>Jars</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Color</td>
+            <td>Black</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+    // Get product ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    // Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyByNiud6xGiCo7_7SDzdeQ8Ij2_h5P_RFs",
+      authDomain: "bytebuy-app-546b1.firebaseapp.com",
+      projectId: "bytebuy-app-546b1",
+      storageBucket: "bytebuy-app-546b1.appspot.com",
+      messagingSenderId: "604573096583",
+      appId: "1:604573096583:web:ac924bd0d28c71f30df622"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  
+    async function loadProduct() {
+      if (!productId) return;
+  
+      const doc = await db.collection("LimitedStockDeals(phones&tablets)").doc(productId).get();
+      if (doc.exists) {
+        const data = doc.data();
+  
+        // Fill product details
+        document.getElementById("modal_image").src = data.imageUrl;
+        document.getElementById("modal_desc").textContent = data.name;
+        document.getElementById("modal_price").textContent = "₦" + data.price.toLocaleString();
+        document.getElementById("modal_old_price").textContent = "₦" + data.oldPrice.toLocaleString();
+        document.getElementById("modal_discount").textContent = `-${Math.round(((data.oldPrice - data.price) / data.oldPrice) * 100)}%`;
+        document.getElementById("mod_left").textContent = data.itemsLeft + " items left";
+  
+        // Update progress bar
+        if (data.flashTotal && data.itemsLeft !== undefined) {
+          let progressFill = Math.round((data.itemsLeft / data.flashTotal) * 100);
+          document.querySelector("#modal_progress_bar .progress").style.width = progressFill + "%";
+        }
+      }
+    }
+    loadProduct();
+    </script>
+
+  <script>
+    // State & LGA Data
+    const statesAndLgas = {
+      Lagos: ["Ikeja", "Surulere", "Epe", "Badagry", "Ikorodu"],
+      Abuja: ["Gwagwalada", "Kuje", "Abaji", "Kwali", "Municipal"],
+      Kano: ["Dala", "Fagge", "Gwale", "Nasarawa", "Tarauni"],
+      Rivers: ["Port Harcourt", "Obio-Akpor", "Ikwerre", "Okrika", "Bonny"],
+      Oyo: ["Ibadan North", "Ibadan South-West", "Egbeda", "Lagelu", "Ogbomoso"]
+    };
+
+    const stateSelect = document.getElementById("stateSelect");
+    const lgaSelect = document.getElementById("lgaSelect");
+
+    // Populate states
+    Object.keys(statesAndLgas).forEach(state => {
+      const option = document.createElement("option");
+      option.value = state;
+      option.textContent = state;
+      stateSelect.appendChild(option);
+    });
+
+    // Load LGAs dynamically
+    stateSelect.addEventListener("change", function() {
+      const selectedState = this.value;
+      lgaSelect.innerHTML = "<option value=''>-- Select LGA --</option>";
+      
+      if (selectedState) {
+        statesAndLgas[selectedState].forEach(lga => {
+          const option = document.createElement("option");
+          option.value = lga;
+          option.textContent = lga;
+          lgaSelect.appendChild(option);
+        });
+        lgaSelect.disabled = false;
+      } else {
+        lgaSelect.disabled = true;
+      }
+    });
+
+    // Tabs Switching
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // Remove active classes
+        tabBtns.forEach(b => b.classList.remove("active"));
+        tabContents.forEach(c => c.classList.remove("active"));
+
+        // Add to clicked
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

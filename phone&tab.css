@@ -1,0 +1,452 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  /* Hide scrollbar for Firefox */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  background-color: #e9ebed;
+  display: block;
+ 
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.875rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  gap: 16px;
+  width: 100%;
+  margin: 84px 0 0 0;
+  padding: 0 4.5em;
+}
+
+.page_label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1184px;
+  font-family: Inter, system-ui, Arial;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  /* margin-bottom: 16px; */
+
+}
+
+.page_label1 {
+  background-color: #1260cc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  text-align: center;
+  padding: 5px;
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+/* Health and Beauty Category Label1*/
+.page_label1_healthbeauty {
+  background-color: #7b4b9f;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  text-align: center;
+  padding: 5px;
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.page_label2 {
+  background-color: #f2f3f4;
+
+  padding: 5px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 1.5em;
+}
+
+
+.inner-left .itm {
+  display: flex;
+  text-align: center;
+  height: 32px;
+  font-size: inherit;
+}
+
+.inner-left a {
+  text-decoration: none;
+  color: inherit;
+  margin-left: -8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.inner-left svg {
+  width: 20px;
+  height: 20px;
+}
+
+.column-center {
+  flex: 1;
+  background-color: #ccc;
+  border-radius: 5px;
+  position: relative;
+  max-width: 712px;
+  width: 712px;
+  border-radius: 5px;
+  height: 384px;
+  overflow: hidden;
+}
+
+.slides-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+#radioContainer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+  width: 1168px;
+  /* height: 351.32px; */
+}
+
+
+.discount-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #1260cc;
+  color: rgb(225, 216, 216);
+  font-size: 14px;
+  font-weight: bolder;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+
+.product-caption {
+  padding: 8px;
+  font-size: 14px;
+}
+
+
+
+.Top-section {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 345.33px;
+  max-width: 1184px;
+  padding: 0;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* == For static contents == */
+
+.Top-sales {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  /* margin:0 auto; */
+  background-color: #fff;
+}
+
+.Top-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 10px 15px;
+  background: #0e68e7;
+  color: white;
+  /* border-radius: 5px; */
+  margin: 0 auto;
+}
+
+.Top-header span {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Health & Beauty Category */
+.Top-header_helthbeauty {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 10px 15px;
+  background: #7b4b9f;
+  color: white;
+  /* border-radius: 5px; */
+  margin: 0 auto;
+}
+
+.Top-header_helthbeauty span {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.Top-row {
+  display: flex;
+  overflow-x: auto;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  /* More space between cards */
+  padding: 10px 8px;
+  scroll-behavior: smooth;
+  /* Smooth scrolling */
+}
+
+/* == Dynamic contents ==*/
+.product {
+  border: 1px solid #e4e3e3;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+  padding: 7px;
+  width: 100%;
+  border-radius: 8px;
+  background: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Stack items vertically */
+  height: 100%;
+}
+
+.product img {
+  width: 100%;
+  height: 193px;
+  /* Fixed image height */
+  object-fit: cover;
+  /*ob Prevent stretch/cut */
+  border-radius: 6px;
+}
+
+.product h3 {
+  font-weight: 450;
+  font-size: 14px;
+  margin: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.price-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: rgb(77, 75, 75);
+  font-size: 12px;
+}
+
+.new-price {
+  font-size: 15px;
+  font-weight: bold;
+  color: #111;
+}
+
+/* Stactic */
+.Top-row-static {
+  display: flex;
+  overflow-x: auto;
+  height: 100%;
+  background-color: #fff;
+  width: 100%;
+  max-width: 1184px;
+  /* margin-bottom: 16px; */
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  align-items: center;
+  gap: 8px;
+  /* More space between cards */
+  padding: 10px 8px;
+  scroll-behavior: smooth;
+  /* Smooth scrolling */
+}
+
+.Top-row-static img {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 0px;
+  object-fit: cover;
+}
+
+.Top-row-captionStatic {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  height: 100%;
+  background-color: #fff;
+  width: 100%;
+  max-width: 1184px;
+  border-radius: 5px;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  scroll-behavior: smooth;
+  /* Smooth scrolling */
+}
+.Top-row-captionStatic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-bottom: 0px;
+}
+
+.official_stores {
+  display: flex;
+  padding: 10px 8px;
+  align-items: center;
+  gap: 8px;
+  /* More space between cards */
+}
+
+.items {
+  display: flex;
+  gap: 8px;
+  /* padding: 4px; */
+  width: 1168px;
+  /* height: 351.32px; */
+}
+
+.Top-card {
+  width: 16.1%;
+  /* ~5 cards per row at 1200px width */
+  height: 280.32px;
+  flex: 0 0 auto;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  /* scroll-snap-align: start; */
+  /* padding: 4px; */
+}
+
+.Top-card .desc {
+  font-size: 16px;
+  margin: 0 10px;
+  white-space: nowrap;
+}
+
+.Top-card a {
+  color: black;
+}
+
+.Top-card .remaining {
+  font-size: 13px;
+  color: #444;
+  margin: 10px 0;
+}
+
+.Top-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+}
+
+.text {
+  color: #291f1f;
+  font-size: 12px;
+  padding: 8px 0;
+  font-weight: light;
+}
+
+.text a {
+  color: #3e3c3c24;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Product Information */
+.info-container {
+  background: #fff;
+  padding: 30px;
+  max-width: 1184px;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.info-container h2 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.info-container h3 {
+  font-size: 1.3em;
+  margin-top: 20px;
+  color: #3d3d3d;
+}
+
+.info-container p {
+  margin-bottom: 12px;
+  color: #3d3d3d;
+}
+
+.info-container ul {
+  margin: 10px 0 20px 20px;
+  color: #3d3d3d;
+}
+
+.info-container ul li {
+  margin-bottom: 8px;
+}

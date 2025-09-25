@@ -1,0 +1,68 @@
+import { auth } from "./firebase.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const display = document.getElementById("userName");
+const logoutBtn = document.getElementById("userReg");
+logoutBtn.addEventListener('click',()=>{
+  window.location. href="../BYTEBUY/Authentication/loginform.html" 
+})
+// 🔑 Listen for login status
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // ✅ User is logged in
+    display.innerText = `Hi, ${user.displayName || user.email.split("@")[0]}`;
+    logoutBtn.innerHTML='Log Out'
+      // 🔑 Logout
+logoutBtn.addEventListener( 'click', async ()=>{
+  await signOut(auth);
+  alert("You have been logged out.");
+  window.location.href = "./Authentication/loginform.html";
+}) 
+  }
+   else {
+    // ❌ No user logged in
+    display.innerText = "Account";
+    logoutBtn.innerHTML='Sign In'
+    logoutBtn.onclick = () => window.location.href = "./Authentication/loginform.html";
+  }
+});
+// const carts=document.getElementById('cartsPage')
+// carts.addEventListener('click',()=>{
+//   window.location.href='./BYTE-BUY Help section/javascriptProject/cart.html'
+// })
+// # Paystack + Firebase Mini Demo
+
+// A compact, copy-paste demo showing a minimal **frontend** (HTML/JS) and **Firebase Cloud Functions** backend to: initialize Paystack transactions, verify them, and update Firestore. Use this for testing and then adapt for production.
+
+// ---
+
+// ## Overview
+
+// Components included:
+
+// * `index.html` — simple frontend that: creates an order, calls backend to initialize transaction, redirects user to Paystack.
+// * `functions/index.js` — Firebase Cloud Functions (Express) with three endpoints:
+
+//   * `POST /init` → initialize transaction with Paystack and return authorization URL
+//   * `GET /verify?reference=` → verify transaction (used after redirect)
+//   * `POST /webhook` → Paystack webhook receiver (verifies signature, updates Firestore)
+// * Firestore used for orders collection: `orders/{orderId}`
+
+// **Notes:**
+
+// * Amounts to Paystack are in *kobo* (NGN) or the smallest currency unit — multiply by 100.
+// * Store your Paystack secret key in environment (Firebase config) — `PAYSTACK_SECRET_KEY` and `PAYSTACK_WEBHOOK_SECRET`.
+
+// ---
+
+// ## 1) Frontend — `index.html`
+
+// ```html
+// <!doctype html>
+// <html>
+// <head>
+//   <meta charset="utf-8">
+//   <meta name="viewport" content="width=device-width,initial-scale=1">
+//   <title>Paystack Demo</title>
+// </head
+// ```

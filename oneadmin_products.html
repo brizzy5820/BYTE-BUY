@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Byte-Buy | Product Admin </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, Arial;
+      background: #0b132b;
+      color: #e4e4e4;
+      margin: 0;
+    }
+
+    header {
+      padding: 14px 20px;
+      color: #fefeff;
+      position: fixed;
+      width: 100%;
+      background: #1c2541;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .headcover {
+      width: 97%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h2 {
+      font-size: 1.4em;
+      font-weight: 600;
+    }
+
+    header nav a {
+      color: #9fbaf0;
+      text-decoration: none;
+      font-size: 14px;
+      margin-left: 15px;
+      display: flex;
+      align-items: end;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 6.2em 24px 2em;
+    }
+
+    h1,
+    h3 {
+      color: #f7f7f7;
+    }
+
+    form {
+      background: #1c2541;
+      padding: 1.5em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 16px;
+      border-radius: 0.8em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .top_content {
+      text-align: center;
+      padding-bottom: 14px;
+    }
+
+    .top_content h3 {
+      font-size: 1.3em;
+      margin-bottom: 6px;
+    }
+
+    .top_content .hint {
+      font-size: 13px;
+      color: #9da8b5;
+    }
+
+    input,
+    select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #38456b;
+      margin-top: 6px;
+      width: 100%;
+      font-size: 14px;
+      background: #0b132b;
+      color: #f2f2f2;
+    }
+
+    input:focus,
+    select:focus {
+      outline: 2px solid #3a86ff;
+      border-color: #3a86ff;
+    }
+
+    label {
+      display: flex;
+      width: 100%;
+      margin-top: 8px;
+      font-size: 15px;
+      color: #c9c9c9;
+      font-weight: 500;
+    }
+
+    .submit-row {
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .submit-row button {
+      width: 100%;
+      background: #3a86ff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .submit-row button:hover {
+      background: #2563eb;
+    }
+
+    .preview-row {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .discount-badge {
+      background: #ef233c;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* Upload alert */
+    .upload_alert {
+      width: 100%;
+      background-color: #16b71b;
+      color: white;
+      text-align: center;
+      padding: 13px;
+      font-size: 1.1em;
+      gap: 10px;
+      font-weight: bolder;
+      position: fixed;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .upload_alert.show {
+      opacity: 3;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Edit Alert */
+    .edit-alert {
+      width: 100%;
+      background-color: #2b55df;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 1.1em;
+      font-weight: bolder;
+      position: fixed;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .edit-alert.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /*  Delete Alert*/
+    .del-alert {
+      width: 100%;
+      background-color: #e10e27;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 1.1em;
+      font-weight: bolder;
+      position: fixed;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .del-alert.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Product Manager */
+    .product-list {
+      margin-top: 20px;
+      display: flex;
+      gap: 16px;
+      padding: 8px;
+      border-radius: 0.5em;
+      background-color: #1c2541;
+      overflow-x: auto;
+    }
+
+    .product-card {
+      background: #0b132b;
+      padding: 14px;
+      border-radius: 12px;
+      width: 250px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 1px solid #2c375a;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .field-label {
+      font-size: 14px;
+      color: #ddd;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field-label b {
+      font-size: 13px;
+      color: #9fbaf0;
+    }
+
+    .view {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 210px;
+      display: inline-block;
+    }
+
+    .edit-input {
+      display: none;
+      width: 100%;
+      font-size: 13px;
+      padding: 6px;
+      margin-top: 4px;
+      border: 1px solid #38456b;
+      border-radius: 6px;
+      background: #1c2541;
+      color: #fff;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .actions button {
+      flex: 1;
+      border: none;
+      border-radius: 6px;
+      padding: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .edit {
+      background: #f59e0b;
+      color: #fff;
+    }
+
+    .save {
+      background: #3a86ff;
+      color: #fff;
+      display: none;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .delete {
+      background: #ef233c;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    /* Expanded card (click to enlarge) */
+    .product-card.expanded {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.05);
+      width: 90%;
+      max-width: 600px;
+      height: auto;
+      z-index: 2000;
+      background: #0b132b;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .product-card.expanded img {
+      height: 250px;
+    }
+
+    .product-section {
+      margin-top: 20px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid #2563eb;
+      padding: 10px 18px;
+      font-weight: bolder;
+      border-radius: 6px;
+      background-color: #1c2541;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .toolbar input[type="text"] {
+      padding: 14px 12px;
+      border-radius: 6px;
+      border: 1px solid #2c375a;
+      background: #0b132b;
+      color: white;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .toolbar input:focus {
+      border: 2px solid #82868e;
+    }
+
+    .toolbar button {
+      background: #3a86ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .toolbar button:hover {
+      background: #2563eb;
+    }
+
+    .toggle-view-btn {
+      align-self: flex-end;
+      background: #3a86ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .toggle-view-btn:hover {
+      background: #2563eb;
+    }
+
+    /* scroll (default) */
+    .product-list.scroll-view {
+      display: flex;
+      gap: 16px;
+      padding: 8px;
+      border-radius: 0.5em;
+      background-color: #1c2541;
+      color: #9facdf;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+
+    /* grid view */
+    .product-list.grid-view {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      border-radius: 0.5em;
+      background-color: #b1b4be;
+      color: #0b132b;
+      overflow: visible;
+    }
+
+    .product-card {
+      background: #0b132b;
+      padding: 14px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 1px solid #2c375a;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s, width 0.2s, height 0.2s;
+      cursor: pointer;
+      width: 240px;
+      flex: 0 0 auto;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* Bigger cards in grid mode */
+    .grid-view .product-card {
+      width: 100%;
+      max-width: 100%;
+      padding: 18px;
+    }
+
+    .grid-view .product-card img {
+      height: 220px;
+    }
+
+    .grid-view .field-label {
+      font-size: 15px;
+    }
+
+    .grid-view .view {
+      max-width: 100%;
+    }
+
+    .grid-view .edit-input {
+      font-size: 14px;
+      padding: 8px;
+    }
+
+    /* Compact mode */
+    .compact .product-card {
+      padding: 8px;
+      font-size: 12px;
+      width: 160px;
+    }
+
+    .compact .product-card img {
+      height: 70px;
+    }
+
+    .compact .field-label {
+      font-size: 12px;
+    }
+
+    .compact.grid-view {
+      display: grid;
+      grid-template-columns: repeat(2 minmax(289x, 1fr));
+      gap: 20px;
+      padding: 20px;
+      border-radius: 0.5em;
+      background-color: #b1b4be;
+      color: #0b132b;
+      overflow: visible;
+    }
+
+    /* Spinner inside button */
+    .spinner {
+      border: 3px solid #fff;
+      border-top: 3px solid transparent;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* animataions Loading products */
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      height: 80px;
+    }
+
+    .loader-text {
+      font-size: 1.2em;
+      font-weight: bolder;
+      padding: 10px 10px;
+
+    }
+
+    .loader div {
+      width: 12px;
+      height: 12px;
+      background: #9facdf;
+      /* primary color */
+      border-radius: 50%;
+      animation: bounce 0.6s infinite alternate;
+    }
+
+    .loader div:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .loader div:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0);
+        opacity: 0.5;
+      }
+
+      to {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <div class="headcover">
+      <h2>BYTE-BUY </h2>
+      <h2> Product Admin</h2>
+      <nav >
+        <a href="bytebuy.html" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+          <path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 19v-8.5a1 1 0 0 0-.4-.8l-7-5.25a1 1 0 0 0-1.2 0l-7 5.25a1 1 0 0 0-.4.8V19a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1" />
+        </svg> Home</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="upload_alert" id="uploadAlert"> <span>Product Added</span> <svg xmlns="http://www.w3.org/2000/svg"
+        width="22" height="22" viewBox="0 0 256 256">
+        <path fill="currentColor"
+          d="m243.31 90.91l-128.4 128.4a16 16 0 0 1-22.62 0l-71.62-72a16 16 0 0 1 0-22.61l20-20a16 16 0 0 1 22.58 0L104 144.22l96.76-95.57a16 16 0 0 1 22.59 0l19.95 19.54a16 16 0 0 1 .01 22.72" />
+      </svg></div>
+    <div class="edit-alert" id="edit-alert"><span>Product Updated</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<path fill="currentColor" d="M18.925 3.137a3.027 3.027 0 0 0-4.283.001l-9.507 9.52a3.03 3.03 0 0 0-.885 2.139V18c0 .414.336.75.75.75h3.223c.803 0 1.573-.32 2.14-.887l9.5-9.506a3.03 3.03 0 0 0 0-4.28zM4 20.25a.75.75 0 0 0 0 1.5h16a.75.75 0 0 0 0-1.5z" />
+</svg></div>
+    <div class="del-alert"><span>Product Deleted</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+        <path fill="currentColor" d="M42.7 469.3c0 23.5 19.1 42.7 42.7 42.7h341.3c23.5 0 42.7-19.1 42.7-42.7V192H42.7zm320-213.3h42.7v192h-42.7zm-128 0h42.7v192h-42.7zm-128 0h42.7v192h-42.7zm384-170.7h-128V42.7C362.7 19.1 343.5 0 320 0H192c-23.5 0-42.7 19.1-42.7 42.7v42.7h-128C9.5 85.3 0 94.9 0 106.7V128c0 11.8 9.5 21.3 21.3 21.3h469.3c11.8 0 21.3-9.5 21.3-21.3v-21.3c.1-11.8-9.4-21.4-21.2-21.4m-170.7 0H192V42.7h128z" />
+      </svg>
+    </div>
+    <form id="productForm">
+      <div class="top_content">
+        <h3>Add Product</h3>
+        <p class="hint">
+          Paste public image URLs (or Firebase download URLs). Discount and flash
+          progress auto-calculated for preview.
+        </p>
+      </div>
+      <label for="category">Category</label>
+      <select id="category" required>
+        <option value="">-- Select Category --</option>
+        <!-- PHONES & TABS CATEGORY -->
+        <option value="LimitedStockDeals(phones&tablets)">Limited Stock Deals (Phones and tabs)</option>
+        <option value="SmartPhones">Smart Phones</option>
+        <option value="TopDeals(phones&tabs)">Top Deals (Phones and tabs)</option>
+        <option value="powerbanks">Power Banks</option>
+        <option value="accessoriesandmore(phones&tab)">Accessories and more(Phones and tabs)</option>
+        <option value="featurephones">Feature Phones</option>
+        <option value="itelOfficial">Itel Official Store(Phones and tabs)</option>
+        <option value="phones_tabs_advertI">Phones & Tabs advertI</option>
+        <!-- APPLINACE CATEGORY -->
+      <!-- <option value="ApplianceCateogry">Shop By Category (Appliances)</option> -->
+        <option value="LimitedStockDealsAppliances">Limited Stock Deals (Appliances)</option>
+        <option value="TopDealsHomeAppliances">Top Deals (Home Appliances)</option>
+        <option value="TopDealsCookingAppliances">Top Deals (Cooking Appliances)</option>
+        <option value="TopDealsKitchenAppliances">Top Deals (Kitchen Appliances)</option>
+        <option value="TopDealsHeating_Cooling">Top Deals on Heating & Cooling (Appliances)</option>
+        <option value="BinatoneOfficialStore">Binatone Official Store (Appliance)</option>
+        <option value="TopDealsLargeAppliances">Top Deals on large Appliances </option>
+        <!-- HEALTH AND BEAUTY CATEGORY -->
+        <option value="TopDealsHealthBeauty"> Top Deals on health and beauty</option>
+        <option value="Perfumes_FragranceHealthBeauty">Perfumes & Fragrance(Health & Beauty)</option>
+        <option value="NiveaOfficialStoreHealthBeauty">Nivea Official Store(Health & Beauty)</option>
+        <option value="SkinRoutineHealthBeauty">Skin Routine (Health & Beauty)</option>
+        <option value="PersonalCareRoutineHealthBeauty">Personal Care Routine (Health & Beauty)</option>
+        <option value="HairCareRoutineHealthBeauty">Hair Care Routine (Health & Beauty)</option>
+        <option value="UnileverHealthBeauty">Unilever (Health & Beauty)</option>
+        <!-- HOME & OFFICE CATEGORY -->
+        <option value="TopDealsHomeOffice">Top Deals (Home & Office)</option>
+        <option value="BestSellersHomeOffice">Best Price (Home & Office)</option>
+        <option value="BestPriceHomeOffice">Best Sellers (Home & Office)</option>
+        <option value="TrendingItemsHomeOffice">Trending Items (Home & Office)</option>
+        <option value="EcoflowStoreHomeOffice">Ecoflow Official Store (Home & Office)</option>
+        <option value="HithiumStoreHomeOffice"> Hithium Official Store (Home & Office)</option>
+        <option value="Flash-sales">yres</option>
+        <option value="test">ee</option>
+      </select>
+
+      <label for="name">Name</label>
+      <input id="name" type="text" required placeholder="e.g. iPhone 14 Pro" />
+
+      <label for="price">Price (₦)</label>
+      <input id="price" type="number" min="0" step="1" required placeholder="e.g. 550000" />
+
+      <label for="oldPrice">Old Price (₦)</label>
+      <input id="oldPrice" type="number" min="0" step="1" placeholder="e.g. 650000" />
+
+      <label for="imageUrl">Image URL</label>
+      <input id="imageUrl" type="file" required placeholder="https://example.com/image.jpg" />
+      <input type="hidden"  id="imageUrlHidden" >
+
+      <div class="preview-row" style="margin-top: 8px">
+        <div class="discount-badge" id="discount_preview">-0%</div>
+        <div class="preview">Price: <strong id="price_preview">₦0</strong></div>
+        <div class="preview">Old: <span id="old_preview">₦0</span></div>
+      </div>
+
+      <div class="submit-row">
+        <button id="addBtn" type="submit">
+          <span id="btnText"> Add Product</span>
+        </button>
+      </div>
+    </form>
+
+    <div class="product-section">
+      <div class="toolbar">
+        <h3>PRODUCTS TOOLBAR</h3>
+        <div class="toolbar-left">
+          <input type="text" id="searchInput" placeholder="Search products...">
+          <button id="toggleViewBtn">See All</button>
+          <button id="toggleSizeBtn">Compact Mode</button>
+        </div>
+      </div>
+      <div id="productList" class="product-list scroll-view">
+        <span class="loader-text"> Display of Products will appear here</span>
+      </div>
+    </div>
+  </main>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import {
+      getFirestore, collection, addDoc, serverTimestamp,
+      getDocs, updateDoc, deleteDoc, doc
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyByNiud6xGiCo7_7SDzdeQ8Ij2_h5P_RFs",
+      authDomain: "bytebuy-app-546b1.firebaseapp.com",
+      projectId: "bytebuy-app-546b1",
+      storageBucket: "bytebuy-app-546b1.appspot.com",
+      messagingSenderId: "604573096583",
+      appId: "1:604573096583:web:ac924bd0d28c71f30df622",
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const $ = id => document.getElementById(id);
+    // Helpers
+    const NGN = new Intl.NumberFormat("en-NG", {
+      style: "currency",
+      currency: "NGN",
+      maximumFractionDigits: 0,
+    });
+    const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+    function calcDiscount(oldP, newP) {
+      const o = Number(oldP) || 0;
+      const n = Number(newP) || 0;
+      if (o <= 0 || n <= 0 || n >= o) return 0;
+      return clamp(Math.round(((o - n) / o) * 100), 0, 95);
+    }
+    $('imageUrl').addEventListener("change", async (e)=>{
+      const file=e.target.files[0]
+      try {
+      const cloudName='dzqpchfew'
+      const uploadPreset='bytebuy'
+      //Data For cloudinary
+      const formData = new FormData()
+      formData.append("file", file)
+      formData.append('upload_preset', uploadPreset)
+      const response= await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,{
+        method:'POST',
+        body:formData,
+      })
+      const data= await response.json()
+      if(!response.ok){
+        throw new Error("Upload Failed")
+      }
+      alert('Image Added')
+      $('imageUrlHidden').value= data.secure_url
+      } catch (error) {
+        console.log(`Something Went Wrong ${error}`)
+        alert(`Error:${error}`)
+      }
+    })
+    // Live Preview
+    function wirePreview() {
+      const oldEl = $("oldPrice"),
+        priceEl = $("price");
+      const discountBadge = $("discount_preview");
+      const pricePreview = $("price_preview");
+      const oldPreview = $("old_preview");
+
+      function update() {
+        const d = calcDiscount(oldEl.value, priceEl.value);
+        discountBadge.textContent = `-${d}%`;
+        pricePreview.textContent = NGN.format(Number(priceEl.value) || 0);
+        oldPreview.textContent = NGN.format(Number(oldEl.value) || 0);
+      }
+      [oldEl, priceEl].forEach((el) => el.addEventListener("input", update));
+      update();
+    }
+    document.addEventListener("DOMContentLoaded", wirePreview);
+    // Product Push Program
+    const productPush = async () => {
+      const btn = $("addBtn");
+      $('btnText').innerText = 'Uploading...'
+      btn.disabled = true;
+      try {
+        const cat = $("category").value;
+        const payload = {
+          name: $("name").value,
+          price: Number($("price").value),
+          oldPrice: Number($("oldPrice").value) || null,
+          imageUrl: $('imageUrlHidden').value,
+          createdAt: serverTimestamp(),
+        };
+        await addDoc(collection(db, cat), payload);
+        // Upload indicator
+        const alertBox = document.querySelector('.upload_alert');
+        alertBox.classList.add('show');
+
+        // auto-hide after 3s
+        setTimeout(() => {
+          alertBox.classList.remove('show');
+        }, 3500);
+        // Preserving select options from resetting
+        let saveInput = $('productForm').querySelector('#category')
+        let saveValue = saveInput.value
+        $("productForm").reset();
+        // Preserving only select option values
+        saveInput.value = saveValue;
+        loadProducts();
+      } catch (err) {
+        console.error(err);
+        alert("Failed to add product");
+      } finally {
+        btn.disabled = false;
+        $('btnText').innerText = 'Add Product'
+      }
+    }
+    // Add product
+    $("productForm").addEventListener("submit", async e => {
+      e.preventDefault();
+      productPush()
+      if (e.key === 'Enter') {
+        productPush()
+      }
+    });
+    // Load products
+    async function loadProducts() {
+
+      try {
+
+        const productList = $("productList");
+        const cat = $("category").value;
+        if (!cat) return;
+        productList.innerHTML = `
+           
+         <div class="loader">
+           <span class='loader-text'> LOADING PRODUCTS </span>
+      <div></div><div></div><div></div>
+    </div>`
+
+        const snap = await getDocs(collection(db, cat));
+        productList.innerHTML = ''
+        if (snap.empty) {
+          productList.innerHTML = `<pre>Error Fetching (${cat}) Section, This Colletion Is Either Empty Or There's a Network Error</pre>`
+        }
+        snap.forEach(d => {
+          const p = d.data();
+          const card = document.createElement("div");
+          card.className = "product-card";
+          card.innerHTML = `
+          <img src="${p.imageUrl}" alt="${p.name}" />
+          <div class="field-label"><b>Name:</b> <span class="view">${p.name}</span>
+            <input class="edit-input" type="text" value="${p.name}" data-field="name">
+          </div>
+          <div class="field-label"><b>Price:</b> ₦<span class="view">${p.price}</span>
+            <input class="edit-input" type="number" value="${p.price}" data-field="price">
+          </div>
+          <div class="field-label"><b>Old Price:</b> ₦<span class="view">${p.oldPrice || ""}</span>
+            <input class="edit-input" type="number" value="${p.oldPrice || ""}" data-field="oldPrice">
+          </div>
+          <div class="field-label"><b>Image URL:</b> <span class="view">${p.imageUrl}</span>
+            <input class="edit-input" type="url" value="${p.imageUrl}" data-field="imageUrl">
+          </div>
+          <div class="actions">
+            <button class="edit">Edit</button>
+            <button class="save">Save</button>
+            <button class="delete">Delete</button>
+          </div>
+        `;
+
+          const editBtn = card.querySelector(".edit");
+          const saveBtn = card.querySelector(".save");
+          const deleteBtn = card.querySelector(".delete");
+          const viewElems = card.querySelectorAll(".view");
+          const inputElems = card.querySelectorAll(".edit-input");
+
+          // Edit
+          editBtn.onclick = () => {
+            viewElems.forEach(v => v.style.display = "none");
+            inputElems.forEach(i => i.style.display = "inline-block");
+            editBtn.style.display = "none";
+            saveBtn.style.display = "flex";
+          };
+
+          // Save
+          saveBtn.onclick = async () => {
+            saveBtn.innerHTML = `<span>Save</span><span class='spinner'></span>`
+            const updateData = {};
+            inputElems.forEach(input => updateData[input.dataset.field] = input.value);
+            updateData.price = Number(updateData.price) || 0;
+            updateData.oldPrice = Number(updateData.oldPrice) || null;
+            await updateDoc(doc(db, cat, d.id), updateData);
+            saveBtn.innerHTML = 'Save'
+            // Update UI
+            viewElems.forEach((v, i) => { v.textContent = inputElems[i].value; v.style.display = "inline"; });
+            inputElems.forEach(i => i.style.display = "none");
+            saveBtn.style.display = "none";
+            editBtn.style.display = "block";
+            // edit-alert
+            const editBox = document.querySelector('.edit-alert');
+            editBox.classList.add('show');
+            // auto-hide after 3s
+            setTimeout(() => {
+              editBox.classList.remove('show');
+            }, 3500);
+          };
+
+          // Delete
+          deleteBtn.onclick = async () => {
+            deleteBtn.innerHTML = `<span>Delete</span><span class='spinner'></span>`
+            if (confirm("Delete this product?")) {
+              await deleteDoc(doc(db, cat, d.id));
+              deleteBtn.innerHTML = `<span>Delete</span>`
+              card.remove();
+            }
+            // Delete-alert
+            const delBox = document.querySelector('.del-alert');
+            delBox.classList.add('show');
+            // auto-hide after 3s
+            setTimeout(() => {
+              delBox.classList.remove('show');
+            }, 3500);
+          };
+          productList.appendChild(card);
+        });
+      }
+      catch (err) {
+        console.error(err)
+        alert(`error Fetching Products : ${err}`)
+      }
+    }
+    $("category").addEventListener("change", loadProducts);
+    // Toggle button for a clearer view of products
+    const toggleSizeBtn = document.getElementById("toggleSizeBtn");
+    const toggleBtn = document.getElementById("toggleViewBtn");
+    const productList = document.getElementById("productList");
+    const searchInput = document.getElementById("searchInput");
+    toggleBtn.addEventListener("click", () => {
+      if (productList.classList.contains("scroll-view")) {
+        productList.classList.remove("scroll-view");
+        productList.classList.add("grid-view");
+        toggleBtn.textContent = "Scroll View";
+      } else {
+        productList.classList.remove("grid-view");
+        productList.classList.add("scroll-view");
+        toggleBtn.textContent = "See All";
+      }
+    });
+    // Toggle compact size
+    toggleSizeBtn.addEventListener("click", () => {
+      productList.classList.toggle("compact");
+      toggleSizeBtn.textContent = productList.classList.contains("compact")
+        ? "Maximized Mode"
+        : "Compact Mode";
+    });
+
+    // Live search filter
+    searchInput.addEventListener("input", () => {
+      const filter = searchInput.value.toLowerCase();
+      const cards = productList.querySelectorAll(".product-card");
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(filter) ? "" : "none";
+      });
+    })
+
+  </script>
+  </script>
+</body>
+</html>

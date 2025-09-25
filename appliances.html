@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte-Buy | Online shopping</title>
+    <link rel="stylesheet" href="bbanimeintro.css">
+    <link rel="stylesheet" href="phone&tab.css">
+    <link rel="stylesheet" href="davidbytepaystyle.css">
+    <script src="bbanimeintro.js" defer></script>
+    <script type="module" src="loginfeatures.js" defer></script>
+
+    <style>
+
+    </style>
+</head>
+<body>
+<!-- Introduction Animation -->
+    <div id="book-intro">
+        <div class="book-page left-page"></div>
+        <div class="book-page right-page"></div>
+        <div class="intro-content">
+          <span class="intro-content2">
+        <!-- <img src="si--projects-line (2).png" width="50px" height="50px" alt="Logo" class="logo" /> -->
+          <svg class="animeintro" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 48 48"><g fill="none"><path d="M39 32H13L8 12h36z"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M3 6h3.5L8 12m0 0l5 20h26l5-20z"/><circle cx="13" cy="39" r="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/><circle cx="39" cy="39" r="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></g></svg>
+          <h1 class="brand-name">BYTE-BUY</h1>
+          </span>
+          <p class="brand-moto" style="margin-left: 1.5em;">shop with steeze </p>
+        </div>
+      </div>
+    <!-- Main contents -->
+     <div id="main-content" class="hidden">
+    <header>
+      <div class="head_wrapper">
+      <div class="firstBatch">
+       <span class='icon-drop'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5h12M4 12h16M4 19h8" />
+        </svg>
+        <div class="submenu-cat">
+          <a class="submenu-item" href="./bytebuy.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="currentColor" d="m12 4.367l9.307 7.238a.5.5 0 0 1-.614.79l-1.193-.928V20a.5.5 0 1 1-1 0v-9.311L12 5.633L5.5 10.69V20a.5.5 0 0 1-1 0v-8.533l-1.193.928a.5.5 0 1 1-.614-.79L4.5 10.2V7.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v.367zM6.5 8.55V7.5h-1v1.8z" />
+            <path fill="currentColor" d="M10.5 14.5a.5.5 0 0 0-.5.5v5a.5.5 0 0 1-1 0v-5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 15v5a.5.5 0 1 1-1 0v-5a.5.5 0 0 0-.5-.5z" />
+          </svg>
+           <span> Home Page</span>
+           </a>
+          <a class="submenu-item" href="./appliances.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <rect width="24" height="24" fill="none" />
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
+              <path fill="currentColor"
+                d="M14 3a1 1 0 0 1 .117 1.993L14 5h-1v1h1.002c.237.001.475.025.71.055l.341.05c.368.062.816.16 1.31.316a9.5 9.5 0 0 1 3.13 1.678L19.587 8l.707-.707a1 1 0 0 1 1.497 1.32l-.083.094l-.707.707V16a5 5 0 0 1-4.783 4.995L16 21H8a5 5 0 0 1-4.995-4.783L3 16V9.414l-.707-.707a1 1 0 0 1 1.32-1.497l.094.083l.707.707q.048.048.092.099a9.5 9.5 0 0 1 3.13-1.678a10 10 0 0 1 1.31-.316l.341-.05a7 7 0 0 1 .474-.047L9.998 6H11V5h-1a1 1 0 0 1-.117-1.993L10 3zm5 8.21c-4.496.8-8.813.84-13.292.12L5 11.21V16a3 3 0 0 0 2.824 2.995L8 19h8a3 3 0 0 0 2.995-2.824L19 16zM13.996 8l-4.04.001l-.18.013l-.3.034l-.257.04l-.143.027l-.313.068a7.5 7.5 0 0 0-2.63 1.19a37 37 0 0 0 11.734 0a7.5 7.5 0 0 0-2.106-1.044c-.565-.179-1.168-.316-1.764-.329" />
+            </g>
+          </svg>
+          <span>Appliances</span>
+        </a>
+          <a class="submenu-item" href="./phone&laptops.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M16 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m-3 19h-2v-1h2zm3-2H8V5h8z" />
+          </svg>
+          <span>Phones & Tablets</span>
+        </a>
+          <a class="submenu-item" href="./health&beauty.html">  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <rect width="24" height="24" fill="none" />
+            <path fill="currentColor"
+              d="m5.654 21l-3.462-9.577l4.77-2.846V3h2v5.577l4.769 2.846L10.269 21zm10.885 0q-.213 0-.357-.144t-.143-.357t.143-.356t.357-.143h3.5v-2.77h-3.5q-.213 0-.357-.143q-.143-.144-.143-.357t.143-.356t.357-.143h3.5v-2.77h-3.5q-.213 0-.357-.143q-.143-.144-.143-.357t.143-.356t.357-.143h3.5v-2.77h-3.5q-.213 0-.357-.144q-.143-.143-.143-.356t.143-.356t.357-.144h3.5V5.923h-3.5q-.213 0-.357-.144q-.143-.144-.143-.356q0-.213.143-.357t.357-.143h3.653q.69 0 1.153.463t.463 1.153v12.846q0 .69-.463 1.153T20.192 21zM6.36 20h3.2l2.95-8.15l-3.677-2.196H7.088L3.412 11.85zm1.6-5.173" />
+          </svg>
+          <span>Health & Beauty</span>
+        </a>
+          <a class="submenu-item" href="./home&office.html">  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <rect width="24" height="24" fill="none" />
+            <path fill="none" stroke="#000"
+              d="M12.391 4.262a1 1 0 0 0-1.46.035l-6.177 6.919a1 1 0 0 0-.254.666V19.5a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V16a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3.5a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7.591a1 1 0 0 0-.287-.7z"
+              stroke-width="1" />
+          </svg>
+          <span>Home & Office</span>
+        </a>
+          <a class="submenu-item" href="#">  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+            <rect width="24" height="24" fill="none" />
+            <path fill="currentColor"
+              d="M30.47 7.62H32v19.81h-1.53ZM1.52 27.43v1.52h1.53v1.53h1.52v-1.53h22.86v1.53h1.52v-1.53h1.52v-1.52zm25.91-10.67h1.52v1.53h-1.52Zm0-3.05h1.52v1.53h-1.52Zm0-3.04h1.52v1.52h-1.52Zm-3.05 9.14v6.09h4.57v-6.09Zm3.05 3.05H25.9v-1.53h1.53ZM4.57 30.48h22.86V32H4.57Zm19.81-13.72h1.52v1.53h-1.52Zm0-3.05h1.52v1.53h-1.52Zm0-3.04h1.52v1.52h-1.52Zm-3.05 0h1.52v13.71h-1.52Z" />
+            <path fill="currentColor"
+              d="M4.57 24.38h16.76v1.52H4.57ZM13.71 0h1.53v1.52h-1.53Zm-1.52 1.52h1.52v1.53h-1.52Zm-1.53 1.53h1.53v1.52h-1.53Zm-3.04 0h1.52v1.52H7.62ZM4.57 9.14h16.76v1.53H4.57Zm1.52-7.62h1.53v1.53H6.09ZM4.57 0h1.52v1.52H4.57ZM3.05 10.67h1.52v13.71H3.05Zm27.42-3.05V6.1H10.66V4.57H9.14V6.1H1.52v1.52zM0 7.62h1.52v19.81H0Z" />
+          </svg>
+          <span>Electronics</span>
+         </a>
+          <a class="submenu-item" href=""> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 64 64">
+            <rect width="24" height="24" fill="none" />
+            <path fill="currentColor"
+              d="m18.811 7.785l.124.194a166 166 0 0 0-5.368.801c-1.841.31-5.796 1.776-8.428 2.802l-.016-.189L2 12.408l.898 12.334l3.335.284l-.02-.236l8.688.672c.154 10.261-1.067 22.453-1.897 29.581l-.291-.067l-.228 4.485S20.842 61.83 31.992 62v-4.64l.006-43.565L22.438 2zM3.834 23.818l-.779-10.701l1.175-.383l.911 11.196zm27.158 37.161c-8.498-.235-15.258-1.734-17.467-2.281l.126-2.489c2.708.575 9.74 1.914 17.341 2.131zm-1.866-6.068c-1.294 0-2.346-.979-2.346-2.186s1.052-2.186 2.346-2.186s2.346.979 2.346 2.186s-1.051 2.186-2.346 2.186m0-7.973c-1.294 0-2.346-.979-2.346-2.187c0-1.206 1.052-2.185 2.346-2.185s2.346.979 2.346 2.185c0 1.208-1.051 2.187-2.346 2.187m0-7.972c-1.294 0-2.346-.979-2.346-2.186s1.052-2.187 2.346-2.187s2.346.979 2.346 2.187c0 1.206-1.051 2.186-2.346 2.186m0-7.974c-1.294 0-2.346-.978-2.346-2.185s1.052-2.187 2.346-2.187s2.346.979 2.346 2.187s-1.051 2.185-2.346 2.185m2.346-10.158c0 1.207-1.051 2.186-2.346 2.186c-1.294 0-2.346-.979-2.346-2.186s1.052-2.186 2.346-2.186s2.346.979 2.346 2.186m-.898-7.207l-4.605 3.532l-5.976-9.378l2.549-4.064z" />
+            <path fill="currentColor"
+              d="m58.879 11.393l-.016.189c-2.632-1.024-6.588-2.492-8.428-2.802a169 169 0 0 0-5.368-.801l.124-.194L41.564 2H22.438l4.981 6.143h9.164l-4.585 5.652l1.091.836v47.34c10.603-.301 18.428-2.51 18.428-2.51l-.228-4.485l-.29.068c-.83-7.129-2.053-19.321-1.898-29.582l8.685-.672l-.02.236l3.336-.284L62 12.408zM41.46 3.716l2.549 4.065l-5.977 9.378l-4.61-3.533zm8.891 52.496l.126 2.485c-2.114.521-8.395 1.913-16.388 2.238v-2.631c7.123-.268 13.668-1.533 16.262-2.092m9.815-32.394l-1.308.111l.914-11.194l1.173.382z" />
+          </svg>
+          <span>Fashion</span></a>
+      </div>
+       </span>
+        <a href="./bytebuy.html" class="secondBatch">
+          <img src="./Logo/ByteBuyLogo.png" style=" width: 40px; object-fit: contain;" alt="">
+        <h2>BYTE-BUY</h2>
+        </a>
+      </div>
+    <!-- Header Navigation -->
+        <nav class="headnav">
+        <span class="headerinput">
+            <input type="text" id="searchInput" placeholder="Search Products,Categories,Designs"> <button id="searchBtn">Search</button>
+        </span>
+        <ul>
+            <!-- Dropdown 1-->
+            <li id="headlistI">
+               <div class="headlist">
+                 <svg class="headicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14 20H4v-3c0-2.7 5.3-4 8-4c1.5 0 3.9.4 5.7 1.3c-.8.3-1.4.7-2 1.2c-1.1-.4-2.4-.6-3.7-.6c-3 0-6.1 1.5-6.1 2.1v1.1h8.3c-.1.4-.2.9-.2 1.4zm9-.5c0 1.9-1.6 3.5-3.5 3.5S16 21.4 16 19.5s1.6-3.5 3.5-3.5s3.5 1.6 3.5 3.5M12 6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-2C9.8 4 8 5.8 8 8s1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4"/></svg>
+               <p id="userName">Account</p>
+                <svg class="dropdown" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 1024 1024"><path fill="currentColor" d="M831.872 340.864L512 652.672L192.128 340.864a30.59 30.59 0 0 0-42.752 0a29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728a30.59 30.59 0 0 0-42.752 0z"/></svg>    
+               </div>
+               <div class="submenu" id="innerlistI">
+                <a class="submenu-item" href="">My account</a>
+                <a class="submenu-item" href="">inbox</a>
+                <a class="submenu-item" href="">Orders</a>
+                <a class="submenu-item" href="">wishlist</a>
+                <button id='userReg' class="dropdownbtn">Sign in</button>
+            </div>
+            </li>
+            </li>
+            <!-- Dropdown 2-->
+            <li id="headlistII">
+               <div class="headlist">
+                <svg class="headicon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><path fill="currentColor" d="M18 2a16 16 0 1 0 16 16A16 16 0 0 0 18 2m0 30a14 14 0 1 1 14-14a14 14 0 0 1-14 14" class="clr-i-outline clr-i-outline-path-1"/><path fill="currentColor" d="M18.29 8.92a7.38 7.38 0 0 0-5.72 2.57a1 1 0 0 0-.32.71a.92.92 0 0 0 .95.92a1.08 1.08 0 0 0 .71-.29a5.7 5.7 0 0 1 4.33-2c2.36 0 3.83 1.52 3.83 3.41v.05c0 2.21-1.76 3.44-4.54 3.65a.8.8 0 0 0-.76.92s0 2.32 0 2.75a1 1 0 0 0 1 .9h.11a1 1 0 0 0 .9-1v-2.06c3-.42 5.43-2 5.43-5.28v-.05c-.03-3-2.37-5.2-5.92-5.2" class="clr-i-outline clr-i-outline-path-2"/><circle cx="17.78" cy="26.2" r="1.25" fill="currentColor" class="clr-i-outline clr-i-outline-path-3"/><path fill="none" d="M0 0h36v36H0z"/></svg>
+                <p>Help</p>
+                <svg class="dropdown" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 1024 1024"><path fill="currentColor" d="M831.872 340.864L512 652.672L192.128 340.864a30.59 30.59 0 0 0-42.752 0a29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728a30.59 30.59 0 0 0-42.752 0z"/></svg>
+               </div>
+               <div class="submenu" id="innerlistII">
+                <a class="submenu-item" href=""> Help Center</a>
+                <a class="submenu-item" href=""> PLace an order</a>
+                <a class="submenu-item" href=""> Payment options</a>
+                <a class="submenu-item" href=""> Track an order</a>
+                <a class="submenu-item" href=""> Cancel an order </a>
+                <a class="submenu-item" href=""> Returns & Refunds</a>
+            </div>
+            </li>
+              <!-- Carts -->
+            <li>
+              <a href="./carts.html" class="headlist">
+                <svg class="headicon" xmlns="http://www.w3.org/2000/svg" width="21" height="24" viewBox="0 0 21 24"><path fill="currentColor" d="m13.889 23.979l7.216-1.561S18.501 4.8 18.48 4.688a.22.22 0 0 0-.211-.192c-.1 0-1.929-.136-1.929-.136s-1.275-1.274-1.439-1.411a.4.4 0 0 0-.118-.073l-.003-.001l-.914 21.1h.023zm-3.627-12.674a4.2 4.2 0 0 0-1.77-.424h-.004c-1.447 0-1.5.906-1.5 1.141c0 1.232 3.24 1.715 3.24 4.629c0 2.3-1.44 3.76-3.406 3.76l-.133.002a4.68 4.68 0 0 1-3.405-1.465l-.002-.002l.646-2.086c.62.544 1.397.923 2.254 1.063l.026.003l.031.001a.945.945 0 0 0 .944-.932v-.001c0-1.619-2.654-1.694-2.654-4.359c-.038-2.235 1.567-4.416 4.823-4.416a3.96 3.96 0 0 1 1.899.372l-.024-.01l-.945 2.72l-.02.01zM9.722.83a.67.67 0 0 1 .402.136l-.002-.001C9.143 1.43 8.063 2.6 7.619 4.957a63 63 0 0 1-1.889.578C6.252 3.75 7.503.84 9.722.84zm1.23 2.949v.135c-.754.232-1.583.484-2.394.736a4.16 4.16 0 0 1 2.073-2.96l.021-.011a5.8 5.8 0 0 1 .309 2.11v-.01zm.539-2.234c.694.074 1.141.867 1.429 1.755c-.349.114-.735.231-1.158.366v-.252l.002-.132c0-.621-.1-1.22-.284-1.779l.011.04zm2.992 1.289c-.02 0-.06.021-.078.021s-.289.075-.714.21c-.423-1.233-1.176-2.37-2.508-2.37h-.115A1.65 1.65 0 0 0 9.821 0h-.004c-3.106 0-4.59 3.877-5.055 5.846c-1.194.365-2.063.636-2.16.674c-.675.213-.694.232-.772.87C1.755 7.852 0 21.453 0 21.453L13.561 24l.927-21.166z"/></svg>
+               <p> Carts</p>
+              </a>
+              </li>
+        </ul> 
+        </nav>
+      </div>
+    </header>
+    
+          <main>
+          <!-- Page Label -->
+           <div class="page_label">
+            <span class="page_label1">APPLIANCES
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M4.268 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.268a2 2 0 0 1-3.464 0H7.732a2 2 0 0 1-3.464 0M4 6v12h16V6zm2 6h12v4H6zm0-4h5v2H6zm4 5v1h4v-1zm4-3a1 1 0 1 1 0-2a1 1 0 0 1 0 2m3 0a1 1 0 1 1 0-2a1 1 0 0 1 0 2" />
+              </svg>
+            </span>
+            <span class="page_label2">Call To Order: 08106146952</span>
+           </div>
+            <!-- Page Bill Board -->
+          <div class="Top-row-static" style="height:322.31px">
+            <img src="image/appliancesImages/1168x384-RedefineThermocoolAppliancesBanner.jpg" alt="">
+           </div>
+               <!-- SECTION 1-->
+                 <div class="Top-section">
+                  <section class="Top-sales">
+                    <div class="Top-header">
+                      <span style="font-size: 20px;">Limited Stock Deals</span>
+                      <span style="cursor: pointer; font-size: 14px;">See All
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
+                          <rect width="12" height="24" fill="none" />
+                          <path fill="currentColor" fill-rule="evenodd"  d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
+                           
+                        </svg>
+                      </span>
+                    </div>
+      
+                    <div id="blockI" class="Top-row">
+                    </div>
+                  </section>
+                </div>
+              
+                  <!-- Advert Scetion I -->
+              <section class="Top-row-static">
+                <article class="Top-card">
+                  <a href="#" class="product">
+                    <img src="image/appliancesImages/Air-con_300X400.png" alt="${name}">
+                  </a>
+                 </article>
+                 <article class="Top-card">
+                  <a href="#" class="product">
+                    <img src="image/appliancesImages/Food_Processor_300X400Appliances.png" alt="${name}">
+                  </a>
+                 </article>
+                 <article class="Top-card">
+                  <a href="#" class="product">
+                    <img src="image/appliancesImages/Fridges_300X400Appliances.png" alt="${name}">
+                  </a>
+                 </article>
+                 <article class="Top-card">
+                  <a href="#" class="product">
+                    <img src="image/appliancesImages/Micro-Wave_300X400Appliances.png" alt="${name}">
+                  </a>
+                 </article>
+                 <article class="Top-card">
+                  <a href="#" class="product">
+                    <img src="image/appliancesImages/Television_300X400Appliances.png" alt="${name}">
+                  </a>
+                 </article>
+                 <article class="Top-card">
+                  <a href="#" class="product">
+                    <img src="image/appliancesImages/Washing-Machine_300X400Appliances.png" alt="${name}">
+                  </a>
+                 </article>
+               </section>
+            
+                 <!-- SECTION 2-->
+                 <div class="Top-section">
+                  <section class="Top-sales">
+                    <div class="Top-header">
+                      <span style="font-size: 20px;">Top Deals On Home Appliances</span>
+                      <span style="cursor: pointer; font-size: 14px;">See All
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
+                          <rect width="12" height="24" fill="none" />
+                          <path fill="currentColor" fill-rule="evenodd"
+                            d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
+                        </svg>
+                      </span>
+                    </div>
+      
+           -         <div class="Top-row" id="blockII">
+                      <div class="items">
+                      
+                      </div>
+      
+                    </div>
+                  </section>
+                </div>
+      
+      
+                 <!-- SECTION 3-->
+                 <div class="Top-section">
+                  <section class="Top-sales">
+                    <div class="Top-header">
+                      <span style="font-size: 20px;">Top Deals On Cooking Appliances</span>
+                      <span style="cursor: pointer; font-size: 14px;">See All
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
+                          <rect width="12" height="24" fill="none" />
+                          <path fill="currentColor" fill-rule="evenodd"
+                            d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
+                        </svg>
+                      </span>
+                    </div>
+      
+                    <div class="Top-row" id="blockIII">
+                      <div class="items">
+                     
+                      </div>
+      
+                    </div>
+                  </section>
+                </div>
+                 <!-- Advert Scetion II -->
+              <section class="Top-row-captionStatic">
+                <div class="Top-header">
+                  <span style="font-size: 20px;" >Official Stores</span>
+                  </span>
+                </div>
+                <div class="official_stores">
+                <article >
+                  <a href="#" class="product">
+                    <img src="image/nexus_260x144HomeOffice.png" alt="${name}">
+                  </a>
+                 </article>
+                 <article>
+                  <a href="#" class="product">
+                    <img src="image/NineHomeOffice.jpg" alt="${name}">
+                  </a>
+                 </article>
+                 <article>
+                  <a href="#" class="product">
+                    <img src="image/sunkingHomeOffice.jpg" alt="${name}">
+                  </a>
+                 </article>
+                 <article>
+                  <a href="#" class="product">
+                    <img src="image/sumec-firmanHomeOffice.jpg" alt="${name}">
+                  </a>
+                 </article>
+                 <article >
+                  <a href="#" class="product">
+                    <img src="image/lontor_260x144HomeOffice.png" alt="${name}">
+                  </a>
+                 </article>
+                 <article >
+                  <a href="#" class="product">
+                    <img src="image/ecoflowHomeOffice.jpg" alt="${name}">
+                  </a>
+                 </article>
+                </div>
+               </section>
+
+                 <!-- SECTION 4-->
+                 <div class="Top-section">
+                  <section class="Top-sales">
+                    <div class="Top-header">
+                      <span style="font-size: 20px;">Top Deals On Kitchen Appliances</span>
+                      <span style="cursor: pointer; font-size: 14px;">See All
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
+                          <rect width="12" height="24" fill="none" />
+                          <path fill="currentColor" fill-rule="evenodd"
+                            d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
+                        </svg>
+                      </span>
+                    </div>
+      
+                    <div class="Top-row" id="blockIV">
+      
+                    </div>
+                  </section>
+                </div>
+
+                  <!-- SECTION 5-->
+                  <div class="Top-section">
+                    <section class="Top-sales">
+                      <div class="Top-header">
+                        <span style="font-size: 20px;">Top Deals On Heating & Cooling</span>
+                        <span style="cursor: pointer; font-size: 14px;">See All
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
+                            <rect width="12" height="24" fill="none" />
+                            <path fill="currentColor" fill-rule="evenodd"
+                              d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
+                          </svg>
+                        </span>
+                      </div>
+        
+                      <div class="Top-row" id="blockV">
+        
+                      </div>
+                    </section>
+                  </div>
+
+                 <!-- SECTION 6-->
+                 <div class="Top-section">
+                  <section class="Top-sales">
+                    <div class="Top-header">
+                      <span style="font-size: 20px;">Binatone Official Store</span>
+                      <span style="cursor: pointer; font-size: 14px;">See All
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
+                          <rect width="12" height="24" fill="none" />
+                          <path fill="currentColor" fill-rule="evenodd"
+                            d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
+                        </svg>
+                      </span>
+                    </div>
+      
+                    <div class="Top-row" id="blockVI">
+                      <div class="items">
+                        <!-- Flash card section-->
+                      </div>
+                    </div>
+                  </section>
+                </div>
+            <!-- Product information -->
+            <div class="info-container">
+              <h2>Shop Home Appliances on Byte-Buy Nigeria!</h2>
+            
+              <h3>Get the Best Appliances at Amazing Prices</h3>
+              <p>At Byte-Buy, we make it easy to shop the latest home appliances all in one place. From large essentials like refrigerators and washing machines to small kitchen gadgets and air conditioners, we stock trusted brands like LG, Samsung, Hisense, Scanfrost, Haier Thermocool, and more. Whether you’re upgrading your kitchen, laundry, or living room, Byte-Buy has you covered.</p>
+            
+              <h3>Exclusive Discounts and Offers</h3>
+              <p>Save more every time you shop with Byte-Buy! Browse our collection of newly released appliances at unbeatable prices. From energy-efficient refrigerators to powerful blenders, microwaves, and gas cookers, you’ll always find top-quality products at the best value. All appliances are 100% genuine and come directly from verified brands.</p>
+            
+              <h3>Affordable Options for Every Budget</h3>
+              <p>No matter your budget, Byte-Buy offers appliances for every household. Choose from premium models with advanced features or more affordable, reliable options for everyday use. Popular picks include single-door fridges, compact washing machines, and portable air conditioners. Stay comfortable and keep your home running smoothly without breaking the bank!</p>
+            
+              <h3>Find the Right Accessories</h3>
+              <p>Make your appliances even more useful with Byte-Buy accessories! Choose from spare parts, stabilizers, extension sockets, and other add-ons to keep your devices protected and running at their best. Shop durable and affordable accessories that bring out the full potential of your appliances.</p>
+            
+              <h3>Easy & Secure Payment with BytePay</h3>
+              <p>Pay quickly and securely with BytePay. We accept Mastercard, Visa, bank transfers, and more. Enjoy fast checkout, reliable delivery, and stress-free returns. Shopping on Byte-Buy is safe, simple, and convenient.</p>
+            
+              <h3>What to Consider When Shopping for Appliances Online</h3>
+              <ul>
+                <li><strong>Brand & Quality:</strong> Compare trusted names like LG, Samsung, Haier Thermocool, and Hisense.</li>
+                <li><strong>Price & Budget:</strong> Shop based on your budget without compromising durability.</li>
+                <li><strong>Energy Efficiency:</strong> Look for appliances with low power consumption to save on electricity bills.</li>
+                <li><strong>Size & Capacity:</strong> Ensure the appliance fits your home space and daily needs.</li>
+                <li><strong>Customer Reviews:</strong> Read feedback before purchasing to know real experiences from other buyers.</li>
+              </ul>
+            
+              <h3>Why Choose Byte-Buy?</h3>
+              <p>Byte-Buy offers you convenience, genuine products, and a smooth shopping experience. With nationwide delivery, easy returns, and round-the-clock customer support, shopping online for appliances has never been easier. Choose Byte-Buy and enjoy a smarter way to shop today.</p>
+            
+              <h2>Frequently Asked Questions (FAQ)</h2>
+            
+              <h3>What is the warranty and return policy for appliances purchased on Byte-Buy Nigeria?</h3>
+              <p>All appliances sold on Byte-Buy Nigeria come with a manufacturer warranty, typically ranging from 1 to 2 years depending on the brand. Our return policy allows you to return the product within 7 days if it is faulty or not as described. Please refer to our Return Policy page for full details on how to process a return.</p>
+            
+              <h3>What should I look for when choosing a new appliance?</h3>
+              <p>When selecting an appliance, consider the following features:</p>
+              <ul>
+                <li><strong>Energy Efficiency:</strong> Choose appliances that reduce power consumption and lower your bills.</li>
+                <li><strong>Capacity:</strong> Ensure refrigerators, washing machines, or ovens are the right size for your household.</li>
+                <li><strong>Durability:</strong> Look for strong build quality and reliable performance over time.</li>
+                <li><strong>Smart Features:</strong> Some modern appliances come with Wi-Fi control, timers, and eco-modes.</li>
+                <li><strong>Maintenance:</strong> Check for easy cleaning and availability of spare parts.</li>
+              </ul>
+            
+              <h3>How do I make sure the appliance I buy will fit my home?</h3>
+              <p>All appliances listed on Byte-Buy Nigeria include detailed specifications such as dimensions, capacity, and power requirements. Before purchasing, measure the space in your home where the appliance will be placed to ensure a perfect fit. If unsure, our customer support team can guide you through product compatibility and installation requirements.</p>
+            
+              <h2>Conclusion</h2>
+              <p>At Byte-Buy Nigeria, we bring you the best appliances with unbeatable value and convenience. Whether you’re in Lagos, Abuja, or anywhere across the country, Byte-Buy connects you to trusted brands like LG, Samsung, Hisense, and Haier Thermocool — all at affordable prices. Our easy-to-use platform makes shopping simple, with fast and reliable delivery to your doorstep.</p>
+              <p>Stay ahead with the newest innovations in home appliances, from energy-saving refrigerators to powerful washing machines and smart microwaves. Discover our wide collection of kitchen and home essentials, plus accessories designed to improve your everyday life. Shop stress-free with flexible returns and secure payment options.</p>
+              <p>Thousands of households across Nigeria already trust Byte-Buy for their home appliances. Join them today and see why Byte-Buy is becoming Nigeria’s most reliable destination for fridges, cookers, washing machines, and more. Shop now to enjoy premium service, authentic products, and exclusive deals made just for you.</p>
+            </div>
+            
+             </main>
+  <!-- Footer -->
+    <footer>
+    <!-- Section 1 -->
+      <section class="lastphasei">
+      <!-- first contents -->
+        <div class="lastdiv1">
+          <h2>BYTE-BUY</h2>
+        </div>
+      <!-- second contents -->
+        <div class="lastdiv1" style="display: flex; flex-direction: column; gap: 1.5em;width: 23%;">
+         <span class="lastdiv1">
+          <strong>Freshstart on Byte-buy ?</strong>
+          <p style="font-size: small;">Subscribe to our nesletter to get updates on our latest offers!</p>
+          <span class="lastdiv1_span1">
+            <p>egbeyemiboluwatifedavid@gmail.com</p> 
+            <button> Subscribe</button>
+          </span>
+         </span>
+        <span style="display: flex; font-size: smaller;  align-items: flex-start; gap: 6px; width: 34vw;">
+          <input type="checkbox" id="agree">
+          <label for="agree" style="cursor: pointer;">I agree to Byte-buy's Privacy. You can always deactivate newsletters subscribe anytime </label>
+        </span>
+        </div>
+      <!-- third contents -->
+        <div class="lastdiv1">
+          <span>
+            <h3>Watch out for our app about to lauch</h3>
+            <p>Bringing you exclusive features </p>
+          </span>
+        </div>
+      </section>
+    <!-- Section 2 -->
+      <section class="lastphaseii">
+        <ul>
+          <strong>Help Center</strong>
+          <li><a href="">Help Center</a></li>
+          <li><a href="">Contact us</a></li>
+          <li><a href=""></a></li>
+        </ul>
+        <div>
+          <ul>
+            <strong>Help Center</strong>
+            <li><a href="">Help Center</a></li>
+            <li><a href="">Contact us</a></li>
+            <li><a href=""></a></li>
+          </ul>
+        </div>
+        <ul>
+          <strong>Help Center</strong>
+          <li><a href="">Help Center</a></li>
+          <li><a href="">Contact us</a></li>
+          <li><a href=""></a></li>
+        </ul>
+        <ul>
+          <strong>Help Center</strong>
+          <li><a href="./adminlogin.html">Administrator</a></li>
+          <li><a href="">Contact us</a></li>
+          <li><a href=""></a></li>
+        </ul>
+      </section>
+    </footer>
+</div>
+<!-- Firebase v8 -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="appliances.js">
+</script>
+</body>
+</html>

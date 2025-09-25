@@ -1,0 +1,169 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+    Hide the actual checkbox
+.hidden-checkbox {
+  display: none;
+}
+
+/* Style the label to look like a clickable header */
+.toggle-label {
+  cursor: pointer;
+  display: block; /* Ensures the label takes up its own line */
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+/* Style the plus/minus icon */
+.plus-minus-icon {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Initially hide the collapsible content */
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out; /* Smooth transition for expansion/collapse */
+  padding: 0 10px; /* Adjust padding as needed */
+}
+
+/* When the checkbox is checked, show the content */
+.hidden-checkbox:checked ~ .collapsible-content {
+  max-height: 500px; /* Or a value large enough to contain your content */
+  padding: 10px; /* Restore padding when shown */
+}
+
+/* Change the icon to '-' when the checkbox is checked */
+.hidden-checkbox:checked ~ .toggle-label .plus-minus-icon {
+  content: "-"; /* This will not work directly to change the text content, see note below */
+}
+</style> -->
+<!-- <style>
+        .minus-icon { display: none; }
+    .hidden-checkbox:checked ~ .toggle-label .plus-icon { display: none; }
+    .hidden-checkbox:checked ~ .toggle-label .minus-icon { display: inline; }    .toggle-label::before {
+      content: "+";
+      margin-right: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .hidden-checkbox:checked ~ .toggle-label::before {
+      content: "-";
+    }
+
+
+</style> -->
+<!-- <body>
+        <label for="toggle-content" class="toggle-label">
+      <span class="plus-icon">+</span>
+      <span class="minus-icon">-</span>
+      Click to toggle content
+    </label>
+     <input type="checkbox" id="toggle-content" class="hidden-checkbox">
+<label for="toggle-content" class="toggle-label">
+  <span class="plus-minus-icon">+</span>
+  Click to toggle content
+</label>
+<div class="collapsible-content">
+  This is the content that will be hidden and shown. -->
+<!-- </div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    details summary {
+      cursor: pointer;
+      list-style: none;
+      font-size: 1.2em;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    details summary::before {
+      content: "+";
+      position: absolute;
+      left: 0;
+    }
+
+    details[open] summary::before {
+      content: "−";
+    }
+
+    details p {
+      margin-left: 20px;
+      padding: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <details>
+    <summary>Click to expand</summary>
+    <p>This is the content of the dropdown.</p>
+  </details>
+  
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    .dropdown-container {
+      width: 300px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .dropdown-header {
+      padding: 10px;
+      background: #f2f2f2;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background: #fff;
+      padding: 0 10px;
+    }
+
+    .dropdown-container.active .dropdown-content {
+      max-height: 500px; /* Big enough to show all content */
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dropdown-container" onclick="this.classList.toggle('active')">
+    <div class="dropdown-header">Click to expand</div>
+    <div class="dropdown-content">
+      <p>This is the hidden content revealed with smooth height expansion.</p>
+      <p>You can add as many lines as needed.</p>
+    </div>
+  </div>
+
+</body>
+</html>-->
+
+
+
+
