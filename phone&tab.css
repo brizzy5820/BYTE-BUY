@@ -461,7 +461,13 @@ main {
     width: 100%;
     height:100% !important;
   }
+  .page_label1{
+    font-size: 1.3em;
+  }
   .page_label2{
     font-size: 1.1em;
+  }
+  .Top-header span{
+    font-size:14px !important;
   }
 }
