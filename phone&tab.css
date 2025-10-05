@@ -318,7 +318,7 @@ main {
   align-items: center;
   gap: 8px;
   /* More space between cards */
-  padding: 10px 8px;
+  padding: 6px;
   scroll-behavior: smooth;
   /* Smooth scrolling */
 }
