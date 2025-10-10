@@ -1,12 +1,10 @@
 //ANIMATION INTRODUCTION
+const main = document.getElementById('main-content');
 window.addEventListener('load', () => {
     const intro = document.getElementById('book-intro');
-    const main = document.getElementById('main-content');
-  
     setTimeout(() => {
       // Start book opening
       intro.classList.add('open');
-  
       // Reveal main content DURING book animation
       main.classList.remove('hidden');
       main.classList.add('show');
@@ -16,9 +14,8 @@ window.addEventListener('load', () => {
         intro.classList.add('fade-out');
       }, 2300); // book animation duration
     }, 1500); // initial delay
-  },6000);
-
-
+  },3000);
+  
 // Header dropdowns
   const head1 = document.getElementById('headlistI');
   const innerList1 = document.getElementById('innerlistI');

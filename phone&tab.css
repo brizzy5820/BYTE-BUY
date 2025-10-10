@@ -41,7 +41,6 @@ main {
   font-family: Inter, system-ui, Arial;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   /* margin-bottom: 16px; */
-
 }
 
 .page_label1 {
@@ -371,7 +370,7 @@ main {
 .Top-card {
   width: 187.9px;
   /* ~5 cards per row at 1200px width */
-  height: 280.32px;
+  height: 100%;
   flex: 0 0 auto;
   border-radius: 5px;
   cursor: pointer;
@@ -455,8 +454,9 @@ main {
 /* Phones Scrgieen sizes */
 @media(max-width:767px){
   main{
-    margin: 114px 0 0 0;
+    margin: 84px 0 0 0;
     padding: 0 0.7em;
+
   }
 
   .page_label1{
