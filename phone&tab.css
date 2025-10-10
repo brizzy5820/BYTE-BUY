@@ -458,7 +458,12 @@ main {
     padding: 0 0.7em;
 
   }
-
+.Top-section{
+  height:323px;
+}
+.Top-section img{
+  height: 178px;
+}
   .page_label1{
     font-size: 1.3em;
   }
