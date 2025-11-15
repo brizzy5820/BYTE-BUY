@@ -408,7 +408,7 @@ footer {
         
     }
     header{
-      padding: 1em 0.7em;
+      padding: 0.2em 0.7em;
     }
     /* LOGO */
 header h2 {
@@ -434,7 +434,8 @@ header .dropdown{
 }
 .secondBatch img{
   width:30px !important;
-}
+   }
+
 /* Exclusive for medium phone sizes */
 @media(max-width:397px){
   header h2{
