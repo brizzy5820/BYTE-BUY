@@ -512,7 +512,7 @@ main {
 
   /* --- Product container --- */
   .product {
-    padding: 5px;
+    padding: 6px;
   }
 
   /* --- Product image --- */
@@ -525,9 +525,9 @@ main {
   /* --- Product name --- */
   .product h3 {
     font-size: 12px;
-    margin: 4px 0;
-    white-space: normal;      /* allow wrapping */
-    height: 32px;             /* prevent layout jump */
+    margin: 3px 0;
+    white-space:no wrap;      /* allow wrapping */
+    height: auto;             /* prevent layout jump */
     overflow: hidden;
   }
                                           
@@ -580,7 +580,7 @@ main {
 
   .product h3 {
     font-size: 11px;
-    height: 28px;
+    height: auto;
   }
 
   .new-price {
