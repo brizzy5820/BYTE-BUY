@@ -455,6 +455,12 @@ main {
   margin-bottom: 8px;
 }
 
+/* Tab sizes */
+@media (max-width: 1200px) {
+  main {
+    padding: 0 0.7em;
+  }
+}
 /* Phones Scrgieen sizes */
 
 @media(max-width:767px){

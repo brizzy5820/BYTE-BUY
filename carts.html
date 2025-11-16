@@ -7,8 +7,7 @@
   <title>Byte-Buy | Cart</title>
   <link rel="stylesheet" href="bbanimeintro.css">
   <link rel="stylesheet" href="davidbytepaystyle.css">
-  <script src==
-  "bbanimeintro.js" defer></script>
+  <script src= "bbanimeintro.js" defer></script>
   <script type="module" src="loginfeaturescarts.js" defer></script>
   <style>
     body {
@@ -314,6 +313,140 @@
         transform: rotate(360deg);
       }
     }
+@media (max-width: 900px) {
+
+  main {
+    margin: 84px 1em;        /* less side spacing */
+  }
+
+  .totalDisplay {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Cart section → full width */
+  .carts_section {
+    width: 100%;
+  }
+
+  /* Checkout section moves down */
+  .checkout_section {
+    width: 100%;
+    position: static;       /* remove sticky on phone */
+    top: auto;
+  }
+
+  /* Cart top section (image + title) */
+  .cart-top {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  /* Image smaller on mobile */
+  .cart-left img {
+    width: 72px;
+    height: 72px;
+  }
+
+  /* Product info + price alignment */
+  .cart-left {
+    font-size: 1em;
+    gap: 10px;
+  }
+
+  .cart-prices {
+    text-align: left;
+    align-items: flex-start;
+    margin-top: 6px;
+  }
+
+  .cart-prices strong {
+    font-size: 1.1em;
+  }
+
+  /* Quantity + delete row */
+  .cart-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  .quantity-control {
+    gap: 8px;
+  }
+
+  /* Make + and - buttons bigger for touch */
+  .increase, .decrease {
+    width: 32px;
+    height: 32px;
+    font-size: 1.3em;
+    border-radius: 6px;
+  }
+
+  /* Hide old price if too small */
+  .cart-prices .old-price {
+    font-size: 0.8em;
+  }
+    .cartAll {
+    padding: 16px;
+  }
+
+  .cartIcon svg {
+    width: 60px;
+    height: 60px;
+    padding: 12px;
+  }
+
+  .cartIcon p {
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .cartIcon button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+   .upload_alert,
+  .decrease-alert,
+  .del-alert {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+@media (max-width: 600px) {
+
+  .carts_section h2 {
+    font-size: 1.05em;
+    padding: 10px;
+  }
+
+  .cart-left img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .cart-fetch {
+    padding: 12px;
+  }
+
+  .increase, .decrease {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1em;
+  }
+
+  .delete {
+    font-size: 0.8rem;
+  }
+
+  /* Checkout button mobile style */
+  .checkout-btn {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
 
   </style>
 </head>
@@ -461,41 +594,6 @@
           <h2>Cart (<span id="cart-count">0</span>)</h2>
           <div id="cartsFetch">
             <!-- CART ITEM -->
-          <!-- <article class="cart_fetch">
-            <div class="cart-top">
-              <span class="cart-left">
-                <img src="image/androids_P&T.jpg" alt="">
-                <p>Androids</p>
-              </span>
-              <span class="cart-prices">
-                <strong>$2,400</strong>
-                <span class="old-price">$6,000</span>
-              </span>
-            </div>
-            <div class="cart-bottom">
-              <span class="delete-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path fill="currentColor"
-                    d="M4 8h16v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm2 2v10h12V10zm3 2h2v6H9zm4 0h2v6h-2zM7 5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2h5v2H2V5zm2-1v1h6V4z" />
-                </svg> Delete
-              </span>
-              <span class="quantity-control">
-            <button class="quantity-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 24 24">
-                    <path fill="blue"
-                      d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2m5 11h-4v4h-2v-4H7v-2h4V7h2v4h4z" />
-                  </svg>
-                </button>
-                <span>1</span>
-                <button class="quantity-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 16 16">
-                    <path fill="gray" fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1M4 7.5v1h8v-1z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </button>
-              </span>
-            </div>
-          </article> -->
                     </div>
         </section>
   
