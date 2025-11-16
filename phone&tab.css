@@ -309,7 +309,7 @@ main {
 .Top-row-static {
   display: flex;
   overflow-x: auto;
-  height: 100%;
+  /* height: 100%; */
   background-color: #fff;
   width: 100%;
   max-width: 1184px;
@@ -454,33 +454,14 @@ main {
 .info-container ul li {
   margin-bottom: 8px;
 }
+
 /* Phones Scrgieen sizes */
+
 @media(max-width:767px){
   main{
     margin: 70px 0 0 0;
     padding: 0 0.45em;
 
-  }
-.Top-section{
-  height:323px;
-}
-.Top-section img{
-  height: 178px;
-}
-
-  .page_label1{
-    font-size: 1.3em;
-  }
-  .page_label2{
-    font-size: 1.3em;
-  }
-  .Top-header  span{
-    padding: 10px 15px;
-    font-size:17px !important;
-  }
-  .Top-header_helthbeauty span{
-    font-size:17px !important;
-    padding: 10px 15px;
   }
 .official_stores{
   display: grid;
@@ -497,29 +478,9 @@ main {
     width: 100%;
     height: 80px;
   }
-/* Exclusive for medium phone sizes */
-@media(max-width:397px){
-  .official_stores{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(158px, 1fr));
-  }
-}
-/* Exclusive for smaller phone sizes */
-  @media(max-width:330px){
-    .official_stores{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(120px, 1fr));
-    }
-  }
-}
-/* ============================================
-   📱 MOBILE PHONES — JUMIA STYLE
-   ============================================ */
-@media (max-width: 600px) {
-
-  .Top-section {
-    height: auto;            /* remove fixed height */
-    padding-bottom: 10px;
+    .Top-section {
+    height: auto;  
+    padding-bottom: 3px;
     
   }
 
@@ -530,19 +491,21 @@ main {
   }
   .Top-header span,
   .Top-header_helthbeauty span {
-    font-size: 16px;          /* smaller text */
+    font-size: 16px !important;          /* smaller text */
   }
 
   /* --- Product row --- */
   .Top-row {
     gap: 6px;
     padding: 8px 6px;
+    display: flex;
+    align-items: center;
     height: auto;             /* allow natural height */
   }
 
   /* --- Card sizing for small screens --- */
   .Top-card {
-    width: 150px;             /* smaller cards like Jumia */
+    width: 150px;     /* smaller cards like Jumia */
     flex: 0 0 150px;
     /* height: auto; */
   }
@@ -554,7 +517,7 @@ main {
 
   /* --- Product image --- */
   .product img {
-    height: 140px;            /* smaller fixed height */
+    height: auto;            /* smaller fixed height */
     object-fit: cover;
     border-radius: 4px;
   }
@@ -567,7 +530,7 @@ main {
     height: 32px;             /* prevent layout jump */
     overflow: hidden;
   }
-
+                                          
   /* --- Prices --- */
   .new-price {
     font-size: 13px;
@@ -576,17 +539,34 @@ main {
   .old-price {
     font-size: 11px;
   }
+  .page_label1 {
+  background-color: #1260cc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;   
+  gap: 4px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  text-align: center;
+  padding:3px 5px;
+  font-size: 1.2em;
+  font-weight: bolder;
 }
-
-
-/* ============================================
-   📱 VERY SMALL PHONES (≤ 380px)
-   ============================================ */
-@media (max-width: 380px) {
-
+.page_label2{
+  font-size: 1.2em;
+  padding:3px 5px;
+}
+/* Exclusive for medium phone sizes */
+@media(max-width:397px){
+  .official_stores{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(158px, 1fr));
+  }
+  
   .Top-header,
   .Top-header_helthbeauty {
-    height: 46px;
+    height:37px;
     padding: 0px 12px;
   }
   .Top-card {
@@ -595,7 +575,7 @@ main {
   }
 
   .product img {
-    height: 120px;
+    height: auto;
   }
 
   .product h3 {
@@ -605,5 +585,14 @@ main {
 
   .new-price {
     font-size: 12px;
+  }
+}
+/* Exclusive for smaller phone sizes */
+  @media(max-width:330px){
+    .official_stores{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+    }
+    
   }
 }
