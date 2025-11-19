@@ -184,6 +184,24 @@
     </header>
   
     <main>
+       <!-- Page Bill Board For small phone sizes-->
+      <div class="slider-container">
+        <div class="slider" id="slider">
+          <div class="slideI" style="transform: rotateY(0deg) translateZ(600px);">
+            <img src="image/Artboard (1).png" alt="Product 1">
+          </div>
+          <div class="slideI" style="transform: rotateY(120deg) translateZ(600px);">
+            <img src="image/712x384-copy-1.gif" alt="Product 2">
+          </div>
+          <div class="slideI" style="transform: rotateY(240deg) translateZ(600px);">
+            <img src="image/nivea-sun-712x384.jpg" alt="Product 3">
+          </div>
+        </div>
+        <div class="controls">
+          <button id="prev">&#10094;</button>
+          <button id="next">&#10095;</button>
+        </div>
+      </div>
       <!-- Section 1: Three Columns -->
       <div class="row">
         <section>
@@ -380,13 +398,13 @@
 
               </span>
               <span style="color: #fff;" id="tml">Time Left: <b></b></span>
-              <span style="cursor: pointer; font-size: 14px; color:white ;">See All
+              <a href="#" style="cursor: pointer; font-size: 14px; color:white ;">See All
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
                   <rect width="12" height="24" fill="none" />
                   <path fill="#fff" fill-rule="evenodd"
                     d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
                 </svg>
-              </span>
+              </a>
             </div>
 
             <div class="Top-row" id="products-container" onclick="openModal()">
@@ -402,13 +420,13 @@
         <section class="Top-sales">
           <div class="Top-header">
             <span style="font-size: 20px;">Smart Phones</span>
-            <span style="cursor: pointer; font-size: 14px;">See All
+            <a href="phone&laptops.html" style="cursor: pointer; font-size: 14px;">See All
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
                 <rect width="12" height="24" fill="none" />
                 <path fill="currentColor" fill-rule="evenodd"
                   d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
               </svg>
-            </span>
+            </a>
           </div>
           <div class="Top-row" id="blockII">
 
@@ -446,7 +464,7 @@
                       </span>
                     </div>
                     
-                    <div id="blockII" class="Top-row">   
+                    <div id="blockIII" class="Top-row">   
                     </div>
                   </section>
                 </div>
@@ -700,45 +718,26 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
   <script type="module"  src="productsfetch.js" ></script>
   <script type="module" src="loginfeatures.js" ></script>
-<!-- <script>
-const categoryToSubcategories = {
-"Appliances": ["Refrigerators", "Cookers", "Microwaves"],
-"Phones & Tablets": ["Smartphones", "Tablets", "Accessories"],
-"Health & Beauty": ["Skincare", "Makeup", "Supplements"],
-"Home & Office": ["Furniture", "Decor", "Office Supplies"],
-"Electronics": ["TVs", "Audio Systems", "Cameras"],
-"Fashion": ["Men", "Women", "Kids"],
-"Supermarket": ["Beverages", "Snacks", "Household Items"],
-"Computing": ["Laptops", "Desktops", "Printers"],
-"Baby Products": ["Diapers", "Toys", "Clothing"],
-"Gaming": ["Consoles", "Games", "Accessories"],
-"Musical Instruments": ["Guitars", "Keyboards", "Drums"],
-"Other categories": ["Books", "Sports", "Automotive"]
-};
-
-const items = document.querySelectorAll(".category-item");
-const panel = document.getElementById("category-panel");
-const panelTitle = document.getElementById("panel-title");
-const panelContent = document.getElementById("panel-content");
-
-items.forEach(item => {
-item.addEventListener("mouseenter", () => {
-  const cat = item.getAttribute("data-category");
-  if (cat && categoryToSubcategories[cat]) {
-    panelTitle.textContent = cat;
-    panelContent.innerHTML = categoryToSubcategories[cat]
-      .map(sub => `<a href="#">${sub}</a>`)
-      .join("");
-    panel.classList.add("active");
+  <script>
+    // Bill Baord Rotation
+  const slider = document.getElementById("slider");
+  let angle = 0;
+  function next() {
+    angle -= 120;
+    slider.style.transform = `rotateY(${angle}deg)`;
   }
-});
-});
-
-document.querySelector(".inner-left").addEventListener("mouseleave", () => {
-panel.classList.remove("active");
-});
-</script> -->
-
+  document.getElementById("next").addEventListener("click", () => {
+    next()
+  });
+  document.getElementById("prev").addEventListener("click", () => {
+    angle += 120;
+    slider.style.transform = `rotateY(${angle}deg)`;
+  });
+  setInterval(() => {
+    next()
+  }, 3700)
+  
+  </script>
 
 </body>
 </html>

@@ -50,7 +50,7 @@ main {
   /* margin-top: 200px; */
   width: 100%;
   max-width: 1184px;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
   /* padding: 16px 0; */
 /* margin:0 auto; */
 } 
@@ -484,6 +484,7 @@ font-weight: 450;
   font-size: 20px;
   display: flex;
   align-items: center;
+  font-weight: 500;
   gap: 8px;
 }
 
@@ -639,13 +640,208 @@ font-weight: 450;
 .info-container ul li {
   margin-bottom: 8px;
 }
+/* Banner Rotation animation */
+ #scrollImage {
+      transition: transform 0.6s ease-in-out;
+      transform: rotateY(0deg);
+    }
+
+    #scrollImage.swapping {
+      transform: rotateY(180deg);
+      /* flips like a card */
+    }
+
+    .slider-container {
+      perspective: 1000px;
+      max-width: 1184px;
+      height: 170px;
+      display: none;
+      margin: 5.28em 0em;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .slider-container:hover .controls {
+      display: flex;
+      cursor: pointer;
+    }
+
+    .slider {
+      width: 100%;
+      height: 75%;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      transform-style: preserve-3d;
+      transition: transform 1.3s;
+    }
+
+    .slideI {
+      position: absolute;
+      width: 474px;
+      height: 100%;
+      margin-bottom: 4em;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .slideI img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .slideI h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .slideI p {
+      color: #444;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .slideI button {
+      padding: 8px 15px;
+      border: none;
+      background: #1e2f97;
+      color: #fff;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .controls {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8em;
+      display: none;
+      justify-content: center;
+      transform: translate(-25%, -25%);
+      pointer-events: none;
+    }
+
+    .controls button {
+      pointer-events: all;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      border-radius: 50%;
+      width: 40px;
+      padding: 8px;
+      height: 40px;
+      cursor: pointer;
+    }
+    .Top-header a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-weight: 500;
+      color: white;
+    }
 @media (max-width:767px) {
   main{
     margin: 70px 0 0 0;
     padding: 0 0.45em;
-
+    gap: 12px;
   } 
-    .row{
- display: none;
+  .column-left,.column-right{
+    display: none;
   }
+  
+.slider-container{
+max-width: 767px;
+/* display: flex; */
+height: 90px;
+margin: 2.3em 0em;
+}
+.slideI{
+  width: 160px;
+}
+.column-center{
+  height: 218px;
+}
+  .Top-section {
+    height: auto;  
+    padding-bottom: 3px;
+    
+  }
+  
+  .Top-header,
+  .Top-header_helthbeauty {
+    height: 37px;
+    padding: 0px 12px;
+  }
+  .Top-header span,
+  .Top-header_helthbeauty span {
+    font-size: 16px !important;          /* smaller text */
+  }
+
+  /* --- Product row --- */
+  .Top-row {
+    gap: 6px;
+    padding: 8px 6px;
+    display: flex;
+    align-items: center;
+    height: auto;             /* allow natural height */
+  }
+
+  /* --- Card sizing for small screens --- */
+  .Top-card {
+    width: 150px;     /* smaller cards like Jumia */
+    flex: 0 0 150px;
+    /* height: auto; */
+  }
+
+  /* --- Product container --- */
+  .product {
+    padding: 6px;
+  }
+
+  /* --- Product image --- */
+  .product img {
+    height: auto;            /* smaller fixed height */
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* --- Product name --- */
+  .product h3 {
+    font-size: 12px;
+    margin: 3px 0;
+    white-space:no wrap;      /* allow wrapping */
+    height: auto;             /* prevent layout jump */
+    overflow: hidden;
+  }
+                                          
+  /* --- Prices --- */
+  .new-price {
+    font-size: 13px;
+  }
+
+  .old-price {
+    font-size: 11px;
+  }
+/* For Mid-large screen sizes */
+@media (max-width:393px) {
+  .column-center{
+  height: 198px;
+}  
+}
+/* Exclusive for medium screen sizes */
+@media (max-width:367px) {
+  .column-center{
+  height: 188px;
+}
+}
 }

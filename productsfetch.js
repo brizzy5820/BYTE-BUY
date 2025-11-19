@@ -65,5 +65,5 @@ let progressColor =
   // loadSection('ID','collectionName')
   loadSection('item1','Flash-sales' )
   loadSection('blockI', 'TopDealsHomeOffice')
-  loadSection('blockII', 'TopDealsHomeAppliances')
+  loadSection('blockIII', 'TopDealsHomeAppliances')
     loadSection('blockII', 'SmartPhones')

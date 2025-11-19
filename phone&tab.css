@@ -454,7 +454,107 @@ main {
 .info-container ul li {
   margin-bottom: 8px;
 }
+/* Banner Rotation animation */
+ #scrollImage {
+      transition: transform 0.6s ease-in-out;
+      transform: rotateY(0deg);
+    }
 
+    #scrollImage.swapping {
+      transform: rotateY(180deg);
+      /* flips like a card */
+    }
+
+    .slider-container {
+      perspective: 1000px;
+      max-width: 1184px;
+      height: 170px;
+      display: flex;
+      margin: 5.28em 0em;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .slider-container:hover .controls {
+      display: flex;
+      cursor: pointer;
+    }
+
+    .slider {
+      width: 100%;
+      height: 75%;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      transform-style: preserve-3d;
+      transition: transform 1.3s;
+    }
+
+    .slide {
+      position: absolute;
+      width: 474px;
+      height: 100%;
+      margin-bottom: 4em;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .slide h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .slide p {
+      color: #444;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .slide button {
+      padding: 8px 15px;
+      border: none;
+      background: #1e2f97;
+      color: #fff;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .controls {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8em;
+      display: none;
+      justify-content: center;
+      transform: translate(-25%, -25%);
+      pointer-events: none;
+    }
+
+    .controls button {
+      pointer-events: all;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      border-radius: 50%;
+      width: 40px;
+      padding: 8px;
+      height: 40px;
+      cursor: pointer;
+    }
 /* Tab sizes */
 @media (max-width: 1200px) {
   main {
@@ -545,8 +645,7 @@ main {
   .old-price {
     font-size: 11px;
   }
-  .page_label1 {
-  background-color: #1260cc;
+  .page_label1,.page_label1_healthbeauty {
   color: white;
   display: flex;
   align-items: center;
@@ -563,8 +662,21 @@ main {
   font-size: 1.2em;
   padding:3px 5px;
 }
+.slider-container{
+max-width: 767px;
+height: 90px;
+margin: 2.3em 0em;
+}
+.slide{
+  width: 160px;
+}
+@media (max-width:395px) {
+   .slide{
+    width: 143px;
+  }
+}
 /* Exclusive for medium phone sizes */
-@media(max-width:397px){
+@media(max-width:367px){
   .official_stores{
     display: grid;
     grid-template-columns: repeat(2, minmax(158px, 1fr));
@@ -592,13 +704,25 @@ main {
   .new-price {
     font-size: 12px;
   }
-}
-/* Exclusive for smaller phone sizes */
-  @media(max-width:330px){
-    .official_stores{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(120px, 1fr));
-    }
-    
+  .slide{
+    width: 138px;
   }
+}
+
+/* Exclusive for smaller phone sizes */
+@media(max-width:330px) {
+  .official_stores {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+
+  .slider-container {
+    max-width: 320px;
+    /* perspective: 200px; */
+    height: 85px;
+  }
+  .slide{
+    width: 121px;
+  }
+}
 }
