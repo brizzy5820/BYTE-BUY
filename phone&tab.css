@@ -153,9 +153,9 @@ main {
   top: 8px;
   right: 8px;
   background: #1260cc;
-  color: rgb(225, 216, 216);
-  font-size: 14px;
-  font-weight: bolder;
+  color: #e9ebed;
+  font-size: 13px;
+  font-weight: bold;
   padding: 3px 6px;
   border-radius: 4px;
 }

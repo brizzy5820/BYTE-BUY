@@ -16,7 +16,7 @@
   const container = document.querySelector(`#${sectionId}`);
   
   let containerBucket=""
-  
+
   const snapshot = await db.collection(collectionName).orderBy("createdAt", "desc").limit().get()
   snapshot.forEach(doc => {
     const data = doc.data();
@@ -32,7 +32,8 @@
 if (data.flashTotal && data.itemsLeft !== undefined) {
   progressFill = Math.round((data.itemsLeft / data.flashTotal) * 100);
 }
-
+else {
+}
 // Decide color based on stock left
 let progressColor =
   data.itemsLeft <= 9
@@ -40,24 +41,19 @@ let progressColor =
     : "linear-gradient(90deg, #3b82f6, #2563eb)";
     const name = data.name ? data.name : "";
     containerBucket += `
-    <div class="flash-card">
-     <article>
+
+     <article class='Top-card'>
       <a href="modal.html?id=${doc.id}" class="product">
-       <div> ${discount > 0 ? `<div class="discount-badge">-${discount}%</div>` : ""}
+       <div> ${discount > 0 ? `<div class="discount-badge">-${discount}%</div>` : ""}</div>
         <img src="${imageUrl}" alt="${name}">
-        <p class="desc">${name}</p>
-        <p class="price">₦${price}</br>
-        <span class="old-price">${oldPrice}</span></p>
+        <h3>${name}</h3>
+        <div class="new-price">₦${price}</div>
+        <div class="old-price">${oldPrice}</div>
         ${itemsLeft !== null ? `<p class="items-left">${itemsLeft} items left</p>` : ""}
 
-         <div class="progress-bar">
-   <div class="progress"style="width:${progressFill}%; background:${progressColor};">
-      </div>
-</div>
-
+         
       </a>
      </article>
-    </div>
     `;
   })
   container.innerHTML=containerBucket

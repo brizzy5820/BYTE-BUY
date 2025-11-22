@@ -271,12 +271,14 @@ font-weight: 450;
   position: absolute;
   top: 8px;
   right: 8px;
-  background: rgb(118, 118, 239);
-  color: #4313ef;
+  background: #1260cc;
+  color: #e9ebed;
   font-size: 13px;
+  font-weight: bold;
   padding: 3px 6px;
   border-radius: 4px;
 }
+
 .flash-card a {
   text-decoration: none;
   color: inherit;
@@ -320,7 +322,7 @@ font-weight: 450;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.progress-bar {
+.progressbar {
   width: 90%;
   height: 6px;
   background-color: #eee;
@@ -330,7 +332,7 @@ font-weight: 450;
  
 }
 
-.progress-bar .progress {
+.progressbar .progress {
   height: 100%;
   background-color: blue;
   border-radius: 4px;
@@ -449,12 +451,13 @@ font-weight: 450;
   position: relative;
   display: flex;
   width: 100%;
-  height: 322.33px;
+  height: 345.33px;
   max-width: 1184px;
   padding: 0;
   background-color:white;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border-radius: 5px;
-  margin-bottom: 4px;
+  /* margin-bottom: 4px; */
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -493,7 +496,9 @@ font-weight: 450;
   overflow-x:scroll;
   /* scroll-snap-type: x mandatory; */
   gap: 5px;
+  align-items: center;
   flex: 0 0 auto;
+  height: 100%;
   width: 100%;
   margin:0 auto;
   padding:4px 8px;
@@ -505,16 +510,17 @@ font-weight: 450;
   width: 1168px;
   /* height: 351.32px; */
 }
-
 .Top-card {
- width: 185.33px; /* ~5 cards per row at 1200px width */
-  height: 265.32px;
+  width: 187.9px;
+  /* ~5 cards per row at 1200px width */
+  height: 100%;
   flex: 0 0 auto;
   border-radius: 5px;
+  cursor: pointer;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
   /* scroll-snap-align: start; */
   /* padding: 4px; */
 }
@@ -523,36 +529,17 @@ font-weight: 450;
   text-decoration: none;
   color: inherit;
 }
-.Top-card img {
-  width: 100%;
-  height: 75%;
-  border-radius: 4px;
-} 
+ 
 .Top-card .desc {
   font-size: 16px;
   margin:0 10px;
+    text-overflow: ellipsis;
   white-space: nowrap;
-}
-.Top-card .price {
-  font-weight: normal;
-  font-size: 16px;
-  margin:0 10px;
-}
-.Top-card .old-price {
-  font-weight: normal;
-  font-size: 12px;
-  text-decoration: line-through;
-  color: #888;
-  margin:0 2px;
 }
 .Top-card .remaining {
   font-size: 13px;
   color: #444;
   margin: 10px 0;
-}
-.Top-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -564,14 +551,13 @@ font-weight: 450;
   padding: auto;
   background-color:white;
   border-radius: 5px;
-  margin-bottom: 16px;
   overflow: hidden;
   box-sizing: border-box;
-  padding:4px;
+  /* padding:4px; */
 }
 .Advertisement-card {
   width: 100%;
-  height: 250px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -604,7 +590,82 @@ font-weight: 450;
   text-decoration: underline;
   font-weight: bold;
 } 
+/* Product Cards */
+.product {
+  border: 1px solid #e4e3e3;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+  padding: 7px;
+  width: 100%;
+  border-radius: 8px;
+  background: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Stack items vertically */
+  height: 100%;
+}
 
+.product img {
+  width: 100%;
+  height: 193px;
+  /* Fixed image height */
+  object-fit: cover;
+  /*ob Prevent stretch/cut */
+  border-radius: 6px;
+}
+
+.product h3 {
+  font-weight: 450;
+  font-size: 14px;
+  margin: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.price-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: rgb(77, 75, 75);
+  font-size: 12px;
+}
+
+.new-price {
+  font-size: 15px;
+  font-weight: bold;
+  color: #111;
+}
+.Top-row-static {
+  display: flex;
+  overflow-x: auto;
+  /* height: 100%; */
+  background-color: #fff;
+  width: 100%;
+  max-width: 1184px;
+  /* margin-bottom: 16px; */
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  align-items: center;
+  gap: 8px;
+  /* More space between cards */
+  padding: 3px;
+  scroll-behavior: smooth;
+  /* Smooth scrolling */
+}
+.Top-row-static img {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 0px;
+  object-fit: cover;
+}
 /* Product Information */
 .info-container {
   background: #fff;
@@ -755,6 +816,10 @@ font-weight: 450;
     padding: 0 0.45em;
     gap: 12px;
   } 
+  body{
+    background-color: #e9ebed;
+
+  }
   .column-left,.column-right{
     display: none;
   }
@@ -769,7 +834,7 @@ margin: 2.3em 0em;
   width: 160px;
 }
 .column-center{
-  height: 218px;
+  height: 198px;
 }
   .Top-section {
     height: auto;  
@@ -783,7 +848,7 @@ margin: 2.3em 0em;
     padding: 0px 12px;
   }
   .Top-header span,
-  .Top-header_helthbeauty span {
+  .Top-header_he lthbeauty span {
     font-size: 16px !important;          /* smaller text */
   }
 
@@ -833,15 +898,15 @@ margin: 2.3em 0em;
     font-size: 11px;
   }
 /* For Mid-large screen sizes */
-@media (max-width:393px) {
+@media (max-width:394px) {
   .column-center{
-  height: 198px;
+  height: 178px;
 }  
 }
 /* Exclusive for medium screen sizes */
 @media (max-width:367px) {
   .column-center{
-  height: 188px;
+  height: 168px;
 }
 }
 }
