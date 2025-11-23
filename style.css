@@ -810,7 +810,31 @@ font-weight: 450;
       font-weight: 500;
       color: white;
     }
-@media (max-width:767px) {
+    .page_label2{
+      display: none;
+    }
+    /* Tab sizes */
+@media (max-width: 1200px) {
+  main {
+    padding: 0 0.7em;
+      margin: 64px 0 0 0;
+  }
+  .page_label2 {
+  background-color: #121313;
+display: flex;
+  padding: 5px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+}
+    @media (max-width:767px) {
   main{
     margin: 70px 0 0 0;
     padding: 0 0.45em;
@@ -820,6 +844,19 @@ font-weight: 450;
     background-color: #e9ebed;
 
   }
+  .page_label2 {
+  background-color: #121313;
+display: flex;
+  padding: 5px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #fff;
+  text-align: center;
+  font-size: 1.1em;
+}
   .column-left,.column-right{
     display: none;
   }
