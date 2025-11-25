@@ -666,8 +666,9 @@ font-weight: 450;
   margin-bottom: 0px;
   object-fit: cover;
 }
-/* Product Information */
-.info-container {
+
+ /* Product Information  */
+ .info-container {
   background: #fff;
   padding: 30px;
   max-width: 1184px;
@@ -813,6 +814,36 @@ font-weight: 450;
     .page_label2{
       display: none;
     }
+
+
+
+/* Initial Hidden State */
+.fadeup {
+  width: 100%;
+  padding: 3px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(5px);
+    border-radius: 5px;
+  transition: all 0.7s ease-out;
+  will-change: opacity, transform, filter;
+}
+.fadeup img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+/* Visible State */
+.fadeup.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+
     /* Tab sizes */
 @media (max-width: 1200px) {
   main {

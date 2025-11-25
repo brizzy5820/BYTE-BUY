@@ -366,33 +366,46 @@ showSlide(current);
  find4Me()
  }
  })
- function startFlashCountdown(endTime) {
-  const tml = document.getElementById("tml");
+ 
+//  function startFlashCountdown(endTime) {
+//   const tml = document.getElementById("tml");
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = endTime - now;
+//   function updateCountdown() {
+//     const now = new Date().getTime();
+//     const distance = endTime - now;
 
-    if (distance <= 0) {
-      clearInterval(timer);
-      tml.innerHTML = "Time Left: <b>Expired</b>";
-      return;
+//     if (distance <= 0) {
+//       clearInterval(timer);
+//       tml.innerHTML = "Time Left: <b>Expired</b>";
+//       return;
+//     }
+
+//     // Calculate time left
+//     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+//     // Update DOM
+//     tml.innerHTML = `Time Left: <b>${hours}h : ${minutes}m : ${seconds}s</b>`;
+//   }
+
+//   updateCountdown(); // run once immediately
+//   const timer = setInterval(updateCountdown, 1000);
+// }
+
+// // Example: sale ends today at midnight
+// const flashSaleEnd = new Date();
+// flashSaleEnd.setHours(23, 59, 59, 999);
+// startFlashCountdown(flashSaleEnd.getTime());
+
+    const fadeElements = document.querySelectorAll('.fadeup');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
     }
+  });
+});
 
-    // Calculate time left
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Update DOM
-    tml.innerHTML = `Time Left: <b>${hours}h : ${minutes}m : ${seconds}s</b>`;
-  }
-
-  updateCountdown(); // run once immediately
-  const timer = setInterval(updateCountdown, 1000);
-}
-
-// Example: sale ends today at midnight
-const flashSaleEnd = new Date();
-flashSaleEnd.setHours(23, 59, 59, 999);
-startFlashCountdown(flashSaleEnd.getTime());
+fadeElements.forEach(el => observer.observe(el));
