@@ -841,7 +841,43 @@ font-weight: 450;
   transform: translateY(0);
   filter: blur(0px);
 }
+/* phones banner animation */
+  .flip-card {
+      width: 100%;
+      height: 150px;
+      perspective: 1000px;
+    }
 
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 9px;
+      overflow: hidden;
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .flip-card-front img,
+    .flip-card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
 
     /* Tab sizes */
 @media (max-width: 1200px) {

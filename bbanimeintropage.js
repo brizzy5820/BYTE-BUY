@@ -398,6 +398,7 @@ showSlide(current);
 // flashSaleEnd.setHours(23, 59, 59, 999);
 // startFlashCountdown(flashSaleEnd.getTime());
 
+// Banners Animation
     const fadeElements = document.querySelectorAll('.fadeup');
 
 const observer = new IntersectionObserver(entries => {
@@ -409,3 +410,31 @@ const observer = new IntersectionObserver(entries => {
 });
 
 fadeElements.forEach(el => observer.observe(el));
+// Phones Banner animation
+
+    const images = [
+      "image/phonesz&tabletimage/note-50-proisdesktopPhones&TabletBanner.jpg",
+      "image/phonesz&tabletimage/pop-10_desktopPhones&TabletBanner.png",
+      "image/phonesz&tabletimage/A3-PRO_1168X384XIOMIPhones&TabletBanner.jpg",
+    ];
+
+    let currentIndex = 0;
+    const front = document.querySelector(".flip-card-front img");
+    const back = document.querySelector(".flip-card-back img");
+    const inner = document.querySelector(".flip-card-inner");
+
+    setInterval(() => {
+      inner.style.transform = "rotateY(180deg)"; // flip to back
+
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        front.src = images[currentIndex]; // update front
+      }, 500); // change while hidden
+
+      setTimeout(() => {
+        inner.style.transform = "rotateY(0deg)"; // flip back to front
+        currentIndex = (currentIndex + 1) % images.length;
+        back.src = images[currentIndex]; // update back
+      }, 5000);
+
+    }, 4000); // flip every 4s
