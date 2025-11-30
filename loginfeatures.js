@@ -2,6 +2,7 @@ import { auth } from "./firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const display = document.getElementById("userName");
+const display2 = document.getElementById("userNameMobile");
 const logoutBtn = document.getElementById("userReg");
 logoutBtn.addEventListener('click',()=>{
   window.location. href="/" 
@@ -11,6 +12,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     // ✅ User is logged in
     display.innerText = `Hi, ${user.displayName || user.email.split("@")[0]}`;
+    display2.innerText = `Hi, ${user.displayName || user.email.split("@")[0]}`;
     logoutBtn.innerHTML='Log Out'
       // 🔑 Logout
 logoutBtn.addEventListener( 'click', async ()=>{
@@ -22,6 +24,7 @@ logoutBtn.addEventListener( 'click', async ()=>{
    else {
     // ❌ No user logged in
     display.innerText = "Account";
+    display2.innerText = "Account";
     logoutBtn.innerHTML='Sign In'
     logoutBtn.onclick = () => window.location.href = "./Authentication/loginform.html";
   }

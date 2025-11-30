@@ -80,7 +80,7 @@
 /* Aside Menu */
 #sideMenu {
   width: 260px;
-  height: 100%;
+  height: 100vh;
   background: #fff;
   position: absolute;
   top: 0;
@@ -98,15 +98,26 @@
 
 /* Close Button */
 .closeBtn {
-  font-size: 32px;
+  /* font-size: 32px; */
   cursor: pointer;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 10px;
 }
-
+.closeBtn h3{
+  font-size: 19px;
+}
+.closeBtn a{
+  align-items: center;
+  
+}
 /* List */
 #sideMenu ul {
   padding: 0;
   list-style: none;
+  margin: 8px 0px;
 }
 
 #sideMenu ul li {
@@ -114,8 +125,11 @@
 }
 #sideMenu a{
   width: 100%;
-  padding: 10px 0px;
-  display: flex;  
+  padding: 10px 4px;
+  display: flex; 
+  border-radius: 5px;
+  gap: 6px; 
+  font-weight: 500;
   height: 100%;
 }
 /* Dark Overlay */
@@ -381,53 +395,90 @@
     </header>
        <div id="overlay"></div>
         <!-- Aside Menu -->
-  <aside id="sideMenu">
-    <div class="closeBtn" id="closeMenu">&times;</div>
-    <h3>Menu</h3>
-    <ul>
-      <li>
-          <a class="submenu-item" href="./appliances.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <rect width="24" height="24" fill="none" />
-            <g fill="none" fill-rule="evenodd">
-              <path
-                d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
-              <path fill="currentColor"
-                d="M14 3a1 1 0 0 1 .117 1.993L14 5h-1v1h1.002c.237.001.475.025.71.055l.341.05c.368.062.816.16 1.31.316a9.5 9.5 0 0 1 3.13 1.678L19.587 8l.707-.707a1 1 0 0 1 1.497 1.32l-.083.094l-.707.707V16a5 5 0 0 1-4.783 4.995L16 21H8a5 5 0 0 1-4.995-4.783L3 16V9.414l-.707-.707a1 1 0 0 1 1.32-1.497l.094.083l.707.707q.048.048.092.099a9.5 9.5 0 0 1 3.13-1.678a10 10 0 0 1 1.31-.316l.341-.05a7 7 0 0 1 .474-.047L9.998 6H11V5h-1a1 1 0 0 1-.117-1.993L10 3zm5 8.21c-4.496.8-8.813.84-13.292.12L5 11.21V16a3 3 0 0 0 2.824 2.995L8 19h8a3 3 0 0 0 2.995-2.824L19 16zM13.996 8l-4.04.001l-.18.013l-.3.034l-.257.04l-.143.027l-.313.068a7.5 7.5 0 0 0-2.63 1.19a37 37 0 0 0 11.734 0a7.5 7.5 0 0 0-2.106-1.044c-.565-.179-1.168-.316-1.764-.329" />
-            </g>
-          </svg>
-          <span>Appliances</span>
-        </a>
-      </li>
-      <li>
-           <a class="submenu-item" href="./phone&laptops.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path fill="currentColor"
-              d="M16 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m-3 19h-2v-1h2zm3-2H8V5h8z" />
-          </svg>
-          <span>Phones & Tablets</span>
-        </a>
-      </li>
-      <li>
-        <a class="submenu-item" href="./health&beauty.html">  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <rect width="24" height="24" fill="none" />
-            <path fill="currentColor"
-              d="m5.654 21l-3.462-9.577l4.77-2.846V3h2v5.577l4.769 2.846L10.269 21zm10.885 0q-.213 0-.357-.144t-.143-.357t.143-.356t.357-.143h3.5v-2.77h-3.5q-.213 0-.357-.143q-.143-.144-.143-.357t.143-.356t.357-.143h3.5v-2.77h-3.5q-.213 0-.357-.143q-.143-.144-.143-.357t.143-.356t.357-.143h3.5v-2.77h-3.5q-.213 0-.357-.144q-.143-.143-.143-.356t.143-.356t.357-.144h3.5V5.923h-3.5q-.213 0-.357-.144q-.143-.144-.143-.356q0-.213.143-.357t.357-.143h3.653q.69 0 1.153.463t.463 1.153v12.846q0 .69-.463 1.153T20.192 21zM6.36 20h3.2l2.95-8.15l-3.677-2.196H7.088L3.412 11.85zm1.6-5.173" />
-          </svg>
-          <span>Health & Beauty</span>
-        </a>
-      </li>
-      <li>
-                  <a class="submenu-item" href="./home&office.html">  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <rect width="24" height="24" fill="none" />
-            <path fill="none" stroke="#000"
-              d="M12.391 4.262a1 1 0 0 0-1.46.035l-6.177 6.919a1 1 0 0 0-.254.666V19.5a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V16a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3.5a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7.591a1 1 0 0 0-.287-.7z"
-              stroke-width="1" />
-          </svg>
-          <span>Home & Office</span>
-        </a>
-      </li>
-      <div>Need Help?</div>
-    </ul>
-  </aside>
+        <aside id="sideMenu">
+          <div class="closeBtn" id="closeMenu">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 6L6 18m12 0L6 6" />
+</svg>
+            <a href="/">
+              <img src="./Logo/ByteBuyLogo.png" style=" width: 25px; object-fit: contain;" alt="">
+              <h3>BYTE-BUY</h3>
+            </a></div>
+          <p style=" margin-bottom: 16px; padding-bottom: 2px; border-bottom: 0.5px solid black;"> <i id="userNameMobile" style="font-size: larger;">Account</i></p>
+          <h3>Categories</h3>
+          <ul>
+            <li>
+              <a class="submenu-item" href="./appliances.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24">
+                  <rect width="24" height="24" fill="none" />
+                  <g fill="none" fill-rule="evenodd">
+                    <path
+                      d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
+                    <path fill="currentColor"
+                      d="M14 3a1 1 0 0 1 .117 1.993L14 5h-1v1h1.002c.237.001.475.025.71.055l.341.05c.368.062.816.16 1.31.316a9.5 9.5 0 0 1 3.13 1.678L19.587 8l.707-.707a1 1 0 0 1 1.497 1.32l-.083.094l-.707.707V16a5 5 0 0 1-4.783 4.995L16 21H8a5 5 0 0 1-4.995-4.783L3 16V9.414l-.707-.707a1 1 0 0 1 1.32-1.497l.094.083l.707.707q.048.048.092.099a9.5 9.5 0 0 1 3.13-1.678a10 10 0 0 1 1.31-.316l.341-.05a7 7 0 0 1 .474-.047L9.998 6H11V5h-1a1 1 0 0 1-.117-1.993L10 3zm5 8.21c-4.496.8-8.813.84-13.292.12L5 11.21V16a3 3 0 0 0 2.824 2.995L8 19h8a3 3 0 0 0 2.995-2.824L19 16zM13.996 8l-4.04.001l-.18.013l-.3.034l-.257.04l-.143.027l-.313.068a7.5 7.5 0 0 0-2.63 1.19a37 37 0 0 0 11.734 0a7.5 7.5 0 0 0-2.106-1.044c-.565-.179-1.168-.316-1.764-.329" />
+                  </g>
+                </svg>
+                <span>Appliances</span>
+              </a>
+            </li>
+            <li>
+              <a class="submenu-item" href="./phone&laptops.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                  height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M16 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m-3 19h-2v-1h2zm3-2H8V5h8z" />
+                </svg>
+                <span>Phones & Tablets</span>
+              </a>
+            </li>
+            <li>
+              <a class="submenu-item" href="./health&beauty.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                  height="24" viewBox="0 0 24 24">
+                  <rect width="24" height="24" fill="none" />
+                  <path fill="currentColor"
+                    d="m5.654 21l-3.462-9.577l4.77-2.846V3h2v5.577l4.769 2.846L10.269 21zm10.885 0q-.213 0-.357-.144t-.143-.357t.143-.356t.357-.143h3.5v-2.77h-3.5q-.213 0-.357-.143q-.143-.144-.143-.357t.143-.356t.357-.143h3.5v-2.77h-3.5q-.213 0-.357-.143q-.143-.144-.143-.357t.143-.356t.357-.143h3.5v-2.77h-3.5q-.213 0-.357-.144q-.143-.143-.143-.356t.143-.356t.357-.144h3.5V5.923h-3.5q-.213 0-.357-.144q-.143-.144-.143-.356q0-.213.143-.357t.357-.143h3.653q.69 0 1.153.463t.463 1.153v12.846q0 .69-.463 1.153T20.192 21zM6.36 20h3.2l2.95-8.15l-3.677-2.196H7.088L3.412 11.85zm1.6-5.173" />
+                </svg>
+                <span>Health & Beauty</span>
+              </a>
+            </li>
+            <li>
+              <a class="submenu-item" href="./home&office.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24">
+                  <rect width="24" height="24" fill="none" />
+                  <path fill="none" stroke="#000"
+                    d="M12.391 4.262a1 1 0 0 0-1.46.035l-6.177 6.919a1 1 0 0 0-.254.666V19.5a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V16a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3.5a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7.591a1 1 0 0 0-.287-.7z"
+                    stroke-width="1" />
+                </svg>
+                <span>Home & Office</span>
+              </a>
+            </li>
+          </ul>
+          <h3>Account</h3>
+          <ul>
+            <li><a class="submenu-item" href="Authentication/signup.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M15 14c-2.67 0-8 1.33-8 4v2h16v-2c0-2.67-5.33-4-8-4m-9-4V7H4v3H1v2h3v3h2v-3h3v-2m6 2a4 4 0 0 0 4-4a4 4 0 0 0-4-4a4 4 0 0 0-4 4a4 4 0 0 0 4 4" />
+                </svg>
+                <span>Sign Up</span>
+              </a>
+        
+            </li>
+            <li><a class="submenu-item" href="Authentication/loginform.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8z" />
+                </svg>
+                <span>Login</span>
+              </a></li>
+            <li><a class="submenu-item" href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h6q.425 0 .713.288T12 4t-.288.713T11 5H5v14h6q.425 0 .713.288T12 20t-.288.713T11 21zm12.175-8H10q-.425 0-.712-.288T9 12t.288-.712T10 11h7.175L15.3 9.125q-.275-.275-.275-.675t.275-.7t.7-.313t.725.288L20.3 11.3q.3.3.3.7t-.3.7l-3.575 3.575q-.3.3-.712.288t-.713-.313q-.275-.3-.262-.712t.287-.688z" />
+                </svg>
+                <span>Log Out</span>
+              </a></li>
+          </ul>
+        </aside>
     <main>
        <!-- Page Bill Board For small phone sizes-->
          <span class="page_label2">Call To Order: 08106146952</span>

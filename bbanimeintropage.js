@@ -12,9 +12,9 @@ window.addEventListener('load', () => {
       // Optional: fade out the intro wrapper after animation finishes
       setTimeout(() => {
         intro.classList.add('fade-out');
-      }, 2300); // book animation duration
-    }, 1500); // initial delay
-  },3000);
+      }, 230); // book animation duration
+    }, 150); // initial delay
+  },300);
   
 // Header dropdowns
   const head1 = document.getElementById('headlistI');
