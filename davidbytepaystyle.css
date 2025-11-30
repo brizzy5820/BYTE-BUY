@@ -328,7 +328,9 @@ footer {
   .agree {
     background-color: #06060a;
   }
-  
+  #searchMobile{
+    display: none;
+  }
   /* ---------- RESPONSIVENESS ---------- */
   
   /* Tablets (medium screens) */
@@ -361,6 +363,12 @@ footer {
       width: 45%;
       text-align: center;
     }
+    #headlistII{
+      display: none;
+    }
+    #searchMobile{
+    display: flex;
+  }
   }
   
   /* Mobile (small screens) */
