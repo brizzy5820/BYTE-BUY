@@ -415,7 +415,7 @@ fadeElements.forEach(el => observer.observe(el));
     const images = [
       "image/phonesz&tabletimage/note-50-proisdesktopPhones&TabletBanner.jpg",
       "image/phonesz&tabletimage/pop-10_desktopPhones&TabletBanner.png",
-      "image/phonesz&tabletimage/A3-PRO_1168X384XIOMIPhones&TabletBanner.jpg",
+      "image/phonesz&tabletimage/Camon-40-Series-1168x384Phones&TabletBanner.jpg",
     ];
 
     let currentIndex = 0;
@@ -438,3 +438,25 @@ fadeElements.forEach(el => observer.observe(el));
       }, 5000);
 
     }, 4000); // flip every 4s
+  const sideMenu = document.getElementById("sideMenu");
+const overlay = document.getElementById("overlay");
+const openMenu = document.getElementById("openMenu");
+const closeMenu = document.getElementById("closeMenu");
+
+openMenu.addEventListener("click", () => {
+  sideMenu.classList.add("open");
+  overlay.classList.add("show");
+    document.body.classList.add("no-scroll"); // Stop main page scroll
+});
+
+closeMenu.addEventListener("click", () => {
+  sideMenu.classList.remove("open");
+  overlay.classList.remove("show");
+    document.body.classList.remove("no-scroll"); // Allow main page scroll
+});
+
+overlay.addEventListener("click", () => {
+  sideMenu.classList.remove("open");
+  overlay.classList.remove("show");
+    document.body.classList.remove("no-scroll"); // Allow main page scroll
+});

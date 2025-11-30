@@ -7,11 +7,27 @@
   <title>Product Overview</title>
   <link rel="stylesheet" href="davidbytepaystyle.css" />
   <link rel="stylesheet" href="flash.css" />
+  <script src="bbanimeintro.js" defer></script>
+    <link rel="shortcut icon" href="Logo/ByteBuyLogo.png" type="image/x-icon">
   <script type="module" src="loginfeatures.js" defer></script>
   
   <style>
     body{
       background-color: #e9ebed;
+    }
+        .spinner {
+      border: 3px solid #ffffff;
+      border-top: 3px solid transparent;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      animation: spin 0.8s linear infinite;
+    }
+      @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
@@ -355,7 +371,7 @@
                               </svg>
                             </div>
                             <button id='addToCartBtn' style="width:100%;background-color: #1b7ec0; border-radius: 4px;padding: 16px;color:white;margin-bottom: 8px; box-shadow: 0 2px 5px rgba(232, 5, 5, 0.05)">
-                              Add to cart
+                          Add to cart
                             </button>
                           </div>
                           <div
@@ -640,6 +656,7 @@ const auth= getAuth(app)
   });
 // Adding Products To Carts
 async function addToCart(productId, productData, collectionName) {
+  document.getElementById('addToCartBtn').innerHTML=`<span class="spinner"></span>`
   const user = auth.currentUser;
   if (!user) {
     alert("You must be logged in to add items to your cart.");
@@ -665,10 +682,12 @@ async function addToCart(productId, productData, collectionName) {
       quantity: 1
     });
   }
-
   alert("✅ Added to cart!");
+  await(() => new Promise(res => setTimeout(res, 500)))(); // small delay for better UX
+  document.getElementById('addToCartBtn').innerHTML=`Add to cart`
 }
 document.getElementById("addToCartBtn").addEventListener("click", () => {
+
   const productId = params.get("id"); // from your URL
   const productData = {
     name: document.getElementById("modal_desc").textContent,

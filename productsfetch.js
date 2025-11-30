@@ -16,7 +16,12 @@
   const container = document.querySelector(`#${sectionId}`);
   
   let containerBucket=""
-
+//   let containerBucket = `
+//   <div class="product-card skeleton"></div>
+//   <div class="product-card skeleton"></div>
+//   <div class="product-card skeleton"></div>
+//   <div class="product-card skeleton"></div>
+// `;
   const snapshot = await db.collection(collectionName).orderBy("createdAt", "desc").limit().get()
   snapshot.forEach(doc => {
     const data = doc.data();

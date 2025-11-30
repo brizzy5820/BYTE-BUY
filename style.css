@@ -666,7 +666,29 @@ font-weight: 450;
   margin-bottom: 0px;
   object-fit: cover;
 }
-
+.Top-row-gif {
+  display: flex;
+  overflow-x: auto;
+  /* height: 100%; */
+height: 60px;
+  width: 100%;
+  max-width: 1184px;
+  /* margin-bottom: 16px; */
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  align-items: center;
+  gap: 8px;
+  /* More space between cards */
+  /* padding: 3px; */
+  scroll-behavior: smooth;
+  /* Smooth scrolling */
+}
+.Top-row-gif img {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 0px;
+  object-fit: cover;
+}
  /* Product Information  */
  .info-container {
   background: #fff;
@@ -846,6 +868,7 @@ font-weight: 450;
       width: 100%;
       height: 150px;
       perspective: 1000px;
+      display: none;
     }
 
     .flip-card-inner {
@@ -878,7 +901,12 @@ font-weight: 450;
     .flip-card-back {
       transform: rotateY(180deg);
     }
-
+ #bigsizeDisp{
+    display: flex;
+  }
+   #smallsizeDisp{
+    display: none;
+  }
     /* Tab sizes */
 @media (max-width: 1200px) {
   main {
@@ -898,7 +926,12 @@ display: flex;
   text-align: center;
   font-size: 1.5em;
 }
-
+ #bigsizeDisp{
+    display: none;
+  }
+   #smallsizeDisp{
+    display: flex;
+  }
 }
     @media (max-width:767px) {
   main{
@@ -909,6 +942,9 @@ display: flex;
   body{
     background-color: #e9ebed;
 
+  }
+  .flip-card{
+    display: flex;
   }
   .page_label2 {
   background-color: #121313;

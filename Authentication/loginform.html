@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Logo/ByteBuyLogo.png" type="image/x-icon">
   <title>Byte-Buy Login</title>
   <style>
+    
     body {
       font-family: "Segoe UI", Arial, sans-serif;
       background: linear-gradient(135deg,#2c0fed,#186bfa, #0d27ac, #156af3e6);
@@ -13,11 +15,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      
     }
 
     .container {
-      width: 360px;
-      padding: 35px 30px;
+       width: 360px;
+      max-width: 100%;
+      padding: 30px 30px;
       border-radius: 12px;
       background: #fff;
       text-align: center;
@@ -205,6 +209,34 @@
       from { transform: scale(0.8); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
+    
+      @media (max-width:767px) {
+          body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      /* background: linear-gradient(135deg,#2c0fed,#186bfa, #0d27ac, #156af3e6); */
+      margin: 0;
+      /* min-height: 100vh; */
+      display: flex;
+      justify-content: center;
+      height: auto;
+      background: #ffffff;
+      align-items: start;
+      /* padding: 10px; */
+    }
+
+    .container {
+       width: 100%;
+      max-width: 100%;
+      padding: 40px 30px;
+      height: 100%;
+      border-radius: 12px;
+      /* background: #fff; */
+      text-align: center;
+      box-shadow: none;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    }
   </style>
 </head>
 <body>
@@ -243,7 +275,8 @@
     <div class="support">
       <p>For further support, visit our help center or contact customer service.</p>
     </div>
-  </div>
+    <div class="signup">  
+    <p >Back to <a href="/">Home</a></p></div>
 
   <!-- Success Modal -->
   <div id="successModal" class="modal">

@@ -4,7 +4,7 @@ import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/
 const display = document.getElementById("userName");
 const logoutBtn = document.getElementById("userReg");
 logoutBtn.addEventListener('click',()=>{
-  window.location. href="../BYTEBUY/Authentication/loginform.html" 
+  window.location. href="/" 
 })
 // 🔑 Listen for login status
 onAuthStateChanged(auth, (user) => {
