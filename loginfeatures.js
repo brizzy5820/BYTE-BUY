@@ -24,7 +24,7 @@ logoutBtn.addEventListener( 'click', async ()=>{
    else {
     // ❌ No user logged in
     display.innerText = "Account";
-    display2.innerText = "Account";
+    display2.innerText = "Hi, User";
     logoutBtn.innerHTML='Sign In'
     logoutBtn.onclick = () => window.location.href = "./Authentication/loginform.html";
   }
