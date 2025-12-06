@@ -66,6 +66,7 @@ display:flex;
 .headerinput {
     display: flex;
     align-items: center;
+    position: relative;
     width: 55%;
     gap: 8px;
 }
@@ -91,6 +92,31 @@ display:flex;
 .headerinput button:hover {
     background-color: #145a8d;
 }
+
+.suggest-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 180px;
+  overflow-y: auto;
+  display: none;
+  z-index: 2000;
+}
+
+.suggest-box div {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.suggest-box div:hover {
+  background: #f0f0f0;
+}
+
 /* === HEADER LINKS (ACCOUNT, HELP, CART) === */
 .headnav ul {
     display: flex;
@@ -121,6 +147,7 @@ display:flex;
     color: #444;
     transition: color 0.2s ease;
 }
+
 .headnav ul li:hover .headicon {
     color: #1b7ec0;
 }
@@ -164,7 +191,9 @@ display:flex;
 .icon-drop.active{
 border-bottom:2px solid #0f0f0f80;
 }
-
+.mobileHeadlistI{
+  display: none !;
+}
 .submenu-cat a{
     display: flex;
     align-items: center;
@@ -444,7 +473,12 @@ header .dropdown{
 .secondBatch img{
   width:30px !important;
    }
-
+   #headlistI{
+    display: none;
+   }
+.mobileHeadlistI{
+  display: flex !important;
+}
 /* Exclusive for medium phone sizes */
 @media(max-width:397px){
   header h2{

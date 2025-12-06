@@ -4,6 +4,7 @@ import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/
 const display = document.getElementById("userName");
 const display2 = document.getElementById("userNameMobile");
 const logoutBtn = document.getElementById("userReg");
+const logoutBtn2 = document.getElementById("userRegII");
 logoutBtn.addEventListener('click',()=>{
   window.location. href="/" 
 })
@@ -20,7 +21,13 @@ logoutBtn.addEventListener( 'click', async ()=>{
   alert("You have been logged out.");
   window.location.href = "./Authentication/loginform.html";
 }) 
+  logoutBtn2.addEventListener( 'click', async ()=>{
+  await signOut(auth);
+  alert("You have been logged out.");
+  window.location.href = "./Authentication/loginform.html";
+}) 
   }
+
    else {
     // ❌ No user logged in
     display.innerText = "Account";
@@ -29,6 +36,7 @@ logoutBtn.addEventListener( 'click', async ()=>{
     logoutBtn.onclick = () => window.location.href = "./Authentication/loginform.html";
   }
 });
+
 // const carts=document.getElementById('cartsPage')
 // carts.addEventListener('click',()=>{
 //   window.location.href='./BYTE-BUY Help section/javascriptProject/cart.html'

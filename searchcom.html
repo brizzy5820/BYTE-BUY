@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Suggest Demo</title>
+
+<style>
+  body { font-family: Arial; padding: 20px; }
+
+  .search-box {
+    position: relative;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 6px;
+  }
+
+  .suggestions {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    z-index: 20;
+  }
+
+  .suggestions div {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .suggestions div:hover {
+    background: #f0f0f0;
+  }
+</style>
+
+</head>
+<body>
+
+<h2>Auto Suggest for Multiple Inputs</h2>
+
+<!-- TWO INPUTS USING SAME LOGIC -->
+<div class="search-box">
+  <input type="text" class="searchInput" placeholder="Search...">
+  <div class="suggestions"></div>
+</div>
+
+<div class="search-box">
+  <input type="text" class="searchInput" placeholder="Search again...">
+  <div class="suggestions"></div>
+</div>
+
+<script>
+  // Sample data for auto-suggest
+  const items = [
+    "Nokia 3310", "Nokia G20", "Nokia C31",
+    "Samsung A10", "Samsung A50",
+    "iPhone X", "iPhone 11", "iPhone 14 Pro",
+    "Tecno Spark 10", "Tecno Pop 7",
+    "Infinix Hot 12", "Infinix Note 30"
+  ];
+
+  const inputs = document.querySelectorAll(".searchInput");
+
+  inputs.forEach(input => {
+    const suggestionBox = input.parentElement.querySelector(".suggestions");
+
+    // Listen for typing
+    input.addEventListener("keyup", (e) => {
+      let value = input.value.toLowerCase();
+      suggestionBox.innerHTML = "";
+
+      // If empty hide box
+      if (value.trim() === "") {
+        suggestionBox.style.display = "none";
+        return;
+      }
+
+      // Filter results
+      let suggestions = items.filter(item =>
+        item.toLowerCase().includes(value)
+      );
+
+      // If no match
+      if (suggestions.length === 0) {
+        suggestionBox.style.display = "none";
+        return;
+      }
+
+      // Display matches
+      suggestions.forEach(item => {
+        let div = document.createElement("div");
+        div.textContent = item;
+
+        // When user clicks a suggestion
+        div.addEventListener("click", () => {
+          // Apply to ALL inputs at once
+          inputs.forEach(inp => inp.value = item);
+
+          suggestionBox.style.display = "none";
+        });
+
+        suggestionBox.appendChild(div);
+      });
+
+      suggestionBox.style.display = "block";
+    });
+
+    // Press enter → perform search using shared value
+    input.addEventListener("keypress", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+
+        let searchValue = input.value.trim();
+        alert("Search triggered: " + searchValue);
+
+        suggestionBox.style.display = "none";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

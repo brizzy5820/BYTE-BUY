@@ -16,6 +16,75 @@ window.addEventListener('load', () => {
     }, 150); // initial delay
   },300);
   
+// Banners Animation
+    const fadeElements = document.querySelectorAll('.fadeup');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+fadeElements.forEach(el => observer.observe(el));
+// Phones Banner animation
+
+    const images = [
+      "image/phonesz&tabletimage/note-50-proisdesktopPhones&TabletBanner.jpg",
+      "image/phonesz&tabletimage/pop-10_desktopPhones&TabletBanner.png",
+      "image/phonesz&tabletimage/Camon-40-Series-1168x384Phones&TabletBanner.jpg",
+    ];
+
+    let currentIndex = 0;
+    const front = document.querySelector(".flip-card-front img");
+    const back = document.querySelector(".flip-card-back img");
+    const inner = document.querySelector(".flip-card-inner");
+
+    setInterval(() => {
+      inner.style.transform = "rotateY(180deg)"; // flip to back
+
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        front.src = images[currentIndex]; // update front
+      }, 500); // change while hidden
+
+      setTimeout(() => {
+        inner.style.transform = "rotateY(0deg)"; // flip back to front
+        currentIndex = (currentIndex + 1) % images.length;
+        back.src = images[currentIndex]; // update back
+      }, 5000);
+
+    }, 4000); // flip every 4s
+  const sideMenu = document.getElementById("sideMenu");
+const overlay = document.getElementById("overlay");
+const openMenu = document.getElementById("openMenu");
+const closeMenu = document.getElementById("closeMenu");
+
+openMenu.addEventListener("click", () => {
+  sideMenu.classList.add("open");
+  overlay.classList.add("show");
+    document.body.classList.add("no-scroll"); // Stop main page scroll
+});
+
+closeMenu.addEventListener("click", () => {
+  sideMenu.classList.remove("open");
+  overlay.classList.remove("show");
+    document.body.classList.remove("no-scroll"); // Allow main page scroll
+});
+
+overlay.addEventListener("click", () => {
+  sideMenu.classList.remove("open");
+  overlay.classList.remove("show");
+    document.body.classList.remove("no-scroll"); // Allow main page scroll
+});
+// For mobile SearchBar
+const openSearch = document.getElementById("searchMobile");
+const searchBar = document.getElementById("searchBar");
+
+openSearch.addEventListener("click", () => {
+  searchBar.classList.toggle("show");
+});
 // Header dropdowns
   const head1 = document.getElementById('headlistI');
   const innerList1 = document.getElementById('innerlistI');
@@ -112,20 +181,18 @@ showSlide(current);
 
   // Header Search 
  // Header Search 
- const find= document.getElementById('searchInput')
+
+    const find= document.querySelectorAll('.searchInput')
  const searchBtn= document.getElementById('searchBtn')
- searchBtn.addEventListener("input", () => {
- const filter = searchInput.value.toLowerCase();
- const cards = productList.querySelectorAll(".product-card");
- cards.forEach(card => {
-   const text = card.textContent.toLowerCase();
-   card.style.display = text.includes(filter) ? "" : "none";
- });
- })
- const find4Me=()=>{
- const val = find.value.trim().toLowerCase();
- // Category → { keywords, page }
- const categories = {
+//  searchBtn.addEventListener("input", () => {
+//  const filter = searchInput.value.toLowerCase();
+//  const cards = productList.querySelectorAll(".product-card");
+//  cards.forEach(card => {
+//    const text = card.textContent.toLowerCase();
+//    card.style.display = text.includes(filter) ? "" : "none";
+//  });
+//  })
+  const categories = {
  phones: {
    keywords: ["phone", "phones",
  "android", "androids", "andriod", "andriods",
@@ -205,12 +272,17 @@ showSlide(current);
      "kitchen appliance", "kitchen appliances",
      "cooking appliance", "cooking appliances",
      "gas cooker", "gas cookers",
+     "kettle", "kettles",
+     "jug", "jugs",
+     "sandwich maker", "sandwich makers",
      "electric cooker", "electric cookers",
      "stove", "stoves",
      "hot plate", "hot plates",
      "pressure cooker", "pressure cookers",
      "food processor", "food processors",
      "grinder", "grinders",
+     "potter", "potters",
+     "pot", "pots",
      "mixer", "mixers",
      "water dispenser", "water dispensers",
  
@@ -284,6 +356,7 @@ showSlide(current);
      "hair spray", "hair sprays",
      "edge control", "edge controls",
      "wig", "wigs",
+     "haitcream", "haircreams",
      "hair extension", "hair extensions",
      "weave", "weaves",
  
@@ -294,6 +367,7 @@ showSlide(current);
      "razor", "razors",
      "shaving stick", "shaving sticks",
      "shaving cream", "shaving creams",
+     "cream", "creams",
      "deodorant", "deodorants",
      "sanitary pad", "sanitary pads",
      "menstrual product", "menstrual products",
@@ -341,31 +415,105 @@ showSlide(current);
    page: "home&office.html"
  },
  };
- 
- // Find matching category
- let matched = null;
- for (const key in categories) {
- if (categories[key].keywords.some(keyword => val.includes(keyword))) {
-   matched = categories[key];
-   break;
- }
- }
- // Redirect or alert
- if (matched) {
- location.href = matched.page;
- } else {
- alert("no related content");
- }
- find.innerHTML=''
- }
- searchBtn.addEventListener('click',event=>{
- find4Me()
- })
- find.addEventListener('keydown',(e)=>{
- if(e.key==='Enter'){
- find4Me()
- }
- })
+ // COMBINE ALL KEYWORDS FOR SUGGESTIONS
+// =====================
+let allKeywords = [];
+for (let key in categories) {
+  allKeywords.push(...categories[key].keywords);
+}
+
+const find4Me = () => {
+  const val = Array.from(find)
+    .map(input => input.value.toLowerCase())
+    .join(" ");
+
+  let matched = null;
+
+  for (const key in categories) {
+    if (categories[key].keywords.some(keyword => val.includes(keyword))) {
+      matched = categories[key];
+      break;
+    }
+  }
+
+  if (matched?.page) {
+    location.href = matched.page;
+  } else {
+    alert("no related content");
+  }
+
+  // Reset
+  find.forEach(input => input.value = "");
+};
+
+// MAIN LOOP: APPLY EVENTS TO EACH INPUT
+// =====================
+find.forEach(input => {
+  const suggestBox = input.parentElement.querySelector('.suggest-box');
+
+  // ---------------------
+  // 1. INPUT – SHOW SUGGESTIONS
+  // ---------------------
+  input.addEventListener('input', () => {
+    const text = input.value.toLowerCase().trim();
+    suggestBox.innerHTML = "";
+
+    if (text.length < 1) {
+      suggestBox.style.display = "none";
+      return;
+    }
+
+    const matches = allKeywords.filter(word => word.toLowerCase().includes(text));
+
+    if (matches.length > 0) {
+      suggestBox.style.display = "block";
+
+      matches.slice(0, 8).forEach(word => {
+        const option = document.createElement('div');
+        option.textContent = word;
+
+        option.addEventListener('click', () => {
+          // fill ALL inputs with the selected word
+          find.forEach(inp => inp.value = word);
+
+          suggestBox.style.display = "none";
+        });
+
+        suggestBox.appendChild(option);
+      });
+    } else {
+      suggestBox.style.display = "none";
+    }
+  });
+
+  // ---------------------
+  // 2. ENTER KEY – RUN SEARCH
+  // ---------------------
+  input.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      suggestBox.style.display = "none";
+      find4Me();
+    }
+  });
+
+  // ---------------------
+  // 3. CLICK OUTSIDE – CLOSE BOX
+  // ---------------------
+  document.addEventListener("click", (e) => {
+    if (!input.contains(e.target)) {
+      suggestBox.style.display = "none";
+    }
+  });
+});
+
+// =====================
+// BUTTON CLICK
+// =====================
+searchBtn.addEventListener("click", () => {
+  find4Me();
+});
+// Flash Sale Countdown Timer
  
 //  function startFlashCountdown(endTime) {
 //   const tml = document.getElementById("tml");
@@ -397,66 +545,3 @@ showSlide(current);
 // const flashSaleEnd = new Date();
 // flashSaleEnd.setHours(23, 59, 59, 999);
 // startFlashCountdown(flashSaleEnd.getTime());
-
-// Banners Animation
-    const fadeElements = document.querySelectorAll('.fadeup');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-});
-
-fadeElements.forEach(el => observer.observe(el));
-// Phones Banner animation
-
-    const images = [
-      "image/phonesz&tabletimage/note-50-proisdesktopPhones&TabletBanner.jpg",
-      "image/phonesz&tabletimage/pop-10_desktopPhones&TabletBanner.png",
-      "image/phonesz&tabletimage/Camon-40-Series-1168x384Phones&TabletBanner.jpg",
-    ];
-
-    let currentIndex = 0;
-    const front = document.querySelector(".flip-card-front img");
-    const back = document.querySelector(".flip-card-back img");
-    const inner = document.querySelector(".flip-card-inner");
-
-    setInterval(() => {
-      inner.style.transform = "rotateY(180deg)"; // flip to back
-
-      setTimeout(() => {
-        currentIndex = (currentIndex + 1) % images.length;
-        front.src = images[currentIndex]; // update front
-      }, 500); // change while hidden
-
-      setTimeout(() => {
-        inner.style.transform = "rotateY(0deg)"; // flip back to front
-        currentIndex = (currentIndex + 1) % images.length;
-        back.src = images[currentIndex]; // update back
-      }, 5000);
-
-    }, 4000); // flip every 4s
-  const sideMenu = document.getElementById("sideMenu");
-const overlay = document.getElementById("overlay");
-const openMenu = document.getElementById("openMenu");
-const closeMenu = document.getElementById("closeMenu");
-
-openMenu.addEventListener("click", () => {
-  sideMenu.classList.add("open");
-  overlay.classList.add("show");
-    document.body.classList.add("no-scroll"); // Stop main page scroll
-});
-
-closeMenu.addEventListener("click", () => {
-  sideMenu.classList.remove("open");
-  overlay.classList.remove("show");
-    document.body.classList.remove("no-scroll"); // Allow main page scroll
-});
-
-overlay.addEventListener("click", () => {
-  sideMenu.classList.remove("open");
-  overlay.classList.remove("show");
-    document.body.classList.remove("no-scroll"); // Allow main page scroll
-});

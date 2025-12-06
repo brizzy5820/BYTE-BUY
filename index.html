@@ -81,7 +81,7 @@
 #sideMenu {
   width: 260px;
   height: 100vh;
-  background: #fff;
+      background: linear-gradient(135deg, #ffffff 0%, #b6cbf0 100%);
   position: fixed;
   top: 0;
   left: -260px;
@@ -146,7 +146,40 @@
 #overlay.show {
   display: block;
 }
+/* Serach Bar Component for mobile*/
 
+/* Sticky Search Bar */
+.search-wrapper {
+  width: 100%;
+  background: rgb(8, 6, 152);
+  padding: 12px;
+  display: none;
+  position: sticky;       /* makes it stick when scrolling */
+  top: 46px;              /* stays below header */
+  z-index: 1500;
+
+  /* hidden state */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* When shown */
+.search-wrapper.show {
+  max-height: 70px;
+  opacity: 1;
+  display: block;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
 /* Card Layout */
 .product-card {
   width: 100%;
@@ -325,7 +358,8 @@
       <!-- Header Navigation -->
       <nav class="headnav">
         <span class="headerinput">
-          <input type="text" id="searchInput" placeholder="Search Products,Categories,Designs"> <button id="searchBtn">Search</button>
+          <input type="text" class="searchInput" placeholder="Search Products,Categories,Designs"> <button id="searchBtn">Search</button>
+            <div class="suggest-box"></div>
         </span>
         <ul>
           <!-- Dropdown 1-->
@@ -350,6 +384,15 @@
             </div>
           </li>
           </li>
+          <!-- Accout Nav For Mobile -->
+            <li class="mobileHeadlistI" style="display: none;">
+             <a href="Authentication/loginform.html">
+                <svg class="headicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M14 20H4v-3c0-2.7 5.3-4 8-4c1.5 0 3.9.4 5.7 1.3c-.8.3-1.4.7-2 1.2c-1.1-.4-2.4-.6-3.7-.6c-3 0-6.1 1.5-6.1 2.1v1.1h8.3c-.1.4-.2.9-.2 1.4zm9-.5c0 1.9-1.6 3.5-3.5 3.5S16 21.4 16 19.5s1.6-3.5 3.5-3.5s3.5 1.6 3.5 3.5M12 6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-2C9.8 4 8 5.8 8 8s1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4" />
+              </svg>
+             </a>
+            </li>
           <!-- Dropdown 2-->
           <li id="headlistII">
             <div class="headlist">
@@ -404,6 +447,14 @@
       </nav>
     </div>
     </header>
+    
+<!-- Sticky Search Bar -->
+<div id="searchBar" class="search-wrapper">
+  <div style="position: relative; flex: 1;">
+    <input type="text" class="searchInput" placeholder="Search products..." />
+  <div class="suggest-box" style="z-index: 1000;"></div>
+  </div>
+</div>
        <div id="overlay"></div>
         <!-- Aside Menu -->
         <aside id="sideMenu">
@@ -481,7 +532,7 @@
                 </svg>
                 <span>Login</span>
               </a></li>
-            <li><a class="submenu-item" href="">
+            <li><a class="submenu-item" id="userRegII" href="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path fill="currentColor"
                     d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h6q.425 0 .713.288T12 4t-.288.713T11 5H5v14h6q.425 0 .713.288T12 20t-.288.713T11 21zm12.175-8H10q-.425 0-.712-.288T9 12t.288-.712T10 11h7.175L15.3 9.125q-.275-.275-.275-.675t.275-.7t.7-.313t.725.288L20.3 11.3q.3.3.3.7t-.3.7l-3.575 3.575q-.3.3-.712.288t-.713-.313q-.275-.3-.262-.712t.287-.688z" />
@@ -775,7 +826,7 @@
                   <section class="Top-sales">
                     <div class="Top-header">
                       <span style="font-size: 20px;">Hair Care Routine</span>
-                      <a style="cursor: pointer; font-size: 14px;">See All
+                      <a href="health&beauty.html" style="cursor: pointer; font-size: 14px;">See All
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
                           <rect width="12" height="24" fill="none" />
                           <path fill="currentColor" fill-rule="evenodd"
@@ -802,13 +853,13 @@
                   <section class="Top-sales">
                     <div class="Top-header">
                       <span style="font-size: 20px;">Binatone Official Store</span>
-                      <span style="cursor: pointer; font-size: 14px;">See All
+                      <a href="appliances.html" style="cursor: pointer; font-size: 14px;">See All
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 24">
                           <rect width="12" height="24" fill="none" />
                           <path fill="currentColor" fill-rule="evenodd"
                             d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
                         </svg>
-                      </span>
+                      </a>
                     </div>
       
                     <div class="Top-row" id="blockXI">
