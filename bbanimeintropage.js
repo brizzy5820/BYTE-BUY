@@ -85,6 +85,7 @@ const searchBar = document.getElementById("searchBar");
 openSearch.addEventListener("click", () => {
   searchBar.classList.toggle("show");
 });
+
 // Header dropdowns
   const head1 = document.getElementById('headlistI');
   const innerList1 = document.getElementById('innerlistI');
@@ -370,6 +371,7 @@ showSlide(current);
      "cream", "creams",
      "deodorant", "deodorants",
      "sanitary pad", "sanitary pads",
+     "roll on","nivea products",
      "menstrual product", "menstrual products",
      "health supplement", "health supplements",
      "vitamin", "vitamins",
@@ -393,6 +395,8 @@ showSlide(current);
  "power backup", "power backups",
  "eco-friendly product", "eco-friendly products",
  "office supply", "office supplies",
+ "generator","generators",
+ "clock" ,"wallclock",
  "home appliance", "home appliances",
  "desk accessory", "desk accessories",
  "lamp", "lamps",
@@ -475,7 +479,7 @@ find.forEach(input => {
         option.addEventListener('click', () => {
           // fill ALL inputs with the selected word
           find.forEach(inp => inp.value = word);
-
+          find4Me()
           suggestBox.style.display = "none";
         });
 
@@ -513,35 +517,48 @@ find.forEach(input => {
 searchBtn.addEventListener("click", () => {
   find4Me();
 });
-// Flash Sale Countdown Timer
- 
-//  function startFlashCountdown(endTime) {
-//   const tml = document.getElementById("tml");
+const asideLinks = document.querySelectorAll("#sideMenu a");
+const btn1= document.querySelector('.btn1')
+const btn2= document.querySelector('.btn3')
+const btn3= document.querySelector('.btn2')
+ btn3.style.background='#e9ebed'
+function changeTheme(theme) {
+  const body = document.body;
+  const aside = document.getElementById('sideMenu');
 
-//   function updateCountdown() {
-//     const now = new Date().getTime();
-//     const distance = endTime - now;
+  if (theme === 'blue') {
+    body.style.background = "#1e3c72";
+    aside.style.background = "#16315c";
+    btn1.style.background='#1e3c72'
+    btn2.style.background=''
+    btn3.style.background=''
+     aside.style.color = "white";  // readable text
+    asideLinks.forEach(link => {
+      link.style.color = "white";  // readable text
+    });
+  }
 
-//     if (distance <= 0) {
-//       clearInterval(timer);
-//       tml.innerHTML = "Time Left: <b>Expired</b>";
-//       return;
-//     }
+  if (theme === 'light') {
+    body.style.background = "#e9ebed";
+    aside.style.background = "#cdd0d3";
+     btn1.style.background=''
+    btn2.style.background=''
+    btn3.style.background='#e9ebed'
+    aside.style.color = "black";  // readable text
+    asideLinks.forEach(link => {
+      link.style.color = "black";  // readable text
+    });
+  }
 
-//     // Calculate time left
-//     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-//     // Update DOM
-//     tml.innerHTML = `Time Left: <b>${hours}h : ${minutes}m : ${seconds}s</b>`;
-//   }
-
-//   updateCountdown(); // run once immediately
-//   const timer = setInterval(updateCountdown, 1000);
-// }
-
-// // Example: sale ends today at midnight
-// const flashSaleEnd = new Date();
-// flashSaleEnd.setHours(23, 59, 59, 999);
-// startFlashCountdown(flashSaleEnd.getTime());
+  if (theme === 'black') {
+    body.style.background = "#100f0f";
+    aside.style.background = "#090909";
+      btn1.style.background=''
+    btn2.style.background=' #191717ff'
+    btn3.style.background=''
+     aside.style.color = "white";  // readable text
+    asideLinks.forEach(link => {
+      link.style.color = "white";  // readable text
+    });
+  }
+}
