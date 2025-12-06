@@ -33,7 +33,7 @@ body {
   display:flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1184px;
+  /* max-width: 1184px; */
   gap:16px;
   /* padding: 16px 0; */
   margin:0 auto;
