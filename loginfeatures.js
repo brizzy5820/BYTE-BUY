@@ -5,9 +5,9 @@ const display = document.getElementById("userName");
 const display2 = document.getElementById("userNameMobile");
 const logoutBtn = document.getElementById("userReg");
 const logoutBtn2 = document.getElementById("userRegII");
-logoutBtn.addEventListener('click',()=>{
-  window.location. href="/" 
-})
+// logoutBtn.addEventListener('click',()=>{
+//   window.location. href="/" 
+// })
 // 🔑 Listen for login status
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -15,16 +15,17 @@ onAuthStateChanged(auth, (user) => {
     display.innerText = `Hi, ${user.displayName || user.email.split("@")[0]}`;
     display2.innerText = `Hi, ${user.displayName || user.email.split("@")[0]}`;
     logoutBtn.innerHTML='Log Out'
+    logoutBtn2.style.display='flex'
       // 🔑 Logout
 logoutBtn.addEventListener( 'click', async ()=>{
   await signOut(auth);
-  alert("You have been logged out.");
-  window.location.href = "./Authentication/loginform.html";
+  showLogoutNotification()
+  // window.location.href = "./Authentication/loginform.html";
 }) 
   logoutBtn2.addEventListener( 'click', async ()=>{
   await signOut(auth);
-  alert("You have been logged out.");
-  window.location.href = "./Authentication/loginform.html";
+  showLogoutNotification()
+  // window.location.href = "./Authentication/loginform.html";
 }) 
   }
 
@@ -33,10 +34,24 @@ logoutBtn.addEventListener( 'click', async ()=>{
     display.innerText = "Account";
     display2.innerText = "Hi, User";
     logoutBtn.innerHTML='Sign In'
+    logoutBtn2.style.display='none'
     logoutBtn.onclick = () => window.location.href = "./Authentication/loginform.html";
   }
 });
+function showLogoutNotification() {
+      const notification = document.getElementById('logoutNotification');
+      notification.classList.add('show');
+      
+      // Auto-hide after 4 seconds
+      setTimeout(() => {
+        hideLogoutNotification();
+      }, 4000);
+    }
 
+    function hideLogoutNotification() {
+      const notification = document.getElementById('logoutNotification');
+      notification.classList.remove('show');
+    }
 // const carts=document.getElementById('cartsPage')
 // carts.addEventListener('click',()=>{
 //   window.location.href='./BYTE-BUY Help section/javascriptProject/cart.html'

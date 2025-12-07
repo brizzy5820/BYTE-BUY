@@ -538,7 +538,7 @@
                 </svg>
                 <span>Login</span>
               </a></li>
-            <li><a class="submenu-item" id="userRegII" href="">
+            <li><a class="submenu-item" id="userRegII" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path fill="currentColor"
                     d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h6q.425 0 .713.288T12 4t-.288.713T11 5H5v14h6q.425 0 .713.288T12 20t-.288.713T11 21zm12.175-8H10q-.425 0-.712-.288T9 12t.288-.712T10 11h7.175L15.3 9.125q-.275-.275-.275-.675t.275-.7t.7-.313t.725.288L20.3 11.3q.3.3.3.7t-.3.7l-3.575 3.575q-.3.3-.712.288t-.713-.313q-.275-.3-.262-.712t.287-.688z" />
@@ -546,6 +546,7 @@
                 <span>Log Out</span>
               </a></li>
           </ul>
+   
            <h3>Theme</h3>
           <ul>
             <li class="btn2" onclick="changeTheme('light')">
@@ -565,6 +566,23 @@
               Dim</li>
           </ul>
         </aside>
+        <!-- Logout Notification -->
+  <div class="logout-notification" id="logoutNotification">
+    <div class="notification-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <div class="notification-content">
+      <p>You have been logged out successfully</p>
+    </div>
+    <button class="notification-close" onclick="hideLogoutNotification()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
     <main>
        <!-- Page Bill Board For small phone sizes-->
          <span class="page_label2">Call To Order: 08106146952</span>

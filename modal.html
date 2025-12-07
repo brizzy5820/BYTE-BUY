@@ -47,6 +47,146 @@
   /* hidden on desktop */
   display: none;
 }
+/* Fullscreen overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+/* Modal Box */
+.modal-box {
+  background: white;
+  width: 100%;
+  max-width: 350px;
+  padding: 22px;
+  border-radius: 12px;
+  text-align: center;
+  animation: popIn 0.28s ease;
+}
+
+/* Animation */
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.modal-box h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+.modal-box p {
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#loginBtn {
+  background: #f68b1e;
+  color: white;
+}
+
+#closeModal {
+  background: #ddd;
+  color: #333;
+}
+/* Fullscreen overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+/* Modal Box */
+.modal-box {
+  background: white;
+  width: 100%;
+  max-width: 350px;
+  padding: 22px;
+  border-radius: 12px;
+  text-align: center;
+  animation: popIn 0.28s ease;
+}
+
+/* Animation */
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.modal-box h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+.modal-box p {
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#loginBtn {
+  background: #264996;
+  color: white;
+}
+
+#closeModal {
+  background: #ddd;
+  color: #333;
+}
 
     @media  (max-width:900px) {
       body{
@@ -101,8 +241,6 @@
   font-size: 16px;
   font-weight: bold;
 }
-
-    
   
   </style>
 </head>
@@ -226,8 +364,37 @@
       </nav>
     </div>
   </header>
-
+    <!-- Carts Notification -->
+  <div class="logout-notification" id="logoutNotification">
+    <div class="notification-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <div class="notification-content">
+      <p>Added to carts successfully</p>
+    </div>
+    <button class="notification-close" onclick="hideLogoutNotification()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
     <main>
+      <!-- Login Required Modal -->
+<div id="loginModal" class="modal-overlay">
+  <div class="modal-box">
+    <h2>Login Required</h2>
+    <p>You need to be logged in to add items to your cart.</p>
+
+    <div class="modal-buttons">
+      <button id="loginBtn">Login</button>
+      <button id="closeModal">Cancel</button>
+    </div>
+  </div>
+</div>
+
       <div class="carrier" style="
             display: flex;
             flex-direction: column;
@@ -647,7 +814,20 @@ const auth= getAuth(app)
    // Get productId from URL
   const params = new URLSearchParams(window.location.search);
   const productId = params.get("id");
+  function showLogoutNotification() {
+      const notification = document.getElementById('logoutNotification');
+      notification.classList.add('show');
+      
+      // Auto-hide after 4 seconds
+      setTimeout(() => {
+        hideLogoutNotification();
+      }, 4000);
+    }
 
+    function hideLogoutNotification() {
+      const notification = document.getElementById('logoutNotification');
+      notification.classList.remove('show');
+    }
   // Load Product Function (v9)
   async function loadProduct(productId) {
     if (!productId) return null;
@@ -702,13 +882,49 @@ const auth= getAuth(app)
       console.log("Product not found in any collection.");
     }
   });
+  const loginModal = document.getElementById("loginModal");
+const loginBtn = document.getElementById("loginBtn");
+const closeModal = document.getElementById("closeModal");
+
+// Open modal
+function showLoginModal() {
+  loginModal.style.display = "flex";
+}
+
+// Close modal
+closeModal.addEventListener("click", () => {
+  loginModal.style.display = "none";
+});
+
+// Redirect to login page
+loginBtn.addEventListener("click", () => {
+  window.location.href = "Authentication/loginform.html";
+   document.getElementById('addToCartBtn').innerHTML=`Add to cart`
+  document.getElementById('addToCartBtnII').innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024">
+	<path fill="currentColor" d="M1015.66 284a31.82 31.82 0 0 0-25.999-13.502h-99.744L684.78 95.666c-24.976-24.976-65.52-25.008-90.495 0L392.638 270.498h-82.096l-51.408-177.28c-20.16-69.808-68.065-77.344-87.713-77.344H34.333c-17.568 0-31.776 14.224-31.776 31.776S16.78 79.425 34.332 79.425h137.056c4.336 0 17.568 0 26.593 31.184l176.848 649.936c3.84 13.712 16.336 23.183 30.592 23.183h431.968c13.408 0 25.376-8.4 29.904-21.024l152.256-449.68c3.504-9.744 2.048-20.592-3.888-29.024zM639.537 140.93l152.032 129.584H487.457zm175.488 579.263H429.538L328.386 334.065h616.096zm-63.023 127.936c-44.192 0-80 35.808-80 80s35.808 80 80 80s80-35.808 80-80s-35.808-80-80-80m-288 0c-44.192 0-80 35.808-80 80s35.808 80 80 80s80-35.808 80-80s-35.808-80-80-80" />
+</svg>
+    Add to Cart`
+});
+
+// Click outside closes modal
+loginModal.addEventListener("click", (e) => {
+  if (e.target === loginModal) {
+    loginModal.style.display = "none";
+  }
+   document.getElementById('addToCartBtn').innerHTML=`Add to cart`
+  document.getElementById('addToCartBtnII').innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024">
+	<path fill="currentColor" d="M1015.66 284a31.82 31.82 0 0 0-25.999-13.502h-99.744L684.78 95.666c-24.976-24.976-65.52-25.008-90.495 0L392.638 270.498h-82.096l-51.408-177.28c-20.16-69.808-68.065-77.344-87.713-77.344H34.333c-17.568 0-31.776 14.224-31.776 31.776S16.78 79.425 34.332 79.425h137.056c4.336 0 17.568 0 26.593 31.184l176.848 649.936c3.84 13.712 16.336 23.183 30.592 23.183h431.968c13.408 0 25.376-8.4 29.904-21.024l152.256-449.68c3.504-9.744 2.048-20.592-3.888-29.024zM639.537 140.93l152.032 129.584H487.457zm175.488 579.263H429.538L328.386 334.065h616.096zm-63.023 127.936c-44.192 0-80 35.808-80 80s35.808 80 80 80s80-35.808 80-80s-35.808-80-80-80m-288 0c-44.192 0-80 35.808-80 80s35.808 80 80 80s80-35.808 80-80s-35.808-80-80-80" />
+</svg>
+    Add to Cart`
+});
+
 // Adding Products To Carts
 async function addToCart(productId, productData, collectionName) {
   document.getElementById('addToCartBtn').innerHTML=`<span class="spinner"></span>`
    document.getElementById('addToCartBtnII').innerHTML=`<span class="spinner"></span>`
   const user = auth.currentUser;
   if (!user) {
-    alert("You must be logged in to add items to your cart.");
+showLoginModal();
     return;
   }
 
@@ -731,7 +947,7 @@ async function addToCart(productId, productData, collectionName) {
       quantity: 1
     });
   }
-  alert("✅ Added to cart!");
+  showLogoutNotification()
   await(() => new Promise(res => setTimeout(res, 500)))(); // small delay for better UX
   document.getElementById('addToCartBtn').innerHTML=`Add to cart`
   document.getElementById('addToCartBtnII').innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024">
@@ -768,7 +984,6 @@ document.getElementById("addToCartBtnII").addEventListener("click", () => {
 
 
   addToCart(productId, productData, collections); 
-
  
 });
 </script>

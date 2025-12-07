@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="Logo/ByteBuyLogo.png" type="image/x-icon">
-  <title>BYTE-BUY | Checkout</title>
+  <link rel="shortcut icon" href="Logo/ByteBuyLogo.png" type="image/x-icon">
+  <title>BYTE-BUY | Order Confirmed</title>
   <style>
     * {
       margin: 0;
@@ -15,108 +15,233 @@
 
     body {
       min-height: 100vh;
-      /* background: linear-gradient(135deg, #1e2f97, #1261e1e6); */
-            background: linear-gradient(135deg,#2c0fed,#186bfa, #0d27ac, #156af3e6);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      padding: 20px;
     }
 
     main {
       text-align: center;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2em;
-      border-radius: 1em;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 1.2s ease;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 3em 2.5em;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+      animation: slideUp 0.6s ease;
     }
 
-    h1 {
-      color: #fff;
-      font-size: 2em;
-      margin-bottom: 1em;
-      animation: slideDown 1s ease;
+    .success-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.5em;
+      position: relative;
     }
 
-    /* Success Circle + Checkmark */
-    .circle {
-      width: 90px;
-      height: 90px;
+    .circle-bg {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      background: #4caf50;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 auto 20px;
-      position: relative;
-      animation: popIn 0.6s ease;
+      animation: scaleIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
     }
 
     .checkmark {
-      width: 40px;
-      height: 20px;
-      border-left: 5px solid #fff;
-      border-bottom: 5px solid #fff;
+      width: 45px;
+      height: 22px;
+      border-left: 6px solid #fff;
+      border-bottom: 6px solid #fff;
       transform: rotate(-45deg);
       opacity: 0;
-      animation: draw 0.6s ease forwards 0.5s;
+      animation: drawCheck 0.5s ease forwards 0.4s;
     }
 
-    /* Button */
+    h1 {
+      color: #2d3748;
+      font-size: 1.8em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      animation: fadeIn 0.8s ease 0.3s both;
+    }
+
+    .subtitle {
+      color: #718096;
+      font-size: 1em;
+      margin-bottom: 2em;
+      line-height: 1.6;
+      animation: fadeIn 0.8s ease 0.5s both;
+    }
+
+    .order-details {
+      background: #f7fafc;
+      padding: 1.2em;
+      border-radius: 12px;
+      margin-bottom: 1.5em;
+      animation: fadeIn 0.8s ease 0.7s both;
+    }
+
+    .order-details p {
+      color: #4a5568;
+      font-size: 0.95em;
+      margin: 0.5em 0;
+    }
+
+    .order-details strong {
+      color: #2d3748;
+      font-weight: 600;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
+      animation: fadeIn 0.8s ease 0.9s both;
+    }
+
     button {
-      padding: 0.8em 1.5em;
-      background-color: #4a7eb3;
-      border-radius: 0.3em;
+      padding: 1em 2em;
+      border-radius: 12px;
       cursor: pointer;
       border: none;
-      font-size: 14px;
-      color: white;
+      font-size: 15px;
       font-weight: 600;
-      transition: 0.3s ease;
-      margin-top: 1em;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    button:hover {
-      background-color: #35618a;
-      transform: scale(1.05);
+    .primary-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     }
 
-    /* Animations */
-    @keyframes popIn {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
     }
 
-    @keyframes draw {
-      from { width: 0; height: 0; opacity: 0; }
-      to { width: 40px; height: 20px; opacity: 1; }
+    .primary-btn:active {
+      transform: translateY(0);
+    }
+
+    .secondary-btn {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+
+    .secondary-btn:hover {
+      background: #f7fafc;
+      transform: translateY(-2px);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes drawCheck {
+      from {
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+      to {
+        width: 45px;
+        height: 22px;
+        opacity: 1;
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @media (max-width: 480px) {
+      main {
+        padding: 2em 1.5em;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      .subtitle {
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
 <body>
   <main>
-    <div class="circle">
-      <div class="checkmark"></div>
+    <div class="success-icon">
+      <div class="circle-bg">
+        <div class="checkmark"></div>
+      </div>
     </div>
-    <h1>Thank you very much for shopping with us 🎉</h1>
-    <button onclick="goHome()">Continue Shopping</button>
+    
+    <h1>Order Confirmed! </h1>
+    <p class="subtitle">Thank you for shopping with ByteBuy! Your order has been successfully placed.</p>
+    
+    <div class="order-details">
+      <p><strong>Order Number:</strong> #BB-<span id="orderNumber"></span></p>
+      <p><strong>Confirmation sent to:</strong> your email</p>
+      <p>Track your order status in your account dashboard</p>
+    </div>
+
+    <div class="button-group">
+      <button class="primary-btn" onclick="goHome()">Continue Shopping</button>
+      <button class="secondary-btn" onclick="viewOrders()">View My Orders</button>
+    </div>
   </main>
+
   <script>
+    // Generate random order number
+    document.getElementById('orderNumber').textContent = 
+      Math.floor(100000 + Math.random() * 900000);
+
     function goHome() {
-      // redirect user back to homepage or shop page
-      window.location.href = "/"; 
+      window.location.href = "/";
+    }
+
+    function viewOrders() {
+      window.location.href = "carts.html";
     }
   </script>
 </body>

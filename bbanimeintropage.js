@@ -521,6 +521,8 @@ const asideLinks = document.querySelectorAll("#sideMenu a");
 const btn1= document.querySelector('.btn1')
 const btn2= document.querySelector('.btn3')
 const btn3= document.querySelector('.btn2')
+const topH = document.querySelectorAll(" .Top-header");
+const pgII= document.querySelector('.page_label2')
  btn3.style.background='#e9ebed'
 function changeTheme(theme) {
   const body = document.body;
@@ -533,6 +535,10 @@ function changeTheme(theme) {
     btn2.style.background=''
     btn3.style.background=''
      aside.style.color = "white";  // readable text
+          topH.forEach(head=>{
+      head.style.background=' #0e68e7'
+    })
+        pgII.style.background=' #121313'
     asideLinks.forEach(link => {
       link.style.color = "white";  // readable text
     });
@@ -545,6 +551,10 @@ function changeTheme(theme) {
     btn2.style.background=''
     btn3.style.background='#e9ebed'
     aside.style.color = "black";  // readable text
+     topH.forEach(head=>{
+      head.style.background=' #0e68e7'
+    })
+        pgII.style.background=' #1213136'
     asideLinks.forEach(link => {
       link.style.color = "black";  // readable text
     });
@@ -555,6 +565,10 @@ function changeTheme(theme) {
     aside.style.background = "#090909";
       btn1.style.background=''
     btn2.style.background=' #191717ff'
+    topH.forEach(head=>{
+      head.style.background='#4a4a4aff'
+    })
+       pgII.style.background='#353636'
     btn3.style.background=''
      aside.style.color = "white";  // readable text
     asideLinks.forEach(link => {

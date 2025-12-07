@@ -360,6 +360,83 @@ footer {
   #searchMobile{
     display: none;
   }
+      .logout-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 8px;
+      padding: 16px 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 320px;
+      z-index: 10000;
+      opacity: 0;
+      transform: translateX(400px);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .logout-notification.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Icon */
+    .notification-icon {
+      width: 40px;
+      height: 40px;
+      background: #16b71b;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .notification-icon svg {
+      width: 20px;
+      height: 20px;
+      color: white;
+    }
+
+    /* Content */
+    .notification-content {
+      flex: 1;
+    }
+
+    .notification-content p {
+      margin: 0;
+      font-size: 14px;
+      color: #2d3748;
+      font-weight: 500;
+    }
+
+    /* Close button */
+    .notification-close {
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .notification-close:hover {
+      background: #f7fafc;
+    }
+
+    .notification-close svg {
+      width: 16px;
+      height: 16px;
+      color: #718096;
+    }
   /* ---------- RESPONSIVENESS ---------- */
   
   /* Tablets (medium screens) */
@@ -414,6 +491,12 @@ footer {
         display: none;
         
     }
+       .logout-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+      }
     header{
       padding: 0.3em 0.7em;
     }

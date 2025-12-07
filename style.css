@@ -916,7 +916,7 @@ height: 60px;
       margin: 64px 0 0 0;
   }
   .page_label2 {
-  background-color: #121313;
+  background: #121313;
 display: flex;
   padding: 5px;
   width: 100%;
@@ -949,7 +949,7 @@ display: flex;
     display: flex;
   }
   .page_label2 {
-  background-color: #121313;
+  background: #121313;
 display: flex;
   padding: 5px;
   width: 100%;
