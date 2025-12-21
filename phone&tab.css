@@ -668,7 +668,7 @@ main {
 max-width: 767px;
 height: 90px;
 margin: 2.3em 0em;
-perspective: 3000px;
+/* perspective: 200px; */
 }
 .slide{
   width: 190px;
