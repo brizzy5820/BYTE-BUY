@@ -14,7 +14,7 @@ body {
   justify-content: center;
   background-color: #e9ebed;
   display: block;
-  overflow-x: hidden;
+  overflow-x: hidden ;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 0.875rem;
@@ -668,13 +668,14 @@ main {
 max-width: 767px;
 height: 90px;
 margin: 2.3em 0em;
+/* perspective: 200px; */
 }
 .slide{
-  width: 160px;
+  width: 190px;
 }
 @media (max-width:395px) {
    .slide{
-    width: 143px;
+    width: 183px;
   }
 }
 /* Exclusive for medium phone sizes */
@@ -707,7 +708,7 @@ margin: 2.3em 0em;
     font-size: 12px;
   }
   .slide{
-    width: 138px;
+    width: 178px;
   }
 }
 
@@ -720,11 +721,10 @@ margin: 2.3em 0em;
 
   .slider-container {
     max-width: 320px;
-    /* perspective: 200px; */
     height: 85px;
   }
   .slide{
-    width: 121px;
+    width: 151px;
   }
 }
 }
