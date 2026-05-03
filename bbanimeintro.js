@@ -14,9 +14,9 @@ window.addEventListener('load', () => {
       // Optional: fade out the intro wrapper after animation finishes
       setTimeout(() => {
         intro.classList.add('fade-out');
-      }, 230); // book animation duration
+      }, 2300); // book animation duration
     }, 1100); // initial delay
-  },600);
+  },300);
   
   // Header Search 
 const find= document.getElementById('searchInput')
