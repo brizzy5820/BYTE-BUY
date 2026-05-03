@@ -886,7 +886,8 @@ const addToCartBtn = document.getElementById("addToCartBtn");
       btn.style.opacity = isReady ? "1" : "0.65";
       btn.style.cursor = isReady ? "pointer" : "not-allowed";
       btn.setAttribute("aria-disabled", isReady ? "false" : "true");
-      btn.title = isReady ? "" : "Please wait for product details to finish loading.";
+      btn.textContent = isReady ? "Add to cart" : "Loading product details...";
+      // btn.title = isReady ? "" : "Please wait for product details to finish loading.";
     });
   }
 
@@ -980,11 +981,6 @@ showLoginModal();
     Add to Cart`
 }
 document.getElementById("addToCartBtn").addEventListener("click", () => {
-  if (!loadedProduct) {
-    showLogoutNotification("Please wait for the product to finish loading before adding to cart.");
-    return;
-  }
-
   const productId = params.get("id"); // from your URL
   const productData = {
     name: document.getElementById("modal_desc").textContent,
@@ -1000,10 +996,7 @@ document.getElementById("addToCartBtn").addEventListener("click", () => {
  
 });
 document.getElementById("addToCartBtnII").addEventListener("click", () => {
-  if (!loadedProduct) {
-    showLogoutNotification("Please wait for the product to finish loading before adding to cart.");
-    return;
-  }
+
 
   const productId = params.get("id"); // from your URL
   const productData = {
