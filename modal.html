@@ -372,7 +372,7 @@
       </svg>
     </div>
     <div class="notification-content">
-      <p>Added to carts successfully</p>
+      <p id="cartNotificationMessage">Added to carts successfully</p>
     </div>
     <button class="notification-close" onclick="hideLogoutNotification()">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -814,8 +814,10 @@ const auth= getAuth(app)
    // Get productId from URL
   const params = new URLSearchParams(window.location.search);
   const productId = params.get("id");
-  function showLogoutNotification() {
+   function showLogoutNotification(message = "Added to carts successfully") {
       const notification = document.getElementById('logoutNotification');
+      const messageNode = document.getElementById("cartNotificationMessage");
+      if (messageNode) messageNode.textContent = message;
       notification.classList.add('show');
       
       // Auto-hide after 4 seconds
@@ -874,14 +876,36 @@ const auth= getAuth(app)
   }
 
   // Run loader
+const addToCartBtn = document.getElementById("addToCartBtn");
+  const addToCartBtnII = document.getElementById("addToCartBtnII");
+  let loadedProduct = null;
+
+  function setAddToCartReadyState(isReady) {
+    [addToCartBtn, addToCartBtnII].forEach((btn) => {
+      if (!btn) return;
+      btn.style.opacity = isReady ? "1" : "0.65";
+      btn.style.cursor = isReady ? "pointer" : "not-allowed";
+      btn.setAttribute("aria-disabled", isReady ? "false" : "true");
+      btn.title = isReady ? "" : "Please wait for product details to finish loading.";
+    });
+  }
+
+  setAddToCartReadyState(false);
+
+  // Run loader
   loadProduct(productId).then(result => {
+    loadedProduct = result;
     if (result) {
       console.log("Product found in:", result.collection);
       console.log("Product data:", result.data);
+      setAddToCartReadyState(true);
     } else {
       console.log("Product not found in any collection.");
+      showLogoutNotification("Product details are unavailable right now. Please refresh and try again.");
+      setAddToCartReadyState(false);
     }
   });
+ 
   const loginModal = document.getElementById("loginModal");
 const loginBtn = document.getElementById("loginBtn");
 const closeModal = document.getElementById("closeModal");
@@ -956,6 +980,10 @@ showLoginModal();
     Add to Cart`
 }
 document.getElementById("addToCartBtn").addEventListener("click", () => {
+  if (!loadedProduct) {
+    showLogoutNotification("Please wait for the product to finish loading before adding to cart.");
+    return;
+  }
 
   const productId = params.get("id"); // from your URL
   const productData = {
@@ -967,11 +995,15 @@ document.getElementById("addToCartBtn").addEventListener("click", () => {
   };
 
 
-  addToCart(productId, productData, collections); 
+  addToCart(productId, productData, loadedProduct.collection); 
 
  
 });
 document.getElementById("addToCartBtnII").addEventListener("click", () => {
+  if (!loadedProduct) {
+    showLogoutNotification("Please wait for the product to finish loading before adding to cart.");
+    return;
+  }
 
   const productId = params.get("id"); // from your URL
   const productData = {
@@ -982,10 +1014,10 @@ document.getElementById("addToCartBtnII").addEventListener("click", () => {
     discount: document.getElementById("modal_discount").textContent 
   };
 
+ addToCart(productId, productData, loadedProduct.collection); 
 
-  addToCart(productId, productData, collections); 
- 
 });
+
 </script>
 
 
